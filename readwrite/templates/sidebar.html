@@ -1,4 +1,5 @@
 {% block sidebar %}
+{% load static %}
 
 <style>
         .card{
@@ -8,7 +9,8 @@
 </style>
 
 <!-- Sidebar Widgets Column -->
-<div class="col-md-4 float-right ">
+<div class="col-md-4 mt-3 float-right ">
+<input class="form-control me-2" type="search" placeholder="Search posts" aria-label="Search" id="search">
 <div class="card my-4">
         <h5 class="card-header">Under construction</h5>
     <div class="card-body">
@@ -17,5 +19,8 @@
     </div>
 </div>
 </div>
-
+<script type="text/javascript">
+    var path = "{% url 'search_posts' %}";
+</script>
+<script type="text/javascript" src="{% static 'js/postsearch.js' %}"></script>
 {% endblock sidebar %}

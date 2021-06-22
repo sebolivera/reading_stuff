@@ -1,6 +1,5 @@
 $(document).ready(function()
 {
-    console.log($("#ischapter").is(':checked'));
     if ($("#ischapter").is(':checked'))
     {
         $(".book-info").toggle("slide", {direction:"up"});

@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-
+{% load static %}
 <div class="container">
   <div class="row">
     <div class="col-md-8 card mb-4  mt-3 left  top">
@@ -67,7 +67,13 @@
             <br/>
             <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
             </form>
-
+        <script type="text/javascript">var wipe=false;</script>
+        {% for message in messages %}
+            {% if message.tags == "success" %}
+            <script type="text/javascript">var wipe=true;</script>
+            {% endif %}
+        {% endfor %}
+        <script type="text/javascript" src="{% static 'js/comments.js' %}"></script>
     {% else %}
         <h3>You need to be <a class="font-weight-bold" href="{% url 'login' %}">logged in</a> order to leave a comment!</h3>
     {% endif %}

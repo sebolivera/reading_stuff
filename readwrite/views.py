@@ -1,4 +1,4 @@
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
 from django.views.generic import TemplateView
 from .models import Post, Comment, Book, Chapter, Author
@@ -8,12 +8,14 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils.text import slugify
-
+from django.http import HttpResponseBadRequest
+from django.template.loader import render_to_string
+from django.db.models import Q
 # Create your views here.
 
 class IndexView(TemplateView):
     template_name = "index.html"
-    context = {'post_list' : Post.objects.all()}
+    context = {'post_list' : Post.objects.all().filter(status=1)}
 
     def get(self, request):
         return render(request, self.template_name, self.context)
@@ -34,7 +36,7 @@ def postDetail(request, slug): # not a class bc post & get annoying
             new_comment.user = request.user
             if hasattr(request.user, "administrator"):
                 request.active = True
-            new_comment.POST = the_post
+            new_comment.post = the_post
             new_comment.save()
             context['new_comment'] = new_comment
             messages.success(request, 'Your comment has been successfully posted!')
@@ -47,6 +49,33 @@ def postDetail(request, slug): # not a class bc post & get annoying
 
     context['comment_form'] = comment_form
     return render(request, template_name, context)
+
+def require_AJAX(function):
+    def wrap(request, *args, **kwargs):
+        if not request.is_ajax():
+            return HttpResponseBadRequest()
+        return function(request, *args, **kwargs)
+
+    wrap.__doc__ = function.__doc__
+    wrap.__name__ = function.__name__
+    return wrap
+
+@require_AJAX
+def search_posts(request):
+    if request.method=='POST':
+        posts = Post.objects.all().filter(title__icontains=request.POST['search'])
+        posts_by_authors = Post.objects.all().filter(author__pen_name__icontains=request.POST['search'])
+        context={
+            'post_list' : posts, 
+            'posts_by_authors' : posts_by_authors
+        }
+        if request.POST['search'] == '':
+            context['empty'] = True
+        html = render_to_string(
+            template_name="ajax/index_search_partial.html", context=context)
+        data_dict = {"html_from_view":html}
+        return JsonResponse(data=data_dict, safe=False)
+
 
 @login_required
 def logout_view(request):
