@@ -1,0 +1,34 @@
+.toast
+{
+    width: 250px;
+    top : 65px;
+    right : 10px;
+    position : absolute;
+    border-radius : 10px;
+    z-index: 10000;
+}
+
+.toast-header
+{
+    border-radius : 10px;
+}
+
+.toast-close
+{
+    padding : 5px;
+}
+
+.notification-title
+{
+    display: block;
+}
+
+.book-info
+{
+    display: none;
+}
+
+.book-select-error
+{
+    display: none;
+}
