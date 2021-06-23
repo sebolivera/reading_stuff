@@ -8,14 +8,20 @@
        
 </style>
 
+<!-- jGravity file -->
+<script src="{% static 'js/jquery.throwable.js' %}"></script>
+<script src="{% static 'js/surprise.js' %}"></script>
+
+<script src="{% static 'js/chapterinfo.js' %}"></script>
+
 <!-- Sidebar Widgets Column -->
 <div class="col-md-4 mt-3 float-right ">
 <input class="form-control me-2" type="search" placeholder="Search posts" aria-label="Search" id="search">
-<div class="card my-4">
+<div class="card my-4" id="under-const">
         <h5 class="card-header">Under construction</h5>
     <div class="card-body">
         <p class="card-text"> This website is currently being built, please ignore whatever unexpected stuff you may find</p>
-        <a href="#" class="btn btn-danger">This button literally does nothing</a>
+        <a href="#" class="btn btn-danger" id="please-dont-click">DO NOT CLICK THIS!</a>
     </div>
 </div>
 </div>
