@@ -72,7 +72,8 @@ def search_posts(request):
         posts_by_authors = Post.objects.all().filter(author__pen_name__icontains=request.POST['search'])
         context={
             'post_list' : posts, 
-            'posts_by_authors' : posts_by_authors
+            'posts_by_authors' : posts_by_authors,
+            'search' : True,
         }
         if request.POST['search'] == '':
             context['empty'] = True

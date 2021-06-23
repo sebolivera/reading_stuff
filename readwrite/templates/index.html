@@ -32,9 +32,11 @@
 </header>
 <div class="container">
     <div class="row">
-        <!-- Blog Entries Column -->
         <div id="post-holder" class="col-md-8 mt-3 left">
-            {% for post in post_list %}
+            {% include 'ajax/index_search_partial.html' %}
+            {% block post_content%}
+            {% endblock %}
+            {% comment %} {% for post in post_list %}
             <div class="card mb-4">
                 <div class="card-body">
                     <a href="{% url 'post_detail' post.slug%}" class="no-underline"><h2 class="card-title">{{ post.title }}</h2></a>
@@ -49,7 +51,7 @@
                     <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">See comments</a>
                 </div>
             </div>
-            {% endfor %}
+            {% endfor %} {% endcomment %}
         </div>
         {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
     </div>
