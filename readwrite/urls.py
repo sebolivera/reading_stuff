@@ -10,5 +10,7 @@ urlpatterns = [
     path('password_reset/', views.password_reset_view, name="password_reset"),
     path('create_post/', views.create_post, name="create_post"),
     path('post/<id>', views.password_reset_view, name="password_reset"),
+    path('approve_comment/', views.approve_comment, name='approve_comment'),
+    path('delete_comment/', views.delete_comment, name='delete_comment'),
     path('<slug:slug>/', views.postDetail, name='post_detail'),
 ]

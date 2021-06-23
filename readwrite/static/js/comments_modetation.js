@@ -1,7 +1,6 @@
 $(document).ready(function()
 {
-    
-    $("#search").val('');
+    const content = $(".main-comments");
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -19,12 +18,7 @@ $(document).ready(function()
     }
     const csrftoken = getCookie('csrftoken');
 
-    const search=$("#search");
-    const content=$("#post-holder");
-    const delay_by_in_ms = 700
-    let scheduled_function = false
-
-    let ajax_call = function (path, request_parameters) {
+    let ajax_call = function (path, request_parameters, div_to_destroy_if_sucess) {
         $.ajax({
             url: path,
             type: "POST",
@@ -38,26 +32,31 @@ $(document).ready(function()
                     content.html(response['html_from_view']);
                     // fade-in the div with new contents
                     content.fadeTo('slow', 1);
-                    // stop animating the search 
+                    div_to_destroy_if_sucess.remove();
                 });
             }
         });
     }
-    
-    search.on('keyup', function () {
 
+    $(".form-moderation").unbind('submit').bind('submit', function(e){
         const request_parameters = {
-            search: $(this).val(), // value of user_input: the HTML element with ID user-input
+            id: $(this).attr('id'), // value of user_input: the HTML element with ID user-input
         };
-
-        // start animating the search 
-
-        // if scheduled_function is NOT false, cancel the execution of the function
-        if (scheduled_function) {
-            clearTimeout(scheduled_function);
+        e.preventDefault();
+        if($(this).hasClass('approve'))
+        {
+            ajax_call(url_approve, request_parameters, $(this).parent().parent());
         }
-
-        // setTimeout returns the ID of the function to be executed
-        scheduled_function = setTimeout(ajax_call, delay_by_in_ms, path, request_parameters);
+        else if($(this).hasClass('delete'))
+        {
+            if (confirm('Are you sure you want to delete this comment?')) {
+            // Save it!
+                ajax_call(url_delete, request_parameters, $(this).parent().parent());
+                //console.log("calling: " + url_delete + " with " + $(this).attr('id'));
+            } else {
+            // Do nothing!
+                console.log('Thing was not saved to the database.');
+            }
+        }
     });
 });

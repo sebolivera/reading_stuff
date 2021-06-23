@@ -32,3 +32,13 @@
 {
     display: none;
 }
+
+.no-underline
+{
+    text-decoration: none;
+}
+
+.form-moderation
+{
+    display: inline;
+}

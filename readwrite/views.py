@@ -34,18 +34,23 @@ def postDetail(request, slug): # not a class bc post & get annoying
         if comment_form.is_valid():
             new_comment = comment_form.save(commit=False) # doesn't add it to the db as we need to link the post
             new_comment.user = request.user
-            if hasattr(request.user, "administrator"):
-                request.active = True
+            if request.user.has_perm('moderate'):
+                new_comment.active = True
             new_comment.post = the_post
             new_comment.save()
             context['new_comment'] = new_comment
             messages.success(request, 'Your comment has been successfully posted!')
+            return redirect('post_detail',the_post.slug) # the old redirection (see below) apparently doesn't want to re-include the post part in the template, forcing a redirect seems to fix it. Though i have no idea why.
     else:
         comment_form = CommentForm()
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and not request.user.has_perm('delete'):
         user_comments = Comment.objects.all().filter(user=request.user, active=False, post=the_post)
         if user_comments:
             context['user_inactive_comments'] = user_comments
+    if request.user.has_perm('delete'):
+        moderation_comments = Comment.objects.all().filter(active=False, post=the_post)
+        if moderation_comments:
+            context['moderation_comments'] = moderation_comments
 
     context['comment_form'] = comment_form
     return render(request, template_name, context)
@@ -147,3 +152,58 @@ def create_post(request):
                 new_post.save()
             return redirect('/')
     return render(request, template_name, context)
+
+
+@require_AJAX
+def approve_comment(request):
+    if request.user.has_perm('update'):
+        if request.method=='POST':
+            comment = get_object_or_404(Comment, id=request.POST['id'])
+            if not comment.active:
+                comment.active = True
+                comment.save()
+                comments = Comment.objects.all().filter(post=comment.post, active=True)
+                context={
+                    'comments' : comments,
+                    'moderator_ajax_allowed' : True,
+                }
+                html = render_to_string(
+                    template_name="ajax/comments.html", context=context)
+                data_dict = {"html_from_view":html}
+                messages.success(request, 'The message was sucessfully approved')
+                return JsonResponse(data=data_dict, safe=False)
+            messages.error(request, 'This comment has already been approved')
+        response = JsonResponse({"error": "there was an error"})
+        response.status_code = 403
+    else:
+        messages.error(request, 'You shouldn\'t be able to even try that')
+        response = JsonResponse({"error": "there was an error"})
+        response.status_code = 403
+    return response
+            
+
+@require_AJAX
+def delete_comment(request):
+    if request.user.has_perm('delete'):
+        if request.method=='POST':
+            comment = get_object_or_404(Comment, id=request.POST['id'])
+            the_post = comment.post
+            comment.delete()
+            comments = Comment.objects.all().filter(post=the_post, active=True)
+            context = {
+                'comments' : comments,
+                'moderator_ajax_allowed' : True,
+            }
+            html = render_to_string(
+                template_name="ajax/comments.html", context=context)
+            data_dict = {"html_from_view" : html}
+            messages.success(request, 'The message was sucessfully deleted')
+            return JsonResponse(data=data_dict, safe=False)
+        response = JsonResponse({"error": "this comment was already deleted"})
+        response.status_code = 403
+    else:
+        messages.error(request, 'You shouldn\'t be able to even try that')
+        response = JsonResponse({"error": "there was an error"})
+        response.status_code = 403
+    return response
+            

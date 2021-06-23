@@ -12,11 +12,11 @@
     {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
   </div>
   
-    {% if user.is_authenticated and user_inactive_comments %}
+    {% if user.is_authenticated and user_inactive_comments and not moderation_comments %}
         <h4>The following comment{{user_inactive_comments|pluralize}} {{user_inactive_comments|pluralize:"is,are"}} still under review:</h4>
         <div class="container bg-teal">
             {% for comment in user_inactive_comments %}
-            <div class="row card">
+                <div class="row card mt-2">
                     <div class="comments " style="padding: 10px;">
                         <p class="font-weight-normal text-primary">
                             {{ comment.user }} 
@@ -35,38 +35,54 @@
         <hr/>
     {% endif %}
 
-
-    {% if comments %}
-        <h4>Comments:</h4>
-    {% else %}
-        <h4>Be the first to comment!</h4>
-    {% endif %}
-    <div class="container">
-        {% for comment in comments %}
-        <div class="row card">
-                <div class="comments" style="padding: 10px;">
-                <p class="font-weight-bold">
-                    {{ comment.user }} on
-                    <span class=" text-muted font-weight-normal">
-                    {{ comment.created_on }}
-                    </span>
-                </p>
-                {{ comment.body | linebreaks }}
+    {% if user.is_authenticated and moderation_comments %}
+        <script type="text/javascript">
+            var url_approve="{% url 'approve_comment' %}";
+            var url_delete="{% url 'delete_comment' %}";
+        </script>
+        <h4>The following comment{{moderation_comments|pluralize}} {{moderation_comments|pluralize:"is,are"}} awaiting  {{moderation_comments|pluralize:"its,their"}} review{{moderation_comments|pluralize}}:</h4>
+        <div class="container bg-teal">
+            {% for comment in moderation_comments %}
+                <div class="row card mt-2">
+                    <div class="comments " style="padding: 10px;">
+                        <p class="font-weight-normal text-primary">
+                            {{ comment.user }} 
+                        <span class="text-dark">on</span>
+                        <span class="font-weight-light fs-6 text-muted">
+                            {{ comment.created_on }}
+                        </span>
+                        </p>
+                        <p class="font-weight-normal text-info">
+                            {{ comment.body | linebreaks }}
+                        </p>
+                        <form class="form-moderation approve" action="javascript:void(0);" method="POST"  id="{{comment.id}}">
+                            <button type="submit" class="btn btn-success approve-comment">Approve</button>
+                        </form>
+                        <form class="form-moderation delete" action="javascript:void(0);" method="POST"  id="{{comment.id}}">
+                            <button type="submit" class="btn btn-danger delete-comment" >Delete</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
+        <hr/>
+    {% endif %}
+    <span class="main-comments">
+    {% include 'ajax/comments.html' %}
+    {% block main_content %}
+    {% endblock main_content %}
+    </span>
     <hr/>
-    {% if user.is_authenticated%}
-            <h3>Leave a comment</h3>
-            <form method="post" style="margin-top: 1.3em;">
-                {% for field in comment_form.visible_fields %}
-                    {{ field }}
-                {% endfor %}
+    {% if user.is_authenticated %}
+        <h3>Leave a comment</h3>
+        <form method="post" style="margin-top: 1.3em;" action="">
+            {% for field in comment_form.visible_fields %}
+                {{ field }}
+            {% endfor %}
             {% csrf_token %}
             <br/>
             <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
-            </form>
+        </form>
         <script type="text/javascript">var wipe=false;</script>
         {% for message in messages %}
             {% if message.tags == "success" %}
@@ -78,5 +94,4 @@
         <h3>You need to be <a class="font-weight-bold" href="{% url 'login' %}">logged in</a> order to leave a comment!</h3>
     {% endif %}
 </div>
-
 {% endblock content %}

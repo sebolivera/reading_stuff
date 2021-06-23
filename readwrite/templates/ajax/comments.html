@@ -1,0 +1,33 @@
+{% load static %}
+{% block main_content %}
+    {% if comments %}
+        <h4>Comments:</h4>
+    {% else %}
+        <h4>Be the first to comment!</h4>
+    {% endif %}
+    <div class="container">
+        {% for comment in comments %}
+            <div class="row card mt-2">
+                <div class="comments" style="padding: 10px;">
+                <p class="font-weight-bold">
+                    {{ comment.user }} on
+                    <span class=" text-muted font-weight-normal">
+                    {{ comment.created_on }}
+                    </span>
+                </p>
+                <p class="font-weight-normal text-info">
+                    {{ comment.body | linebreaks }}
+                </p>
+                {% if perms.readwrite.moderate or moderator_ajax_allowed %}
+                <form class="form-moderation delete" action="javascript:void(0);" method="POST"  id="{{comment.id}}">
+                    <button type="submit" class="btn btn-danger delete-comment" >Delete</button>
+                </form>
+                {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% if perms.readwrite.moderate or moderator_ajax_allowed %}
+        <script type="text/javascript" src="{% static 'js/comments_modetation.js' %}"></script>
+    {% endif %}
+{% endblock main_content %}
