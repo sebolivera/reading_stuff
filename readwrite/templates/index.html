@@ -16,7 +16,7 @@
     }
 </style>
 
-<header class="masthead">
+<header class="masthead bg-danger">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
@@ -36,22 +36,6 @@
             {% include 'ajax/index_search_partial.html' %}
             {% block post_content%}
             {% endblock %}
-            {% comment %} {% for post in post_list %}
-            <div class="card mb-4">
-                <div class="card-body">
-                    <a href="{% url 'post_detail' post.slug%}" class="no-underline"><h2 class="card-title">{{ post.title }}</h2></a>
-                    <p class="card-text text-muted h6">
-                    {% if post.author.pen_name %}
-                    By {{ post.author.pen_name }} 
-                    {% else %}
-                    By {{ post.author }} 
-                    {% endif %}
-                    on {{ post.created_on}} </p>
-                    <p class="card-text">{{post.content|slice:":200" }}</p>
-                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">See comments</a>
-                </div>
-            </div>
-            {% endfor %} {% endcomment %}
         </div>
         {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
     </div>

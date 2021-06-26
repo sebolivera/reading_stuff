@@ -1,7 +1,7 @@
 from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
 from django.views.generic import TemplateView
-from .models import Post, Comment, Book, Chapter, Author
+from .models import Post, Comment, Book, Chapter, User
 from .forms import CommentForm, PostForm
 from django.contrib.auth import logout, login, authenticate
 from django.contrib import messages
@@ -11,15 +11,27 @@ from django.utils.text import slugify
 from django.http import HttpResponseBadRequest
 from django.template.loader import render_to_string
 from django.db.models import Q
+from .utils import has_publications
 # Create your views here.
 
 class IndexView(TemplateView):
     template_name = "index.html"
-    context = {'post_list' : Post.objects.all().filter(status=1)}
+    context = {}
 
     def get(self, request):
+        self.context['post_list'] = Post.objects.all().filter(status=1)
+        self.context['has_publications'] = has_publications(self.request.user)
         return render(request, self.template_name, self.context)
 
+class PublicationView(TemplateView):
+    template_name = "publications.html"
+    context = {}
+
+    def get(self, request):
+        post_list = Post.objects.all().filter(author=self.request.user)
+        self.context['post_list'] = post_list
+        self.context['has_publications'] = has_publications(self.request.user)
+        return render(request, self.template_name, self.context)
 
 def postDetail(request, slug): # not a class bc post & get annoying
     template_name = "post/post.html"
@@ -36,10 +48,13 @@ def postDetail(request, slug): # not a class bc post & get annoying
             new_comment.user = request.user
             if request.user.has_perm('moderate'):
                 new_comment.active = True
+                message_to_pass = 'Your comment has successfully been posted!'
+            else:
+                message_to_pass = 'Your comment has been submitted and is awaiting approval.'
             new_comment.post = the_post
             new_comment.save()
             context['new_comment'] = new_comment
-            messages.success(request, 'Your comment has been successfully posted!')
+            messages.success(request, message_to_pass)
             return redirect('post_detail',the_post.slug) # the old redirection (see below) apparently doesn't want to re-include the post part in the template, forcing a redirect seems to fix it. Though i have no idea why.
     else:
         comment_form = CommentForm()
@@ -69,7 +84,7 @@ def require_AJAX(function):
 def search_posts(request):
     if request.method=='POST':
         posts = Post.objects.all().filter(title__icontains=request.POST['search'])
-        posts_by_authors = Post.objects.all().filter(author__pen_name__icontains=request.POST['search'])
+        posts_by_authors = Post.objects.all().filter(user__pen_name__icontains=request.POST['search'])
         context={
             'post_list' : posts, 
             'posts_by_authors' : posts_by_authors,
@@ -121,13 +136,13 @@ def create_post(request):
     if request.method == 'POST':
         if request.POST['content'] and request.POST['title']:
             new_post = form.save(commit=False)
-            new_post.author = Author.objects.get(id=request.user.id)
+            new_post.author = request.user
             new_post.title = request.POST['title']
             new_post.content = request.POST['content']
             if request.POST['publish']:
                 new_post.status = 1
             new_post.slug = slugify(request.POST['title'])
-            if request.POST['ischapter']:
+            if request.POST.get('ischapter'):
                 book = get_object_or_404(Book, title=request.POST['book'])
                 if not request.POST['position']:
                     messages.error(request, 'Please fill in the chapter!')
@@ -136,7 +151,7 @@ def create_post(request):
                     messages.error(request, 'A chapter with this number already exists!')
                     return render(request, template_name)
 
-                new_chapter = Chapter.objects.create(book=book, chapter_position=request.POST['position'], slug=new_post.slug, title=new_post.title, author=new_post.author, content=new_post.content)
+                new_chapter = Chapter.objects.create(book=book, chapter_position=request.POST['position'], slug=new_post.slug, title=new_post.title, author=new_post.user, content=new_post.content)
                 print("i got this:",request.POST['publish'])
                 if request.POST['publish']:
                     new_chapter.status = 1
@@ -207,4 +222,3 @@ def delete_comment(request):
         response = JsonResponse({"error": "there was an error"})
         response.status_code = 403
     return response
-            

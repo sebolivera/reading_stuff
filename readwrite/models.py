@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 STATUS = (
@@ -9,29 +9,30 @@ STATUS = (
 
 DEFAULT_AUTHOR = 1
 
-class Author(User):
-    pen_name = models.CharField(max_length=255, unique=True)
+class User(AbstractUser):
+    pen_name = models.CharField(max_length=254, unique=True, null=True, blank=True)
+    is_admin = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-pen_name']
 
 class Book(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=254)
     position = models.FloatField()
     created_on = models.DateTimeField(auto_now=True)
-    author = models.ForeignKey(Author, default=DEFAULT_AUTHOR, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, default=DEFAULT_AUTHOR, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
 
 class Post(models.Model):
-    title = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=255, unique=True)
+    title = models.CharField(max_length=254)
+    slug = models.SlugField(max_length=254, unique=True)
     created_on = models.DateTimeField(auto_now=True)
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
     status = models.IntegerField(choices=STATUS, default=0)
-    author = models.ForeignKey(Author, default=DEFAULT_AUTHOR, on_delete=models.CASCADE) #redundancy w/ book, but what about the case where a book has no chapters? idk leave me alone
+    author = models.ForeignKey(User, default=DEFAULT_AUTHOR, on_delete=models.CASCADE) #redundancy w/ book, but what about the case where a book has no chapters? idk leave me alone
 
     class Meta:
         ordering = ['-created_on']

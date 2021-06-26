@@ -51,6 +51,7 @@ $(document).ready(function()
         };
 
         // start animating the search 
+        content.html('<div class="text-center"><div class="spinner-border m-5" role="status"><span class="visually-hidden">Loading...</span></div></div>');
 
         // if scheduled_function is NOT false, cancel the execution of the function
         if (scheduled_function) {

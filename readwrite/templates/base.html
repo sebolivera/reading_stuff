@@ -68,12 +68,16 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto navbar-right">
+                        {% if user.is_authenticated%}
                         <li class="nav-item text-black">
                             <a class="nav-link text-black font-weight-bold" href="{% url 'create_post' %}">Post something</a>
                         </li>
+                        {% endif %}
+                        {% if has_publications %}
                         <li class="nav-item text-black">
-                            <a class="nav-link text-black font-weight-bold" href="#">Policy</a>
+                            <a class="nav-link text-black font-weight-bold" href="{% url 'publications' %}">My publications</a>
                         </li>
+                        {% endif %}
                         <li class="nav-item text-black">
                             <a class="nav-link text-black font-weight-bold" href="#">Contact</a>
                         </li>
