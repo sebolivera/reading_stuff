@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 
 STATUS = (
@@ -12,6 +14,7 @@ DEFAULT_AUTHOR = 1
 class User(AbstractUser):
     pen_name = models.CharField(max_length=254, unique=True, null=True, blank=True)
     is_admin = models.BooleanField(default=False)
+    profile_picture = RichTextUploadingField(default=None, null=True, blank=True)
 
     class Meta:
         ordering = ['-pen_name']
@@ -30,7 +33,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=254, unique=True)
     created_on = models.DateTimeField(auto_now=True)
     updated_on = models.DateTimeField(auto_now=True)
-    content = models.TextField()
+    content = RichTextField()
     status = models.IntegerField(choices=STATUS, default=0)
     author = models.ForeignKey(User, default=DEFAULT_AUTHOR, on_delete=models.CASCADE) #redundancy w/ book, but what about the case where a book has no chapters? idk leave me alone
 
@@ -47,7 +50,7 @@ class Chapter(Post):
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    body = models.TextField()
+    body = RichTextField()
     created_on = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=False)
     edited = models.BooleanField(default=False)

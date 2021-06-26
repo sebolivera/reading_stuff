@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'readwrite'
+    'readwrite',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +130,49 @@ AUTH_USER_MODEL = 'readwrite.User'
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+CKEDITOR_BASEPATH = os.path.join(BASE_DIR, "ckeditor/")
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_RESTRICT_BY_USER = True # prevents users from seeing other ppl's uploads
+CKEDITOR_BROWSE_SHOW_DIRS = True
+
+CKEDITOR_CONFIGS = {
+
+    'default': {
+        'height': '100%',
+        'width': '100%',
+        'toolbarCanCollapse': False,
+    },
+    'full': {
+        'toolbar': [
+            ['Undo', 'Redo',
+             '-', 'Bold', 'Italic', 'Underline', 'NumberedList', 'BulletedList',
+             '-', 'Outdent', 'Indent', 'Blockquote', 'CreateDiv',
+             '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
+             '-', 'TextColor', 'BGColor',
+             '-', 'Maximize', 'ShowBlocks',  #'Image' ,
+             '-', 'Cut', 'Copy', 'Paste', 'PasteText',
+            ],
+            ['-', 'SpecialChar',
+             '-', 'Source',
+            ],
+            [
+                '-', 'Styles', 'Format', 'Font', 'FontSize'
+            ],
+            [
+                '-', 'BidiLtr', 'BidiRtl'
+            ]
+        ],
+        'width': '100%',
+        'height': '600px',
+        'toolbarCanCollapse': False,
+    },
+    'disable': {
+        'toolbar': [],
+        'width': '100%',
+        'height': '600px',
+        'toolbarCanCollapse': False,
+    },
+}

@@ -16,7 +16,7 @@
                     </span>
                 </p>
                 <p class="font-weight-normal text-info">
-                    {{ comment.body | linebreaks }}
+                    {{ comment.body | safe }}
                 </p>
                 {% if perms.readwrite.moderate or moderator_ajax_allowed %}
                 <form class="form-moderation delete" action="javascript:void(0);" method="POST"  id="{{comment.id}}">
