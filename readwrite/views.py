@@ -51,7 +51,7 @@ def postDetail(request, slug): # not a class bc post & get annoying
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             new_comment = comment_form.save(commit=False) # doesn't add it to the db as we need to link the post
-            new_comment.user = request.user
+            new_comment.author = request.user
             if request.user.has_perm('moderate'):
                 new_comment.active = True
                 message_to_pass = 'Your comment has successfully been posted!'
@@ -194,12 +194,14 @@ def approve_comment(request):
                 context={
                     'comments' : comments,
                     'moderator_ajax_allowed' : True,
+                    'darkmode_on' : request.COOKIES.get('site_color_mode')=='dark',
                 }
                 html = render_to_string(
                     template_name="ajax/comments.html", context=context)
                 data_dict = {"html_from_view":html}
                 messages.success(request, 'The message was sucessfully approved')
-                return JsonResponse(data=data_dict, safe=False)
+                response = JsonResponse(data=data_dict, safe=False)
+                return response
             messages.error(request, 'This comment has already been approved')
         response = JsonResponse({"error": "there was an error"})
         response.status_code = 403

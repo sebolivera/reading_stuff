@@ -1,8 +1,12 @@
 {% extends 'base.html' %} {% block content %}
 {% load static %}
-<div class="container">
+<div class="container shadow-lg">
   <div class="row">
-    <div class="col-md-8 card mb-4  mt-3 left  top">
+{% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
+    <div class="col-md-8 card mb-4  mt-3 left top text-light bg-dark shadow-lg">
+{% else %}
+    <div class="col-md-8 card mb-4  mt-3 left top text-dark bg-light shadow-lg">
+{% endif %}
       <div class="card-body">
         <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
         <p class=" text-muted">{{ post.author }} {{ post.created_on }}</p>
@@ -12,17 +16,22 @@
     {% block sidebar %} {% include 'sidebar_nosearch.html' %} {% endblock sidebar %}
   </div>
 
+<div class="row mt-3">
 {% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
-<div class="container text-light bg-dark">
+<div class="card mb-4 mt-3 left top text-light bg-dark shadow-lg">
 {% else %}
-<div class="container text-dark bg-light">
+<div class="card mb-4 mt-3 left top text-dark bg-light shadow-lg">
 {% endif %}
     {% if user.is_authenticated and user_inactive_comments and not moderation_comments %}
         <h4>The following comment{{user_inactive_comments|pluralize}} {{user_inactive_comments|pluralize:"is,are"}} awaiting a review:</h4>
-        <div class="container bg-teal">
+        <div class="container bg-teal shadow-lg">
             {% for comment in user_inactive_comments %}
-                <div class="row card mt-2">
-                    <div class="comments " style="padding: 10px;">
+                {% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
+                    <div class="row card mt-2 bg-dark text-light shadow-lg">
+                {% else %}
+                    <div class="row card mt-2 bg-light text-dark shadow-lg">
+                {% endif %}
+                    <div class="comments shadow-lg" style="padding: 10px;">
                         <p class="font-weight-normal text-primary">
                             {{ comment.user }} 
                         <span class="text-dark">on</span>
@@ -46,10 +55,14 @@
             var url_delete="{% url 'delete_comment' %}";
         </script>
         <h4>The following comment{{moderation_comments|pluralize}} {{moderation_comments|pluralize:"is,are"}} awaiting  {{moderation_comments|pluralize:"its,their"}} review{{moderation_comments|pluralize}}:</h4>
-        <div class="container bg-teal">
+        <div class="container bg-teal shadow-lg">
             {% for comment in moderation_comments %}
-                <div class="row card mt-2">
-                    <div class="comments " style="padding: 10px;">
+                {% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
+                    <div class="row card mt-2 bg-dark text-light shadow-lg">
+                {% else %}
+                    <div class="row card mt-2 bg-light text-dark shadow-lg">
+                {% endif %}
+                    <div class="comments shadow-lg" style="padding: 10px;">
                         <p class="font-weight-normal text-primary">
                             {{ comment.user }} 
                         <span class="text-dark">on</span>
@@ -98,5 +111,6 @@
     {% else %}
         <h3>You need to be <a class="font-weight-bold" href="{% url 'login' %}">logged in</a> order to leave a comment!</h3>
     {% endif %}
+</div>
 </div>
 {% endblock content %}

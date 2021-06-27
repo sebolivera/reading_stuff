@@ -90,9 +90,9 @@ admin.site.register(Chapter)
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('user', 'body', 'post', 'created_on', 'active')
+    list_display = ('author', 'body', 'post', 'created_on', 'active')
     list_filter = ('active', 'edited', 'created_on')
-    search_fields = ('user', 'body')
+    search_fields = ('author', 'body')
     actions = ['approve_comments']
 
     def approve_comments(self, request, queryset):
