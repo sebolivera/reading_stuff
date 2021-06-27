@@ -45,6 +45,23 @@ class PublicationView(TemplateView):
             response.set_cookie('site_color_mode', 'light', max_age = 5000000)
         return response
 
+class FavoritedView(TemplateView):
+    template_name = "index.html"
+    context = {}
+
+    def get(self, request):
+        self.context['post_list'] = self.request.user.favorites.all()
+        self.context['has_publications'] = has_publications(self.request.user)
+        response = render(request, self.template_name, self.context)
+        if self.request.user.is_authenticated :
+            self.context['favorites'] = request.user.favorites.all()
+            response.set_cookie('site_color_mode', request.user.color_mode, max_age = 5000000)
+        elif not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
+            response.set_cookie('site_color_mode', 'light', max_age = 5000000)
+        return response
+
+    
+
 def postDetail(request, slug): # not a class bc post & get annoying
     template_name = "post/post.html"
     the_post = get_object_or_404(Post, slug=slug)
@@ -257,7 +274,7 @@ def set_cookie(request):
         return response
 
 @require_AJAX
-def favorite_view(request):
+def favorite_view(request):#idk if login_required works properly on ajax calls and i'm too lazy to check
     if request.user.is_authenticated:
         if request.method=='POST':
             the_post = get_object_or_404(Post, id=request.POST['id_post'])

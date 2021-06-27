@@ -30,7 +30,7 @@
                         {% endif %}
                         on {{ post.created_on}} </p>
                 <p class="card-text">{{post.content|slice:":200" | safe }}</p>
-                <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">See comments</a>
+                <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Read more...</a>
                 {% if user.is_authenticated%}
                     {% if post in favorites %}
                     <label for="id-of-input" class="custom-checkbox btn btn-primary fav delete_fav" id="{{post.id}}">
