@@ -16,17 +16,17 @@
 
 <!-- Sidebar Widgets Column -->
 <div class="col-md-4 mt-3 float-right ">
-<input class="form-control me-2" type="search" placeholder="Search posts" aria-label="Search" id="search">
-<div class="card my-4" id="under-const">
+<input class="form-control me-2 bg-{{color_mode}}" type="search" placeholder="Search posts" aria-label="Search" id="search">
+<div class="card my-4 bg-{{color_mode}} shadow-lg" id="under-const">
         <h5 class="card-header">Under construction</h5>
     <div class="card-body">
-        <p class="card-text"> This website is currently being built, please ignore whatever unexpected stuff you may find</p>
+        <p class="card-text"> This website is currently under construction, please disregard whatever unexpected things you may find</p>
         <a href="#" class="btn btn-danger" id="please-dont-click">DO NOT CLICK THIS</a>
     </div>
 </div>
 </div>
 <script type="text/javascript">
-    var path = "{% url 'search_posts' %}";
+    var search_path = "{% url 'search_posts' %}";
 </script>
 <script type="text/javascript" src="{% static 'js/postsearch.js' %}"></script>
 {% endblock sidebar %}

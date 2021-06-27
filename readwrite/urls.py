@@ -13,5 +13,6 @@ urlpatterns = [
     path('post/<id>', views.password_reset_view, name="password_reset"),
     path('approve_comment/', views.approve_comment, name='approve_comment'),
     path('delete_comment/', views.delete_comment, name='delete_comment'),
+    path('set_cookie/', views.set_cookie, name='set_cookie'),
     path('<slug:slug>/', views.postDetail, name='post_detail'),
 ]

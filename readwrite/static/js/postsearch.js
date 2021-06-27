@@ -26,7 +26,7 @@ $(document).ready(function()
 
     let ajax_call = function (path, request_parameters) {
         $.ajax({
-            url: path,
+            url: search_path,
             type: "POST",
             data: request_parameters,
             headers: {

@@ -9,9 +9,14 @@
         <p class="card-text ">{{ post.content | safe }}</p>
       </div>
     </div>
-    {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+    {% block sidebar %} {% include 'sidebar_nosearch.html' %} {% endblock sidebar %}
   </div>
-  
+
+{% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
+<div class="container text-light bg-dark">
+{% else %}
+<div class="container text-dark bg-light">
+{% endif %}
     {% if user.is_authenticated and user_inactive_comments and not moderation_comments %}
         <h4>The following comment{{user_inactive_comments|pluralize}} {{user_inactive_comments|pluralize:"is,are"}} awaiting a review:</h4>
         <div class="container bg-teal">

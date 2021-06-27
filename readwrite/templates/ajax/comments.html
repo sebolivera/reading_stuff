@@ -28,6 +28,6 @@
         {% endfor %}
     </div>
     {% if perms.readwrite.moderate or moderator_ajax_allowed %}
-        <script type="text/javascript" src="{% static 'js/comments_modetation.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/comments_moderation.js' %}"></script>
     {% endif %}
 {% endblock main_content %}

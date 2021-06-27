@@ -175,4 +175,5 @@ CKEDITOR_CONFIGS = {
         'height': '600px',
         'toolbarCanCollapse': False,
     },
+    'removePlugins' : 'cloudservices'
 }

@@ -21,7 +21,10 @@ class IndexView(TemplateView):
     def get(self, request):
         self.context['post_list'] = Post.objects.all().filter(status=1)
         self.context['has_publications'] = has_publications(self.request.user)
-        return render(request, self.template_name, self.context)
+        response = render(request, self.template_name, self.context)
+        if not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
+            response.set_cookie('site_color_mode', 'light', max_age = 5000000)
+        return response
 
 class PublicationView(TemplateView):
     template_name = "publications.html"
@@ -31,7 +34,10 @@ class PublicationView(TemplateView):
         post_list = Post.objects.all().filter(author=self.request.user)
         self.context['post_list'] = post_list
         self.context['has_publications'] = has_publications(self.request.user)
-        return render(request, self.template_name, self.context)
+        response=render(request, self.template_name, self.context)
+        if not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
+            response.set_cookie('site_color_mode', 'light', max_age = 5000000)
+        return response
 
 def postDetail(request, slug): # not a class bc post & get annoying
     template_name = "post/post.html"
@@ -55,11 +61,14 @@ def postDetail(request, slug): # not a class bc post & get annoying
             new_comment.save()
             context['new_comment'] = new_comment
             messages.success(request, message_to_pass)
-            return redirect('post_detail',the_post.slug) # the old redirection (see below) apparently doesn't want to re-include the post part in the template, forcing a redirect seems to fix it. Though i have no idea why.
+            response = redirect('post_detail',the_post.slug) # the old redirection (see below) apparently doesn't want to re-include the post part in the template, forcing a redirect seems to fix it. Though i have no idea why.
+            if not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
+                response.set_cookie('site_color_mode', 'light', max_age = 5000000)
+            return response
     else:
         comment_form = CommentForm()
     if request.user.is_authenticated and not request.user.has_perm('delete'):
-        user_comments = Comment.objects.all().filter(user=request.user, active=False, post=the_post)
+        user_comments = Comment.objects.all().filter(author=request.user, active=False, post=the_post)
         if user_comments:
             context['user_inactive_comments'] = user_comments
     if request.user.has_perm('delete'):
@@ -68,7 +77,10 @@ def postDetail(request, slug): # not a class bc post & get annoying
             context['moderation_comments'] = moderation_comments
 
     context['comment_form'] = comment_form
-    return render(request, template_name, context)
+    response = render(request, template_name, context)
+    if not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
+        response.set_cookie('site_color_mode', 'light', max_age = 5000000)
+    return response
 
 def require_AJAX(function):
     def wrap(request, *args, **kwargs):
@@ -84,10 +96,11 @@ def require_AJAX(function):
 def search_posts(request):
     if request.method=='POST':
         posts = Post.objects.all().filter(title__icontains=request.POST['search'])
-        posts_by_authors = Post.objects.all().filter(user__pen_name__icontains=request.POST['search'])
+        posts_by_authors = Post.objects.all().filter(author__pen_name__icontains=request.POST['search'])
+        posts_by_authors_username = Post.objects.all().filter(author__username__icontains=request.POST['search'])
         context={
             'post_list' : posts, 
-            'posts_by_authors' : posts_by_authors,
+            'posts_by_authors' : posts_by_authors | posts_by_authors_username,
             'search' : True,
         }
         if request.POST['search'] == '':
@@ -151,8 +164,7 @@ def create_post(request):
                     messages.error(request, 'A chapter with this number already exists!')
                     return render(request, template_name)
 
-                new_chapter = Chapter.objects.create(book=book, chapter_position=request.POST['position'], slug=new_post.slug, title=new_post.title, author=new_post.user, content=new_post.content)
-                print("i got this:",request.POST['publish'])
+                new_chapter = Chapter.objects.create(book=book, chapter_position=request.POST['position'], slug=new_post.slug, title=new_post.title, author=new_post.author, content=new_post.content)
                 if request.POST['publish']:
                     new_chapter.status = 1
                     messages.success(request, 'Your chapter was published sucessfully')
@@ -222,3 +234,11 @@ def delete_comment(request):
         response = JsonResponse({"error": "there was an error"})
         response.status_code = 403
     return response
+
+def set_cookie(request):
+    if request.method=='GET':
+        response = redirect("/")
+        if request.GET['site_color_mode']:
+            if request.GET['site_color_mode'] in ('light', 'dark'):
+                response.set_cookie('site_color_mode', request.GET['site_color_mode'], max_age = 5000000)
+        return response

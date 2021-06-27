@@ -15,6 +15,7 @@ class User(AbstractUser):
     pen_name = models.CharField(max_length=254, unique=True, null=True, blank=True)
     is_admin = models.BooleanField(default=False)
     profile_picture = RichTextUploadingField(default=None, null=True, blank=True)
+    favorites = models.ManyToManyField('Post', default=None, blank=True)
 
     class Meta:
         ordering = ['-pen_name']

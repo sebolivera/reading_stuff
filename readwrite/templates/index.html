@@ -16,7 +16,7 @@
     }
 </style>
 
-<header class="masthead bg-danger">
+<header class="masthead bg-danger shadow-lg">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
@@ -30,7 +30,11 @@
         </div>
     </div>
 </header>
-<div class="container">
+{% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
+<div class="container text-light">
+{% else %}
+<div class="container text-dark">
+{% endif %}
     <div class="row">
         <div id="post-holder" class="col-md-8 mt-3 left">
             {% include 'ajax/index_search_partial.html' %}
