@@ -73,7 +73,7 @@ class UserAdmin(BaseUserAdmin):
         ('Authentification info', {'fields': ('username', 'pen_name', 'password')}),
         ('Personal info', {'fields': ('email', 'profile_picture')}),
         ('Permissions', {'fields': ('is_admin', 'is_active')}),
-        ('Misc', {'fields': ('favorites',)}),
+        ('Misc', {'fields': ('favorites', 'color_mode')}),
     )
     search_fields = ('username', 'pen_name', 'email')
     ordering = ('username', 'pen_name')

@@ -38,7 +38,7 @@ $(document).ready(function()
         });
     }
 
-    $(".form-moderation").unbind('submit').bind('submit', function(e){
+    $(".form-moderation").unbind('submit').bind('submit', function(e){//arguably not the best way to do this...
         const request_parameters = {
             id: $(this).attr('id'), // value of user_input: the HTML element with ID user-input
         };

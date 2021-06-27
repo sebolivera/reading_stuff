@@ -1,3 +1,4 @@
+from django.http.response import HttpResponseBadRequest
 from .models import Post
 
 def has_publications(author):
@@ -6,3 +7,13 @@ def has_publications(author):
         if post_list.count() > 0:
             return True
     return False
+
+def require_AJAX(function):
+    def wrap(request, *args, **kwargs):
+        if not request.is_ajax():
+            return HttpResponseBadRequest()
+        return function(request, *args, **kwargs)
+
+    wrap.__doc__ = function.__doc__
+    wrap.__name__ = function.__name__
+    return wrap

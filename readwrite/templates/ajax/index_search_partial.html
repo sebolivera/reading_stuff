@@ -1,7 +1,22 @@
-
+{% load bootstrap_icons%}
+{% load static %}
 {% block post_content%}
     {% if post_list and not empty and search%}
     <h3>The following posts match your search: </h3>
+    {% endif %}
+    
+    {% if user.is_authenticated%}
+        <span id="star-fill-span" style="display:none;">
+            {% bs_icon "star-fill" %}
+            <span>Favorite</span>
+        </span>
+        <span id="star-span" style="display:none;">
+            {% bs_icon "star" %}
+            <span>Favorite</span>
+        </span>
+        <script type="text/javascript">
+            var url_favorites="{% url 'fav' %}"; 
+        </script>
     {% endif %}
     {% for post in post_list %}
         <div class="card mb-4 bg-{{color_mode}} shadow-lg">
@@ -15,7 +30,20 @@
                         {% endif %}
                         on {{ post.created_on}} </p>
                 <p class="card-text">{{post.content|slice:":200" | safe }}</p>
-                <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">See comments</a>
+                <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">See comments</a>
+                {% if user.is_authenticated%}
+                    {% if post in favorites %}
+                    <label for="id-of-input" class="custom-checkbox btn btn-primary fav delete_fav" id="{{post.id}}">
+                    {% bs_icon 'star-fill' %}
+                        <span>Favorite</span>
+                    </label>
+                    {% else %}
+                    <label for="id-of-input" class="custom-checkbox btn btn-primary fav add_fav" id="{{post.id}}">
+                    {% bs_icon 'star' %}
+                        <span>Favorite</span>
+                    </label>
+                    {% endif %}
+                {% endif %}
             </div>
         </div>
     {% endfor %}
@@ -40,4 +68,5 @@
             </div>
         {% endfor %}
     {% endif %}
+    <script type="text/javascript" src="{% static 'js/post_js.js' %}"></script>
 {% endblock %}

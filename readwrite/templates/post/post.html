@@ -48,12 +48,14 @@
         </div>
         <hr/>
     {% endif %}
-
-    {% if user.is_authenticated and moderation_comments %}
+    {% if perms.readwrite.moderate or moderator_ajax_allowed %}
         <script type="text/javascript">
             var url_approve="{% url 'approve_comment' %}";
             var url_delete="{% url 'delete_comment' %}";
         </script>
+    {% endif %}
+
+    {% if user.is_authenticated and moderation_comments %}
         <h4>The following comment{{moderation_comments|pluralize}} {{moderation_comments|pluralize:"is,are"}} awaiting  {{moderation_comments|pluralize:"its,their"}} review{{moderation_comments|pluralize}}:</h4>
         <div class="container bg-teal shadow-lg">
             {% for comment in moderation_comments %}
@@ -93,13 +95,15 @@
     <hr/>
     {% if user.is_authenticated %}
         <h3>Leave a comment</h3>
-        <form method="post" style="margin-top: 1.3em;" action="">
+        <form method="post" style="margin-top: 1.3em;" id="submit_comment" action="">
             {% for field in comment_form.visible_fields %}
                 {{ field }}
             {% endfor %}
             {% csrf_token %}
             <br/>
-            <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+            <span id="comment_submit_button" name="comm_anchor">
+                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+            </span>
         </form>
         <script type="text/javascript">var wipe=false;</script>
         {% for message in messages %}

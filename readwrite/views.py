@@ -11,7 +11,7 @@ from django.utils.text import slugify
 from django.http import HttpResponseBadRequest
 from django.template.loader import render_to_string
 from django.db.models import Q
-from .utils import has_publications
+from .utils import has_publications, require_AJAX
 # Create your views here.
 
 class IndexView(TemplateView):
@@ -22,7 +22,10 @@ class IndexView(TemplateView):
         self.context['post_list'] = Post.objects.all().filter(status=1)
         self.context['has_publications'] = has_publications(self.request.user)
         response = render(request, self.template_name, self.context)
-        if not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
+        if request.user.is_authenticated :
+            self.context['favorites'] = request.user.favorites.all()
+            response.set_cookie('site_color_mode', request.user.color_mode, max_age = 5000000)
+        elif not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
             response.set_cookie('site_color_mode', 'light', max_age = 5000000)
         return response
 
@@ -35,7 +38,10 @@ class PublicationView(TemplateView):
         self.context['post_list'] = post_list
         self.context['has_publications'] = has_publications(self.request.user)
         response=render(request, self.template_name, self.context)
-        if not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
+        if request.user.is_authenticated :
+            self.context['favorites'] = request.user.favorites.all()
+            response.set_cookie('site_color_mode', request.user.color_mode, max_age = 5000000)
+        elif not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
             response.set_cookie('site_color_mode', 'light', max_age = 5000000)
         return response
 
@@ -48,6 +54,7 @@ def postDetail(request, slug): # not a class bc post & get annoying
 
     if request.method == 'POST' and request.user.is_authenticated:
         context = {'post' : the_post}
+        context['favorites'] = request.user.favorites.all()
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             new_comment = comment_form.save(commit=False) # doesn't add it to the db as we need to link the post
@@ -61,8 +68,10 @@ def postDetail(request, slug): # not a class bc post & get annoying
             new_comment.save()
             context['new_comment'] = new_comment
             messages.success(request, message_to_pass)
-            response = redirect('post_detail',the_post.slug) # the old redirection (see below) apparently doesn't want to re-include the post part in the template, forcing a redirect seems to fix it. Though i have no idea why.
-            if not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
+            response = redirect('post_detail',the_post.slug) # the old redirection (see below) apparently doesn't want to re-include the post part in the template, forcing a redirect seems to fix it. Though i have no idea why.            
+            if request.user.is_authenticated :
+                response.set_cookie('site_color_mode', request.user.color_mode, max_age = 5000000)
+            elif not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
                 response.set_cookie('site_color_mode', 'light', max_age = 5000000)
             return response
     else:
@@ -71,6 +80,7 @@ def postDetail(request, slug): # not a class bc post & get annoying
         user_comments = Comment.objects.all().filter(author=request.user, active=False, post=the_post)
         if user_comments:
             context['user_inactive_comments'] = user_comments
+        context['favorites'] = request.user.favorites.all()
     if request.user.has_perm('delete'):
         moderation_comments = Comment.objects.all().filter(active=False, post=the_post)
         if moderation_comments:
@@ -78,19 +88,12 @@ def postDetail(request, slug): # not a class bc post & get annoying
 
     context['comment_form'] = comment_form
     response = render(request, template_name, context)
-    if not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
+    if request.user.is_authenticated :
+        response.set_cookie('site_color_mode', request.user.color_mode, max_age = 5000000)
+    elif not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
         response.set_cookie('site_color_mode', 'light', max_age = 5000000)
     return response
 
-def require_AJAX(function):
-    def wrap(request, *args, **kwargs):
-        if not request.is_ajax():
-            return HttpResponseBadRequest()
-        return function(request, *args, **kwargs)
-
-    wrap.__doc__ = function.__doc__
-    wrap.__name__ = function.__name__
-    return wrap
 
 @require_AJAX
 def search_posts(request):
@@ -103,6 +106,7 @@ def search_posts(request):
             'posts_by_authors' : posts_by_authors | posts_by_authors_username,
             'search' : True,
         }
+        context['favorites'] = request.user.favorites.all()
         if request.POST['search'] == '':
             context['empty'] = True
         html = render_to_string(
@@ -110,12 +114,13 @@ def search_posts(request):
         data_dict = {"html_from_view":html}
         return JsonResponse(data=data_dict, safe=False)
 
-
 @login_required
 def logout_view(request):
     logout(request)
+    response = redirect('/')
+    response.delete_cookie('site_color_mode')
     messages.success(request, 'Logged out sucessfully. Now scram.')
-    return redirect('/')
+    return response
 
 def login_view(request):
     template_name = "registration/login.html"
@@ -130,7 +135,12 @@ def login_view(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'Log in sucessful. Welcome Traveler.')
-            return redirect('/')
+            response = redirect('/')
+            if request.user.is_authenticated :
+                response.set_cookie('site_color_mode', request.user.color_mode, max_age = 5000000)
+            elif not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
+                response.set_cookie('site_color_mode', 'light', max_age = 5000000)
+            return response
         else:
             return redirect('login')
     elif request.method == 'GET' :
@@ -223,6 +233,7 @@ def delete_comment(request):
             context = {
                 'comments' : comments,
                 'moderator_ajax_allowed' : True,
+                'darkmode_on' : request.COOKIES.get('site_color_mode')=='dark',
             }
             html = render_to_string(
                 template_name="ajax/comments.html", context=context)
@@ -244,3 +255,24 @@ def set_cookie(request):
             if request.GET['site_color_mode'] in ('light', 'dark'):
                 response.set_cookie('site_color_mode', request.GET['site_color_mode'], max_age = 5000000)
         return response
+
+@require_AJAX
+def favorite_view(request):
+    if request.user.is_authenticated:
+        if request.method=='POST':
+            the_post = get_object_or_404(Post, id=request.POST['id_post'])
+            if the_post in request.user.favorites.all():
+                request.user.favorites.remove(the_post)
+                messages.success(request, 'The post was successfully added to favorites!')
+            else:
+                request.user.favorites.add(the_post)
+                messages.success(request, 'The post was successfully removed from favorites!')
+            data_dict = {}
+            return JsonResponse(data=data_dict, safe=False)
+        response = JsonResponse({"error": "this comment was already deleted"})
+        response.status_code = 403
+    else:
+        messages.error(request, 'You shouldn\'t be able to even try that')
+        response = JsonResponse({"error": "user is being a lil bitch"})
+        response.status_code = 403
+    return response

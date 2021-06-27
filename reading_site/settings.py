@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'readwrite',
     'ckeditor',
     'ckeditor_uploader',
+    'django_bootstrap_icons',
 ]
 
 MIDDLEWARE = [
@@ -132,6 +133,13 @@ AUTH_USER_MODEL = 'readwrite.User'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
+
 
 CKEDITOR_BASEPATH = os.path.join(BASE_DIR, "ckeditor/")
 CKEDITOR_UPLOAD_PATH = "uploads/"

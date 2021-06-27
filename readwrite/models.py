@@ -9,6 +9,11 @@ STATUS = (
     (1, "Published")
 )
 
+COLOR_MODE = (
+    ("dark", "Dark Mode"),
+    ("light", "Light Mode")
+)
+
 DEFAULT_AUTHOR = 1
 
 class User(AbstractUser):
@@ -16,6 +21,7 @@ class User(AbstractUser):
     is_admin = models.BooleanField(default=False)
     profile_picture = RichTextUploadingField(default=None, null=True, blank=True)
     favorites = models.ManyToManyField('Post', default=None, blank=True)
+    color_mode = models.CharField(choices=COLOR_MODE, default="light", max_length=100)
 
     class Meta:
         ordering = ['-pen_name']
