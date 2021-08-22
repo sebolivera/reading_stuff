@@ -27,7 +27,7 @@ class IndexView(TemplateView):
             this_user = User.objects.get(pk=request.user.pk)
             response.set_cookie('site_color_mode', this_user.color_mode, max_age = 5000000)
         elif request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
-            response.set_cookie('site_color_mode', request.user.color_mode, max_age = 5000000)
+            response.set_cookie('site_color_mode', request.COOKIES.get('site_color_mode'), max_age = 5000000)
         else:
             response.set_cookie('site_color_mode', 'light', max_age = 5000000)
         

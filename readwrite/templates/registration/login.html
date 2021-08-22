@@ -1,5 +1,8 @@
 {% extends "base.html" %}
-
+{% load static %}
+{% block additional_head %}
+    <link rel="stylesheet" href="{% static 'css/style_login.css' %}"/>
+{% endblock %}
 {% block content %}
 
 {% if form.errors %}
@@ -21,12 +24,12 @@
 {% endif %}
 
 
-<section class="vh-100">
+<section>
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-6 text-black">
 
-        <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+        <div id="source" class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
 
           <form method="post" action="{% url 'login' %}">
                 {% csrf_token %}
@@ -56,7 +59,17 @@
 
       </div>
       <div class="col-sm-6 px-0 d-none d-sm-block">
-        <img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-login-form/img3.jpg" alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
+        <div id="target" class="mirror">
+        </div>
+            <span id="ohno">
+                <a id="dontclick" href="#"><p id="smiley">😊</p>
+            {% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
+                <p class="text-center text-light">Please don't click on anything you're not supposed to</p>
+            {% else %}
+                <p class="text-center">Please don't click on anything you're not supposed to</p>
+            {% endif %}
+                </a>
+            </span>
       </div>
     </div>
   </div>
@@ -77,10 +90,13 @@
 
 <input type="submit" value="login">
 <input type="hidden" name="next" value="{{ next }}">
-</form> {% endcomment %}
+</form> 
+
+<p><a href="{% url 'password_reset' %}">Lost password?</a></p>{% endcomment %}
 
 {# Assumes you setup the password_reset view in your URLconf #}
-<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
 
 </div>
+
+<script type="text/javascript" src="{% static 'js/flip.js' %}"></script>
 {% endblock %}
