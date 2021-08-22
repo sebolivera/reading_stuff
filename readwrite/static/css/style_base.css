@@ -1,3 +1,8 @@
+li /* only happens on some elements for some reason I can't really figure out. Bootstrap 5 might be at fault here*/
+{
+    list-style-type: none;
+}
+
 .toast
 {
     width: 250px;
@@ -48,7 +53,7 @@
     text-align: center;
     width: 100%;
     z-index: 10000;
-    font-size: 55vh;
+    font-size: 50vh;
     line-height: inherit;
     height: 100%;
     transition: all 10s;

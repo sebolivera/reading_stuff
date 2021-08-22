@@ -11,13 +11,17 @@
     <div class="col-md-8 card mb-4  mt-3 left top shadow-none text-light bg-light shadow-lg">
 {% endif %}
       <div class="card-body">
-        <h1>New post</h1>
+        {% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
+        <h1 class="text-light">New post</h1>
+        {% else %}
+        <h1 class="text-dark">New post</h1>
+        {% endif %}
         <form method="post" method="POST">
             <div class="container mb-3">
             {% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
-            {{ form.title.label }}: <input class="bg-dark text-light" type="text" name="title" maxlength="254" required="" id="id_title">
+            <span class="text-light">{{ form.title.label }}: </span><input class="bg-dark text-light" type="text" name="title" maxlength="254" required="" id="id_title">
             {% else %}
-            {{ form.title.label }}: <input class="bg-light text-dark" type="text" name="title" maxlength="254" required="" id="id_title">
+            <span class="text-dark">{{ form.title.label }}: <input class="bg-light text-dark" type="text" name="title" maxlength="254" required="" id="id_title">
             {% endif %}
             </div>
                 {% if books %}

@@ -2,7 +2,7 @@ from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
 from django.views.generic import TemplateView
 from .models import Post, Comment, Book, Chapter, User
-from .forms import CommentForm, PostForm
+from .forms import CommentForm, PostForm, LoginUpForm
 from django.contrib.auth import logout, login, authenticate
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -24,9 +24,13 @@ class IndexView(TemplateView):
         response = render(request, self.template_name, self.context)
         if request.user.is_authenticated :
             self.context['favorites'] = request.user.favorites.all()
+            this_user = User.objects.get(pk=request.user.pk)
+            response.set_cookie('site_color_mode', this_user.color_mode, max_age = 5000000)
+        elif request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
             response.set_cookie('site_color_mode', request.user.color_mode, max_age = 5000000)
-        elif not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
+        else:
             response.set_cookie('site_color_mode', 'light', max_age = 5000000)
+        
         return response
 
 class PublicationView(TemplateView):
@@ -141,7 +145,7 @@ def logout_view(request):
 
 def login_view(request):
     template_name = "registration/login.html"
-    form = AuthenticationForm()
+    form = LoginUpForm()
     context = {'form' : form}
     if request.user.is_authenticated:
         return redirect('/')
@@ -205,8 +209,18 @@ def create_post(request):
                 else:
                     messages.success(request, 'Your post was saved as a draft')
                 new_post.save()
-            return redirect('/')
-    return render(request, template_name, context)
+            response = redirect('/')
+            if request.user.is_authenticated :
+                response.set_cookie('site_color_mode', request.user.color_mode, max_age = 5000000)
+            elif not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
+                response.set_cookie('site_color_mode', 'light', max_age = 5000000)
+            return response
+    response = render(request, template_name, context)
+    if request.user.is_authenticated :
+        response.set_cookie('site_color_mode', request.user.color_mode, max_age = 5000000)
+    elif not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
+        response.set_cookie('site_color_mode', 'light', max_age = 5000000)
+    return response
 
 
 @require_AJAX
@@ -267,10 +281,14 @@ def delete_comment(request):
 
 def set_cookie(request):
     if request.method=='GET':
-        response = redirect("/")
+        response = redirect(request.META.get('HTTP_REFERER'))
         if request.GET['site_color_mode']:
             if request.GET['site_color_mode'] in ('light', 'dark'):
                 response.set_cookie('site_color_mode', request.GET['site_color_mode'], max_age = 5000000)
+                if request.user.is_authenticated:
+                    this_user = User.objects.get(pk=request.user.pk)
+                    this_user.color_mode=request.GET['site_color_mode']
+                    this_user.save()
         return response
 
 @require_AJAX

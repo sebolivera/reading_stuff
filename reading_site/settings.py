@@ -80,15 +80,11 @@ WSGI_APPLICATION = 'reading_site.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'bookdb',
-        'USER' :'root',
+        'USER' :'postgres',
         'PASSWORD' : '',
-        'HOST' : 'localhost',
-        'PORT' :'',
-        'OPTIONS' : {
-            'sql_mode' : 'STRICT_TRANS_TABLES',
-        },
+        'HOST' : 'localhost'
     }
 }
 
