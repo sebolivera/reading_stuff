@@ -53,6 +53,11 @@
             <p class="small mb-5 pb-lg-2"><a class="link-info" href="#!">Forgot password?</a></p>
             <p>Don't have an account? <a href="#!" class="link-info">Register here</a></p>
 
+            {% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
+            <a class="nothere text-light">Not here, though.</a>
+            {% else %}
+            <a class="nothere text-dark">Not here, though</a>
+            {% endif %}
           </form>
 
         </div>
