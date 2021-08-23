@@ -24,7 +24,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -86,5 +85,6 @@ target/
 __pycache__/
 local_settings.py
 
+static/
 .env
 db.sqlite3
