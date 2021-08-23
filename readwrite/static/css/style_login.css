@@ -43,7 +43,7 @@
   display : block;
 }
 .mirror h3, .mirror div{
-    animation: glitch 3s linear infinite;
+    animation: glitch 4s linear infinite;
   }
   
   @keyframes glitch{
@@ -102,3 +102,8 @@
       transform: translate(-22px,5px) skew(21deg); 
     }
   }
+
+*
+{
+  overflow-x: hidden !important;
+}
