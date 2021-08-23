@@ -1,0 +1,11 @@
+$(document).ready(function()
+{
+    $("#darkModeSwitch").change(function()
+    {
+        location.href=set_cookie_path+"?site_color_mode=dark";
+    });
+    $("#lightModeSwitch").change(function()
+    {
+        location.href=set_cookie_path+"?site_color_mode=light";
+    });
+});
