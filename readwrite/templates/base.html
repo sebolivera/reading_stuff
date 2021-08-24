@@ -69,17 +69,17 @@
                 <a class="navbar-brand" href="{% url 'home' %}">Home</a>
 
                 {% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
-                        <div class="ms-auto me-2 nav-item text-white">
-                            <div class="form-check form-switch text-white">
-                                <input class="form-check-input" type="checkbox" id="lightModeSwitch" checked>
-                                <label class="form-check-label" for="lightModeSwitch">Switch to Light Mode</label>
+                        <div class="ms-auto me-2 nav-item text-light">
+                            <div class="form-check form-switch text-light">
+                                <input class="form-check-input align-middle" type="checkbox" id="lightModeSwitch" checked>
+                                <label class="form-check-label align-middle" for="lightModeSwitch">Switch to Light Mode</label>
                             </div>
                         </div>
                         {% else %}
-                        <div class="ms-auto me-2 nav-item text-black">
-                            <div class="form-check form-switch text-black">
-                                <input class="form-check-input" type="checkbox" id="darkModeSwitch">
-                                <label class="form-check-label" for="darkModeSwitch">Switch to Dark Mode</label>
+                        <div class="ms-auto me-2 nav-item text-dark">
+                            <div class="form-check form-switch text-black text-dark">
+                                <input class="form-check-input align-middle" type="checkbox" id="darkModeSwitch">
+                                <label class="form-check-label align-middle" for="darkModeSwitch">Switch to Dark Mode</label>
                             </div>
                         </div>
                         {% endif %}
