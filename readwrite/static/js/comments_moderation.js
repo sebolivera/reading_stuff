@@ -52,10 +52,8 @@ $(document).ready(function()
             if (confirm('Are you sure you want to delete this comment?')) {
             // Save it!
                 ajax_call(url_delete, request_parameters, $(this).parent().parent());
-                //console.log("calling: " + url_delete + " with " + $(this).attr('id'));
             } else {
             // Do nothing!
-                console.log('Thing was not saved to the database.');
             }
         }
     });

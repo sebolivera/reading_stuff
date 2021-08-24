@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 {% load static %}
+{% load bootstrap_icons%}
 <div class="container shadow-lg">
   <div class="row">
 {% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
@@ -12,6 +13,35 @@
         <p class=" text-muted">{{ post.author }} {{ post.created_on }}</p>
         <p class="card-text ">{{ post.content | safe }}</p>
       </div>
+      {% if user.is_authenticated%}
+      <div id="comment_submit_button" name="comm_anchor" class="mt-3 mb-4">
+            {% if post in favorites %}
+            <label for="id-of-input" class="custom-checkbox btn btn-primary fav delete_fav" id="{{post.id}}">
+            {% bs_icon 'star-fill' %}
+                <span>Favorite</span>
+            </label>
+            {% else %}
+            <label for="id-of-input" class="custom-checkbox btn btn-primary fav add_fav" id="{{post.id}}">
+            {% bs_icon 'star' %}
+                <span>Favorite</span>
+            </label>
+            {% endif %}
+            </div>
+        {% endif %}
+
+    {% if user.is_authenticated%}
+        <span id="star-fill-span" style="display:none;">
+            {% bs_icon "star-fill" %}
+            <span>Favorite</span>
+        </span>
+        <span id="star-span" style="display:none;">
+            {% bs_icon "star" %}
+            <span>Favorite</span>
+        </span>
+        <script type="text/javascript">
+            var url_favorites="{% url 'fav' %}"; 
+        </script>
+    {% endif %}
     </div>
     {% block sidebar %} {% include 'sidebar_nosearch.html' %} {% endblock sidebar %}
   </div>
@@ -75,7 +105,7 @@
                         <p class="font-weight-normal text-info">
                             {{ comment.body | safe}}
                         </p>
-                        <form class="form-moderation approve" action="javascript:void(0);" method="POST"  id="{{comment.id}}">
+                        <form class="form-moderation approve mb-4" action="javascript:void(0);" method="POST"  id="{{comment.id}}">
                             <button type="submit" class="btn btn-success approve-comment">Approve</button>
                         </form>
                         <form class="form-moderation delete" action="javascript:void(0);" method="POST"  id="{{comment.id}}">
@@ -101,9 +131,9 @@
             {% endfor %}
             {% csrf_token %}
             <br/>
-            <span id="comment_submit_button" name="comm_anchor">
+            <div id="comment_submit_button" name="comm_anchor" class="mt-3 mb-4" >
                 <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-            </span>
+            </div>
         </form>
         <script type="text/javascript">var wipe=false;</script>
         {% for message in messages %}
@@ -117,4 +147,8 @@
     {% endif %}
 </div>
 </div>
+<script type="text/javascript">
+    var url_favorites="{% url 'fav' %}"; 
+</script>
+<script type="text/javascript" src="{% static 'js/post.js' %}"></script>
 {% endblock content %}

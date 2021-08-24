@@ -320,11 +320,6 @@
 							
 							element.style.left = (body.m_position0.x - (property.Width >> 1)) + 'px';
 							element.style.top = (body.m_position0.y - (property.Height >> 1)) + 'px';
-							//if (i === 1) {
-								//console.log($(element).position().left -(stage.Width - properties[i].Width ))
-								//console.log(this.getProjectedHeight($(element)));
-							//}
-							//if($(element).position().left $(document).width()) alert("out left");
 							var style = 'rotate(' + (body.m_rotation0 * 57.2957795) + 'deg)';
 	
 							element.style.transform = style;
@@ -453,7 +448,6 @@
 					},
 					handleScrollOrResize: function() {
 						this.getBrowserDimensions();
-						//console.log(this.numInstance + "+");
 						this.setWalls(this.numInstance);
 					},
 					getProjectedWidth: function(elem) {

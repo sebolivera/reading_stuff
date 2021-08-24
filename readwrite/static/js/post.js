@@ -23,7 +23,6 @@ $(document).ready(function()
         {
             $(this).removeClass("add_fav").addClass("delete_fav");
             $(this).html($("#star-fill-span").html());
-            console.log("unfilled");
             var request_parameters = {id_post : $(this).attr("id")};
             $.ajax({
                 url: url_favorites,
@@ -41,7 +40,6 @@ $(document).ready(function()
         }
         else if($(this).hasClass("delete_fav"))
         {
-            console.log("has delete fav")
             $(this).removeClass("delete_fav").addClass("add_fav");
             $(this).html($("#star-span").html());
             var request_parameters = {id_post : $(this).attr("id")};
