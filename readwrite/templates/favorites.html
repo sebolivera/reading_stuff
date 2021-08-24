@@ -1,15 +1,16 @@
 {% extends "base.html" %} 
 {% block content %}
+
 {% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
 <div class="container text-light">
 {% else %}
 <div class="container text-dark">
 {% endif %}
-    <h1 class="display-4">Your publications</h1>
+    <h1 class="display-4">Favorited posts</h1>
     <div class="row">
         <div id="post-holder" class="col-md-8 mt-3 left">
             {% include 'ajax/index_search_partial.html' %}
-            {% block post_content %}
+            {% block post_content%}
             {% endblock %}
         </div>
         {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}

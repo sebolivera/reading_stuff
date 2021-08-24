@@ -26,7 +26,7 @@ $(document).ready(function()
 
     let ajax_call = function (path, request_parameters) {
         $.ajax({
-            url: search_path,
+            url: path,
             type: "POST",
             data: request_parameters,
             headers: {
@@ -48,6 +48,7 @@ $(document).ready(function()
 
         const request_parameters = {
             search: $(this).val(), // value of user_input: the HTML element with ID user-input
+            color_mode: color_mode
         };
 
         // start animating the search 

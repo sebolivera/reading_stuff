@@ -50,7 +50,7 @@ class PublicationView(TemplateView):
         return response
 
 class FavoritedView(TemplateView):
-    template_name = "index.html"
+    template_name = "favorites.html"
     context = {}
 
     def get(self, request):
@@ -128,6 +128,7 @@ def search_posts(request):
             'search' : True,
         }
         context['favorites'] = request.user.favorites.all()
+        context['color_mode'] = request.POST['color_mode']
         if request.POST['search'] == '':
             context['empty'] = True
         html = render_to_string(

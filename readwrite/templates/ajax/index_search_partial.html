@@ -5,6 +5,9 @@
     <h3>The following posts match your search: </h3>
     {% endif %}
     
+    {% if not post_list %}
+        <h3>No posts</h3>
+    {% endif %}
     {% if user.is_authenticated%}
         <span id="star-fill-span" style="display:none;">
             {% bs_icon "star-fill" %}
@@ -19,7 +22,15 @@
         </script>
     {% endif %}
     {% for post in post_list %}
-        <div class="card mb-4 bg-{{color_mode}} shadow-lg">
+{% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
+        <div class="card mb-4 bg-dark text-light shadow-lg">
+{% else %}
+    {% if color_mode == "dark" %}
+            <div class="card mb-4 bg-dark text-light shadow-lg">
+    {%else%}
+        <div class="card mb-4 bg-light text-dark shadow-lg">
+{% endif %}
+{% endif %}
             <div class="card-body">
                 <h2 class="card-title">{{ post.title }}</h2>
                     <p class="card-text text-muted h6">
