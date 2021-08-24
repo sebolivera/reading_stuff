@@ -1,4 +1,4 @@
-from .models import Comment, Post
+from .models import Comment, TextPost
 from django import forms
 
 class CommentForm(forms.ModelForm):
@@ -9,7 +9,7 @@ class CommentForm(forms.ModelForm):
           'body': forms.Textarea(attrs={'rows':3, 'cols':50}),
         }
 
-class PostForm(forms.ModelForm):
+class TextPostForm(forms.ModelForm):
     class Meta:
-        model = Post
+        model = TextPost
         fields = ('title', 'content')

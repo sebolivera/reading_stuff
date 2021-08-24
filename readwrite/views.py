@@ -1,9 +1,9 @@
 from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
 from django.views.generic import TemplateView
-from .models import Post, Comment, Book, Chapter
+from .models import TextPost, Post, Comment, Book, Chapter
 from userauth.models import User
-from .forms import CommentForm, PostForm
+from .forms import CommentForm, TextPostForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
@@ -136,10 +136,10 @@ def search_posts(request):
         return JsonResponse(data=data_dict, safe=False)
 
 @login_required
-def create_post(request):
+def create_post(request):# turn into class afterwards ?
     template_name = "post/write_post.html"
     books = Book.objects.all().filter(author=request.user)
-    form = PostForm()
+    form = TextPostForm()
     context = {'form' : form, 'books' : books}
     
     if request.method == 'POST':
@@ -263,16 +263,13 @@ def favorite_view(request):#idk if login_required works properly on ajax calls a
             the_post = get_object_or_404(Post, id=request.POST['id_post'])
             if the_post in request.user.favorites.all():
                 request.user.favorites.remove(the_post)
-                messages.success(request, 'The post was successfully added to favorites!')
             else:
                 request.user.favorites.add(the_post)
-                messages.success(request, 'The post was successfully removed from favorites!')
             data_dict = {}
             return JsonResponse(data=data_dict, safe=False)
         response = JsonResponse({"error": "this comment was already deleted"})
         response.status_code = 403
-    else:
-        messages.error(request, 'You shouldn\'t be able to even try that')
+    else:   
         response = JsonResponse({"error": "user is being a lil bitch"})
         response.status_code = 403
     return response

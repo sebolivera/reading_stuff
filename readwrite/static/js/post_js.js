@@ -17,7 +17,7 @@ $(document).ready(function()
     }
     const csrftoken = getCookie('csrftoken');
 
-    $(".fav").click(function()
+    $(".fav").on("click",function()
     {
         if ($(this).hasClass("add_fav"))
         {

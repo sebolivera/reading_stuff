@@ -4,9 +4,8 @@ from django import forms
 from .models import User
 # Register your models here.
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from readwrite.models import Post, Comment, Book, Chapter
+
 from django.contrib.auth.models import Group
-from readwrite.admin import PostAdmin
 
 
 class UserCreationForm(forms.ModelForm):
@@ -79,16 +78,4 @@ admin.site.register(User, UserAdmin)
 # ... and, since we're not using Django's built-in permissions,
 # unregister the Group model from admin.
 admin.site.unregister(Group)
-admin.site.register(Post, PostAdmin)
-admin.site.register(Book)
-admin.site.register(Chapter)
 
-@admin.register(Comment)
-class CommentAdmin(admin.ModelAdmin):
-    list_display = ('author', 'body', 'post', 'created_on', 'active')
-    list_filter = ('active', 'edited', 'created_on')
-    search_fields = ('author', 'body')
-    actions = ['approve_comments']
-
-    def approve_comments(self, request, queryset):
-        queryset.update(active=True)
