@@ -109,3 +109,8 @@ li /* only happens on some elements for some reason I can't really figure out. B
 {
     margin-right: 5px;
 }
+
+.bg-less-dark
+{
+    background-color: #2b3035 !important
+}

@@ -17,3 +17,9 @@ def require_AJAX(function):
     wrap.__doc__ = function.__doc__
     wrap.__name__ = function.__name__
     return wrap
+
+def set_text_color(bg_color):
+    if bg_color and bg_color == "dark":
+        return "light"
+    else:
+        return "dark"

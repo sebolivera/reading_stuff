@@ -5,17 +5,7 @@
     {% endif %}
     <div class="container shadow-lg">
         {% for comment in comments %}
-            {% if request.COOKIES.site_color_mode %}
-                {% if request.COOKIES.site_color_mode == "dark" %}
-                    <div class="row card mt-2 bg-dark text-light shadow-lg">
-                {% else %}
-                    <div class="row card mt-2 bg-light text-dark shadow-lg">
-                {% endif %}
-            {% elif darkmode_on %}
-                <div class="row card mt-2 bg-dark text-light shadow-lg">
-            {% else %}
-                <div class="row card mt-2 bg-light text-dark shadow-lg">
-            {% endif %}
+                <div class="row card mt-2 bg-{{color_mode}} text-{{text_color_mode}} shadow-lg">
                 <div class="comments shadow-lg" style="padding: 10px;">
                 <p class="font-weight-bold">
                     {{ comment.user }} on

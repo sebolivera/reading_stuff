@@ -22,15 +22,7 @@
         </script>
     {% endif %}
     {% for post in post_list %}
-{% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
-        <div class="card mb-4 bg-dark text-light shadow-lg">
-{% else %}
-    {% if color_mode == "dark" %}
-            <div class="card mb-4 bg-dark text-light shadow-lg">
-    {%else%}
-        <div class="card mb-4 bg-light text-dark shadow-lg">
-{% endif %}
-{% endif %}
+        <div class="card mb-4 bg-{{color_mode}} text-{{text_color_mode}} shadow-lg">
             <div class="card-body">
                 <h2 class="card-title">{{ post.title }}</h2>
                     <p class="card-text text-muted h6">

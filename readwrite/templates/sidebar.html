@@ -16,13 +16,8 @@
 
 <!-- Sidebar Widgets Column -->
 <div class="col-md-4 mt-3 float-right ">
-{% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
-<input class="form-control me-2 bg-{{color_mode}} text-light" type="search" placeholder="Search posts" aria-label="Search" id="search">
-<div class="card my-4 bg-{{color_mode}} shadow-lg text-light" id="under-const">
-{% else %}
-<input class="form-control me-2 bg-{{color_mode}} text-dark" type="search" placeholder="Search posts" aria-label="Search" id="search">
-<div class="card my-4 bg-{{color_mode}} shadow-lg text-dark" id="under-const">
-{% endif %}
+<input class="form-control me-2 bg-{{color_mode}} text-{{text_color_mode}}" type="search" placeholder="Search posts" aria-label="Search" id="search">
+<div class="card my-4 bg-{{color_mode}} shadow-lg text-{{text_color_mode}}" id="under-const">
         <h5 class="card-header">Under construction</h5>
     <div class="card-body">
         <p class="card-text"> This website is currently under construction, please disregard whatever unexpected things you may find</p>

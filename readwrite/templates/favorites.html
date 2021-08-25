@@ -1,11 +1,7 @@
 {% extends "base.html" %} 
 {% block content %}
 
-{% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
-<div class="container text-light">
-{% else %}
-<div class="container text-dark">
-{% endif %}
+<div class="container text-{{text_color_mode}}">
     <h1 class="display-4">Favorited posts</h1>
     <div class="row">
         <div id="post-holder" class="col-md-8 mt-3 left">

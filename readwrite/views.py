@@ -12,6 +12,7 @@ from django.http import HttpResponseBadRequest
 from django.template.loader import render_to_string
 from django.db.models import Q
 from .utils import has_publications, require_AJAX
+from readwrite.utils import set_text_color
 # Create your views here.
 
 class IndexView(TemplateView):
@@ -26,10 +27,13 @@ class IndexView(TemplateView):
             self.context['favorites'] = request.user.favorites.all()
             this_user = User.objects.get(pk=request.user.pk)
             response.set_cookie('site_color_mode', this_user.color_mode, max_age = 5000000)
+            response.set_cookie('site_text_color_mode', set_text_color(this_user.color_mode), max_age=5000000) #arguably a stupidly convoluted way to do it, but I really hate jinja
         elif request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
             response.set_cookie('site_color_mode', request.COOKIES.get('site_color_mode'), max_age = 5000000)
+            response.set_cookie('site_text_color_mode', set_text_color(request.COOKIES.get('site_color_mode')), max_age=5000000)
         else:
             response.set_cookie('site_color_mode', 'light', max_age = 5000000)
+            response.set_cookie('site_text_color_mode', 'dark', max_age=5000000)
         
         return response
 
@@ -45,8 +49,10 @@ class PublicationView(TemplateView):
         if request.user.is_authenticated :
             self.context['favorites'] = request.user.favorites.all()
             response.set_cookie('site_color_mode', request.user.color_mode, max_age = 5000000)
+            response.set_cookie('site_text_color_mode', set_text_color(request.user.color_mode), max_age = 5000000)
         elif not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
             response.set_cookie('site_color_mode', 'light', max_age = 5000000)
+            response.set_cookie('site_text_color_mode', 'dark', max_age = 5000000)
         return response
 
 class FavoritedView(TemplateView):
@@ -60,8 +66,10 @@ class FavoritedView(TemplateView):
         if self.request.user.is_authenticated :
             self.context['favorites'] = request.user.favorites.all()
             response.set_cookie('site_color_mode', request.user.color_mode, max_age = 5000000)
+            response.set_cookie('site_text_color_mode', set_text_color(request.user.color_mode), max_age = 5000000)
         elif not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
             response.set_cookie('site_color_mode', 'light', max_age = 5000000)
+            response.set_cookie('site_text_color_mode', 'dark', max_age = 5000000)
         return response
 
     
@@ -92,8 +100,10 @@ def postDetail(request, slug): # not a class bc post & get annoying
             response = redirect('post_detail',the_post.slug) # the old redirection (see below) apparently doesn't want to re-include the post part in the template, forcing a redirect seems to fix it. Though i have no idea why.            
             if request.user.is_authenticated :
                 response.set_cookie('site_color_mode', request.user.color_mode, max_age = 5000000)
+                response.set_cookie('site_text_color_mode', set_text_color(request.user.color_mode), max_age = 5000000)
             elif not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
                 response.set_cookie('site_color_mode', 'light', max_age = 5000000)
+                response.set_cookie('site_text_color_mode', 'dark', max_age = 5000000)
             return response
     else:
         comment_form = CommentForm()
@@ -111,8 +121,10 @@ def postDetail(request, slug): # not a class bc post & get annoying
     response = render(request, template_name, context)
     if request.user.is_authenticated :
         response.set_cookie('site_color_mode', request.user.color_mode, max_age = 5000000)
+        response.set_cookie('site_text_color_mode', set_text_color(request.user.color_mode), max_age = 5000000)
     elif not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
         response.set_cookie('site_color_mode', 'light', max_age = 5000000)
+        response.set_cookie('site_text_color_mode', 'dark', max_age = 5000000)
     return response
 
 
@@ -129,6 +141,7 @@ def search_posts(request):
         }
         context['favorites'] = request.user.favorites.all()
         context['color_mode'] = request.POST['color_mode']
+        context['text_color_mode'] = request.POST['color_mode']
         if request.POST['search'] == '':
             context['empty'] = True
         html = render_to_string(
@@ -178,14 +191,18 @@ def create_post(request):# turn into class afterwards ?
             response = redirect('/')
             if request.user.is_authenticated :
                 response.set_cookie('site_color_mode', request.user.color_mode, max_age = 5000000)
+                response.set_cookie('site_text_color_mode', set_text_color(request.user.color_mode), max_age = 5000000)
             elif not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
                 response.set_cookie('site_color_mode', 'light', max_age = 5000000)
+                response.set_cookie('site_text_color_mode', 'dark', max_age = 5000000)
             return response
     response = render(request, template_name, context)
     if request.user.is_authenticated :
         response.set_cookie('site_color_mode', request.user.color_mode, max_age = 5000000)
+        response.set_cookie('site_text_color_mode', set_text_color(request.user.color_mode), max_age = 5000000)
     elif not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
         response.set_cookie('site_color_mode', 'light', max_age = 5000000)
+        response.set_cookie('site_color_mode', 'dark', max_age = 5000000)
     return response
 
 
@@ -231,6 +248,7 @@ def delete_comment(request):
                 'comments' : comments,
                 'moderator_ajax_allowed' : True,
                 'darkmode_on' : request.COOKIES.get('site_color_mode')=='dark',
+                'darkmode_on' : request.COOKIES.get('site_text_color_mode')=='dark',
             }
             html = render_to_string(
                 template_name="ajax/comments.html", context=context)
@@ -251,6 +269,7 @@ def set_cookie(request):
         if request.GET['site_color_mode']:
             if request.GET['site_color_mode'] in ('light', 'dark'):
                 response.set_cookie('site_color_mode', request.GET['site_color_mode'], max_age = 5000000)
+                response.set_cookie('site_text_color_mode', set_text_color(request.GET['site_color_mode']), max_age = 5000000)
                 if request.user.is_authenticated:
                     this_user = User.objects.get(pk=request.user.pk)
                     this_user.color_mode=request.GET['site_color_mode']

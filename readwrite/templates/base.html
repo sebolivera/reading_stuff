@@ -1,5 +1,6 @@
 {% load static %}
 {% with color_mode=request.COOKIES.site_color_mode|default:"light" %}
+{% with text_color_mode=request.COOKIES.site_text_color_mode|default:"dark" %}
 <!DOCTYPE html>
 <html>
 
@@ -64,25 +65,16 @@
         <audio id="myAudio" style="display:none;" controls>
             <source src="{% static 'audio/stress.mp3' %}" type="audio/mpeg">
         </audio>
-        <nav class="navbar navbar-expand-lg sticky-top navbar-{{color_mode}} bg-{{color_mode}} shadow" id="mainNav">
+        
+        <nav class="navbar navbar-expand-lg sticky-top navbar-{{color_mode}} bg-{% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}less{% endif %}-{{color_mode}} shadow" id="mainNav">
             <div class="container-fluid d-flex bd-highlight">
                 <a class="navbar-brand" href="{% url 'home' %}">Home</a>
-
-                {% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
-                        <div class="ms-auto me-2 nav-item text-light">
-                            <div class="form-check form-switch text-light">
-                                <input class="form-check-input align-middle" type="checkbox" id="lightModeSwitch" checked>
-                                <label class="form-check-label align-middle" for="lightModeSwitch">Switch to Light Mode</label>
+                        <div class="ms-auto me-2 nav-item text-{{text_color_mode}}">
+                            <div class="form-check form-switch text-{{text_color_mode}}">
+                                <input class="form-check-input align-middle" type="checkbox" id="{{text_color_mode}}ModeSwitch" {% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}checked{% endif %}>
+                                <label class="form-check-label align-middle" for="{{text_color_mode}}ModeSwitch">Switch to {{text_color_mode|title}} Mode</label>
                             </div>
                         </div>
-                        {% else %}
-                        <div class="ms-auto me-2 nav-item text-dark">
-                            <div class="form-check form-switch text-black text-dark">
-                                <input class="form-check-input align-middle" type="checkbox" id="darkModeSwitch">
-                                <label class="form-check-label align-middle" for="darkModeSwitch">Switch to Dark Mode</label>
-                            </div>
-                        </div>
-                        {% endif %}
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -97,15 +89,24 @@
                         <li class="nav-item text-black">
                             <a class="nav-link text-black font-weight-bold" href="{% url 'favorited' %}">Favorited</a>
                         </li>
-                        {% endif %}
-                        {% if has_publications %}
                         <li class="nav-item text-black">
                             <a class="nav-link text-black font-weight-bold" href="{% url 'publications' %}">My publications</a>
                         </li>
                         {% endif %}
-                        <li class="nav-item text-black">
-                            <a class="nav-link text-black font-weight-bold" href="#">Contact</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Language
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-{{color_mode}} text-{{text_color_mode}}" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item text-{{text_color_mode}}" href="#en"><span class="flag-icon flag-icon-en">🇬🇧 </span> English</a></li>
+                                <li><a class="dropdown-item text-{{text_color_mode}}" href="#fr"><span class="flag-icon flag-icon-fr">🤮</span> Fr*nch</a></li>
+                                <li><a class="dropdown-item text-{{text_color_mode}}" href="#zz"><span class="flag-icon flag-icon-idk">🏁</span> Gibberish</a></li>
+                            </ul>
                         </li>
+                        {% comment %} TODO at some point lmao {% endcomment %}
+                        {% comment %} <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="#">Contact</a>
+                        </li> {% endcomment %}
                         {% if user.is_authenticated%}
                         <li class="nav-item text-red">
                             <a class="nav-link text-red font-weight-bold" href="{% url 'logout' %}">Logout</a>
@@ -120,18 +121,10 @@
             </div>
         </nav>
         {% block content %}
-        <!-- Content Goes here -->
         {% endblock content %}
-        <!-- Footer -->
-        {% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
         <footer class="footer bg-grey">
-            <p class="m-0 text-light text-center ">Copyright &copy; Me</p>
+            <p class="m-0 text-{{text_color_mode}} text-center ">Copyright &copy; Me</p>
         </footer>
-        {% else %}
-        <footer class="footer bg-grey">
-            <p class="m-0 text-dark text-center ">Copyright &copy; Me</p>
-        </footer>
-        {% endif %}
     </body>
 <script type="text/javascript">
     var set_cookie_path = "{% url 'set_cookie' %}";
@@ -141,4 +134,5 @@
 <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 <script type="text/javascript" src="{% static 'ckeditor/ckeditor/adapters/jquery.js'%}"></script>
 </html>
+{% endwith %}
 {% endwith %}

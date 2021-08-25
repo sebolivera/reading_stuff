@@ -17,11 +17,7 @@
     {% endif %}
 {% endif %}
 
-{% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
-    <div class="container text-light">
-{% else %}
-    <div class="container text-dark">
-{% endif %}
+<div class="container text-{{text_color_mode}}">
 
 
 <section>
@@ -53,11 +49,7 @@
             <p class="small mb-5 pb-lg-2"><a class="link-info" href="#!">Forgot password?</a></p>
             <p>Don't have an account? <a href="{% url 'signup' %}" class="link-info">Register here</a></p>
 
-            {% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
-            <a class="nothere text-light">Not here, though.</a>
-            {% else %}
-            <a class="nothere text-dark">Not here, though</a>
-            {% endif %}
+            <a class="nothere text-{{text_color_mode}}">Not here, though.</a>
           </form>
 
         </div>
@@ -68,11 +60,7 @@
         </div>
             <span id="ohno">
                 <a id="dontclick" href="#"><p id="smiley">😊</p>
-            {% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}
-                <p class="text-center text-light">Please don't click on anything you're not supposed to</p>
-            {% else %}
-                <p class="text-center">Please don't click on anything you're not supposed to</p>
-            {% endif %}
+                <p class="text-center text-{{text_color_mode}}">Please don't click on anything you're not supposed to</p>
                 </a>
             </span>
       </div>
