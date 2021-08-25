@@ -48,7 +48,8 @@ $(document).ready(function()
 
         const request_parameters = {
             search: $(this).val(), // value of user_input: the HTML element with ID user-input
-            color_mode: color_mode
+            color_mode: color_mode,
+            text_color_mode: text_color_mode
         };
 
         // start animating the search 

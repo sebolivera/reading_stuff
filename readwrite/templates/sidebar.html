@@ -20,7 +20,7 @@
 <div class="card my-4 bg-{{color_mode}} shadow-lg text-{{text_color_mode}}" id="under-const">
         <h5 class="card-header">Under construction</h5>
     <div class="card-body">
-        <p class="card-text"> This website is currently under construction, please disregard whatever unexpected things you may find</p>
+        <p class="card-text"> This website is currently under construction, please disregard whatever unexpected things you may find.</p>
         <a href="#" class="btn btn-danger" id="please-dont-click">DO NOT CLICK THIS</a>
     </div>
 </div>
@@ -28,6 +28,7 @@
 <script type="text/javascript">
     var path = "{% url 'search_posts' %}";
     var color_mode = "{{request.COOKIES.site_color_mode}}";
+    var text_color_mode = "{{request.COOKIES.site_text_color_mode}}";
 </script>
 <script type="text/javascript" src="{% static 'js/postsearch.js' %}"></script>
 {% endblock sidebar %}

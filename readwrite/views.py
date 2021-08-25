@@ -139,9 +139,10 @@ def search_posts(request):
             'posts_by_authors' : posts_by_authors | posts_by_authors_username,
             'search' : True,
         }
-        context['favorites'] = request.user.favorites.all()
+        if request.user.is_authenticated :
+            context['favorites'] = request.user.favorites.all()
         context['color_mode'] = request.POST['color_mode']
-        context['text_color_mode'] = request.POST['color_mode']
+        context['text_color_mode'] = request.POST['text_color_mode']
         if request.POST['search'] == '':
             context['empty'] = True
         html = render_to_string(
