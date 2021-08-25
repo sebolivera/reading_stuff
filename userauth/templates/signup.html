@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block additional_head %}
-    <link rel="stylesheet" href="{% static 'css/style_signup.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/style_forms.css' %}"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/javascript.util/0.12.12/javascript.util.min.js"></script>
     
@@ -30,57 +30,57 @@
         <div class="card shadow-2-strong card-registration bg-{{color_mode}} text-{{text_color_mode}}" style="border-radius: 15px;">
           <div class="card-body p-4 p-md-5">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-            <form method="post" action="{% url 'signup' %}">
+            <form method="post" action="{% url 'signup' %}" enctype="multipart/form-data">
                 {%csrf_token%}
 
                 
                 <div class="row">
                     <div class="col-md-6 mb-4">
 
-                    <div class="form-outline">
-                        {{ form.first_name }}
-                        <label class="form-label bg-{{color_mode}}" for="id_first_name">First Name</label>
-                    </div>
 
-                    </div>
-                    <div class="col-md-6 mb-4">
-
-                        <div class="form-outline">
-                        {{ form.last_name }}
-                        <label class="form-label bg-{{color_mode}}" for="id_last_name">Last Name</label>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-4">
-
-                        <div class="form-outline">
+                        <div class="form-outline text-soft-{{text_color_mode}}">
                             {{ form.username }}
-                            <label class="form-label bg-{{color_mode}}" for="id_username">Username</label>
+                            <label class="form-label bg-{{color_mode}} text-{{text_color_mode}}" for="id_username">Username</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+
+                        <div class="form-outline form-outline-pp text-soft-{{text_color_mode}}">
+                        {{ form.profile_picture }}
+                        <label class="form-label bg-{{color_mode}} text-{{text_color_mode}} form-label-pp" for="id_profile_picture">Profile Pic*</label>
                         </div>
 
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-6 mb-4">
-                        <div class="form-outline">
+
+                    <div class="form-outline text-soft-{{text_color_mode}}">
+                        {{ form.pen_name }}
+                        <label class="form-label bg-{{color_mode}} text-{{text_color_mode}}" for="id_pen_name">Pen Name*</label>
+                    </div>
+
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="form-outline text-soft-{{text_color_mode}}">
                             {{form.email}}
-                            <label class="form-label bg-{{color_mode}}" for="id_email">Email</label>
+                            <label class="form-label bg-{{color_mode}} text-{{text_color_mode}}" for="id_email">Email</label>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-4">
 
-                        <div class="form-outline">
+                        <div class="form-outline text-soft-{{text_color_mode}}">
                             {{form.password1}}
-                            <label class="form-label bg-{{color_mode}}" for="id_password1">Password</label>
+                            <label class="form-label bg-{{color_mode}} text-{{text_color_mode}}" for="id_password1">Password</label>
                         </div>
 
                     </div>
                     <div class="col-md-6 mb-4">
-                        <div class="form-outline">
+                        <div class="form-outline text-soft-{{text_color_mode}}">
                             {{form.password2}}
-                            <label class="form-label bg-{{color_mode}}" for="id_password2">Password Confirmation</label>
+                            <label class="form-label bg-{{color_mode}} text-{{text_color_mode}}" for="id_password2">Password Confirmation</label>
                         </div>
                     </div>
                 </div>

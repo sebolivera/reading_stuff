@@ -44,7 +44,25 @@
     -webkit-transition:all .2s linear;
     transition:all .2s linear
    }
-   .form-outline .form-control~.form-label {
+   .form-outline .form-control~.form-label:not(.form-label-pp) {
+    position:absolute;
+    top:-1rem;
+    /* max-width:90%;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis; */
+    left:.75rem;
+    /* padding-top:.37rem;
+    pointer-events:none;
+    -webkit-transform-origin:0 0;
+    transform-origin:0 0;
+    -webkit-transition:all .2s ease-out;
+    transition:all .2s ease-out;
+    color:rgba(0,0,0,.6);
+    margin-bottom:0;
+    animation : 0.5s; */
+   }
+   .form-label-pp {
     position:absolute;
     top:0;
     max-width:90%;
@@ -147,14 +165,6 @@
     -webkit-box-shadow:none!important;
     box-shadow:none!important
    }
-   .form-outline .form-control.active~.form-label,
-   .form-outline .form-control:focus~.form-label {
-    -webkit-transform:translateY(-1rem) translateY(.1rem) scale(.8);
-    transform:translateY(-1rem) translateY(.1rem) scale(.8)
-   }
-   .form-outline .form-control:focus~.form-label {
-    color:#1266f1
-   }
    .form-outline .form-control.active~.form-notch .form-notch-middle,
    .form-outline .form-control:focus~.form-notch .form-notch-middle {
     border-top:none;
@@ -165,7 +175,6 @@
    }
    .form-outline .form-control:focus~.form-notch .form-notch-middle {
     border-bottom:.125rem solid;
-    border-color:#1266f1
    }
    .form-outline .form-control.active~.form-notch .form-notch-leading,
    .form-outline .form-control:focus~.form-notch .form-notch-leading {
@@ -200,14 +209,8 @@
     padding-left:.75em;
     padding-right:.75em
    }
-   .form-outline .form-control.form-control-lg~.form-label {
-    margin-top: .7rem;
-    padding: 0;
-   }
-   .form-outline .form-control.form-control-lg.active~.form-label,
-   .form-outline .form-control.form-control-lg:focus~.form-label {
-    -webkit-transform:translateY(-1.25rem) translateY(.1rem) scale(.8);
-    transform:translateY(-1.25rem) translateY(.1rem) scale(.8)
+   .form-outline .form-control.form-control-lg~.form-label:not(.form-label-pp) {
+    padding: 3px;
    }
    .form-outline .form-control.form-control-sm {
     padding:.43em .99em .35em;
@@ -246,3 +249,26 @@
    .form-outline.form-white .form-control:focus~.form-notch .form-notch-trailing {
     border-color:#fff
    }
+
+   /* end of shamelessly... acquired CSS*/
+
+.form-label-pp
+{
+  margin-top: 0.4rem;
+  padding: 3px;
+  border-radius: 5px;
+  background:#e9ecef !important;
+  color: #212529 !important;
+}
+.form-control:focus
+{
+  color : inherit !important;
+}
+.form-label
+{
+  z-index: 10000000;
+}
+.form-label-pp
+{
+  color: #2c2f32 !important;
+}

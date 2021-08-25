@@ -12,7 +12,7 @@ COLOR_MODE = (
 class User(AbstractUser):
     pen_name = models.CharField(max_length=254, unique=True, null=True, blank=True)
     is_admin = models.BooleanField(default=False)
-    profile_picture = RichTextUploadingField(default=None, null=True, blank=True)
+    profile_picture = models.ImageField(default=None, null=True, blank=True, upload_to="uploads/")
     favorites = models.ManyToManyField('readwrite.post', default=None, blank=True)
     color_mode = models.CharField(choices=COLOR_MODE, default="light", max_length=100)
 

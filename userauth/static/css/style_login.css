@@ -112,3 +112,8 @@
 {
   overflow-x: hidden !important;
 }
+
+form *
+{
+  overflow-x: initial !important;
+}

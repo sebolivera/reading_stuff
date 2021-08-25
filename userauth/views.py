@@ -29,7 +29,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, 'Log in sucessful. Welcome Traveler.')
+            messages.success(request, 'Successfully logged in as %s.' % user.username)
             response = redirect('/')
             if request.user.is_authenticated :
                 response.set_cookie('site_color_mode', request.user.color_mode, max_age = 5000000)
@@ -42,16 +42,18 @@ def login_view(request):
         return render(request, template_name, context)
 
 def signup_view(request):
-
     template_name = "signup.html"
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = SignUpForm(request.POST, request.FILES)
+        if request.FILES:
+            form.profile_picture = request.FILES
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
+            messages.success(request, 'Successfully registered and logged in as %s.' % username)
             return redirect('home')
     else:
         form = SignUpForm()
