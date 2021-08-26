@@ -22,9 +22,9 @@
         </script>
     {% endif %}
     {% for post in post_list %}
-        <div class="card mb-4 bg-{{color_mode}} text-{{text_color_mode}} shadow-lg">
+        <div class="card mb-4 very-{{color_mode}} text-{{text_color_mode}}">
             <div class="card-body">
-                <h2 class="card-title">{{ post.title }}</h2>
+                <a href="{% url 'post_detail' post.slug %}" class="text-decoration-none"><h2 class="card-title text-{{text_color_mode}}">{{ post.title }}</h2></a>
                     <p class="card-text text-muted h6">
                         {% if post.author.pen_name %}
                         By {{ post.author.pen_name }} 
@@ -33,15 +33,15 @@
                         {% endif %}
                         on {{ post.created_on}} </p>
                 <p class="card-text">{{post.content|slice:":200" | safe }}</p>
-                <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Read more...</a>
+                <a href="{% url 'post_detail' post.slug %}" class="btn btn-info">Read more...</a>
                 {% if user.is_authenticated%}
                     {% if post in favorites %}
-                    <label for="id-of-input" class="custom-checkbox btn btn-primary fav delete_fav" id="{{post.id}}">
+                    <label for="id-of-input" class="custom-checkbox btn btn-info fav delete_fav" id="{{post.id}}">
                     {% bs_icon 'star-fill' %}
                         <span>Favorite</span>
                     </label>
                     {% else %}
-                    <label for="id-of-input" class="custom-checkbox btn btn-primary fav add_fav" id="{{post.id}}">
+                    <label for="id-of-input" class="custom-checkbox btn btn-info fav add_fav" id="{{post.id}}">
                     {% bs_icon 'star' %}
                         <span>Favorite</span>
                     </label>
@@ -57,7 +57,7 @@
         {% for post in posts_by_authors %}
             <div class="card mb-4 bg-{{color_mode}}">
                 <div class="card-body">
-                    <h2 class="card-title">{{ post.title }}</h2>
+                    <a href="{% url 'post_detail' post.slug %}" class="text-decoration-none" ><h2 class="card-title text-primary">{{ post.title }}</h2></a>
                     <p class="card-text text-muted h6">
                         {% if post.author.pen_name %}
                         By {{ post.author.pen_name }} 
@@ -66,7 +66,7 @@
                         {% endif %}
                         on {{ post.created_on}} </p>
                     <p class="card-text">{{post.content|slice:":200" | safe }}</p>
-                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">See comments</a>
+                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-info">See comments</a>
                 </div>
             </div>
         {% endfor %}

@@ -43,7 +43,17 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'django_bootstrap_icons',
-    'userauth'
+    'userauth',
+    'compressor'
+]
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder'
+    ]
+    
+COMPRESS_PRECOMPILERS = [
+    ('text/x-scss', 'django_libsass.SassCompiler'),
 ]
 
 MIDDLEWARE = [
@@ -62,7 +72,8 @@ ROOT_URLCONF = 'reading_site.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+    os.path.join(BASE_DIR, 'reading_site', 'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,7 +139,7 @@ AUTH_USER_MODEL = 'userauth.User'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
+COMPRESS_ENABLED = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")

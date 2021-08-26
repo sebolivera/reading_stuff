@@ -5,7 +5,7 @@
 {% block content %}
 <div class="container">
   <div class="row shadow-none">
-    <div class="col-md-8 card mb-4  mt-3 left top shadow-none text-{{text_color_mode}} bg-{{color_mode}} shadow-lg">
+    <div class="col-md-8 card mb-4  mt-3 left top shadow-none text-{{text_color_mode}} bg-{{color_mode}}">
       <div class="card-body">
         <h1 class="text-{{text_color_mode}}">New post</h1>
         <form method="post" method="POST">
@@ -41,8 +41,8 @@
             </div>
             {% csrf_token %}
             <br/>
-            <button type="submit" name="publish" class="btn btn-primary  btn-lg" value="publish">Publish</button>
-            <button type="submit" name="save" class="btn btn-primary  btn-lg" value="save">Save as a draft</button>
+            <button type="submit" name="publish" class="btn btn-info  btn-lg" value="publish">Publish</button>
+            <button type="submit" name="save" class="btn btn-info  btn-lg" value="save">Save as a draft</button>
         </form>
       </div>
     </div>

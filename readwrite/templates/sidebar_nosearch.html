@@ -1,13 +1,5 @@
 {% block sidebar %}
 {% load static %}
-
-<style>
-        .card{
-            box-shadow: 0 16px 48px #E3E7EB;
-        }
-       
-</style>
-
 <!-- jGravity file -->
 <script src="{% static 'js/jquery.throwable.js' %}"></script>
 <script src="{% static 'js/surprise.js' %}"></script>
@@ -16,7 +8,7 @@
 
 <!-- Sidebar Widgets Column -->
 <div class="col-md-4 mt-3 float-right ">
-<div class="card my-4 bg-{{color_mode}} shadow-lg" id="under-const">
+<div class="card mb-4 very-{{color_mode}} text-{{text_color_mode}} " id="under-const">
         <h5 class="card-header">Under construction</h5>
     <div class="card-body">
         <p class="card-text"> This message has changed, though you probably didn't notice.</p>

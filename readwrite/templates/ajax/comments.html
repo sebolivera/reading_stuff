@@ -3,10 +3,10 @@
     {% if comments %}
         <h4>Comments:</h4>
     {% endif %}
-    <div class="container shadow-lg">
+    <div class="container">
         {% for comment in comments %}
-                <div class="row card mt-2 bg-{{color_mode}} text-{{text_color_mode}} shadow-lg">
-                <div class="comments shadow-lg" style="padding: 10px;">
+                <div class="row card mt-2 bg-{{color_mode}} text-{{text_color_mode}}">
+                <div class="comments" style="padding: 10px;">
                 <p class="font-weight-bold">
                     {{ comment.user }} on
                     <span class=" text-muted font-weight-normal">

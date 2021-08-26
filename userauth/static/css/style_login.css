@@ -56,11 +56,11 @@
       transform: translate(2px,0) skew(0deg);
     }
     4%,60%{
-      filter: blur(0.5px);
+      filter: blur(0.1px);
       transform: translate(-2px,0) skew(0deg);
     }
     62%{
-      filter: blur(1px);
+      filter: blur(0.4px);
       transform: translate(0,0) skew(5deg); 
     }
   }
@@ -116,4 +116,14 @@
 form *
 {
   overflow-x: initial !important;
+}
+
+.text-soft-light input
+{
+  color : white !important;
+}
+
+.very-light
+{
+  background : white !important;
 }
