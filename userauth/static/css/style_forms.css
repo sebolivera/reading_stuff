@@ -272,3 +272,12 @@
 {
   color: #2c2f32 !important;
 }
+.text-soft-light input
+{
+  color : white !important;
+}
+
+.very-light
+{
+  background : white !important;
+}

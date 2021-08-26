@@ -1,0 +1,294 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-26 22:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: readwrite/templates/ajax/comments.html:5
+msgid "Comments:"
+msgstr "Commentaires :"
+
+#: readwrite/templates/ajax/comments.html:12
+#: readwrite/templates/ajax/index_search_partial.html:35
+#: readwrite/templates/ajax/index_search_partial.html:68
+#: readwrite/templates/post/post.html:57 readwrite/templates/post/post.html:86
+msgid "on"
+msgstr "le"
+
+#: readwrite/templates/ajax/comments.html:22
+#: readwrite/templates/post/post.html:98
+msgid "Delete"
+msgstr "Supprimer"
+
+#: readwrite/templates/ajax/index_search_partial.html:6
+msgid "The following posts match your search:"
+msgstr "Les posts suivants correspondent à votre recherche :"
+
+#: readwrite/templates/ajax/index_search_partial.html:10
+msgid "No posts"
+msgstr "Aucun post"
+
+#: readwrite/templates/ajax/index_search_partial.html:15
+#: readwrite/templates/ajax/index_search_partial.html:19
+#: readwrite/templates/ajax/index_search_partial.html:42
+#: readwrite/templates/ajax/index_search_partial.html:47
+#: readwrite/templates/post/post.html:19 readwrite/templates/post/post.html:24
+#: readwrite/templates/post/post.html:33 readwrite/templates/post/post.html:37
+msgid "Favorite"
+msgstr "Favoris"
+
+#: readwrite/templates/ajax/index_search_partial.html:31
+#: readwrite/templates/ajax/index_search_partial.html:33
+#: readwrite/templates/ajax/index_search_partial.html:64
+#: readwrite/templates/ajax/index_search_partial.html:66
+msgid "By"
+msgstr "par"
+
+#: readwrite/templates/ajax/index_search_partial.html:37
+msgid "Read more..."
+msgstr "En savoir plus..."
+
+#: readwrite/templates/ajax/index_search_partial.html:56
+msgid "The authors of the following posts match your search: "
+msgstr "Les auteurs des posts suivants correspondent à votre recherche : "
+
+#: readwrite/templates/ajax/index_search_partial.html:70
+msgid "See comments"
+msgstr "Voir les commentaires"
+
+#: readwrite/templates/base.html:9
+msgid "My junkyard"
+msgstr "Mon dépotoire"
+
+#: readwrite/templates/base.html:48
+msgid "pls take me home I'm scared"
+msgstr "maman j'ai peur je veux rentrer"
+
+#: readwrite/templates/base.html:55
+msgid "Notification"
+msgstr "Notification"
+
+#: readwrite/templates/base.html:72
+msgid "Home"
+msgstr "Accueil"
+
+#: readwrite/templates/base.html:76
+msgid "Switch to"
+msgstr "Passer en"
+
+#: readwrite/templates/base.html:76
+msgid "Mode"
+msgstr "mode"
+
+#: readwrite/templates/base.html:86
+msgid "Post something"
+msgstr "Poster quelque chose"
+
+#: readwrite/templates/base.html:91
+msgid "Favorited"
+msgstr "Mes Favoris"
+
+#: readwrite/templates/base.html:94
+msgid "My publications"
+msgstr "Mes publications"
+
+#: readwrite/templates/base.html:118
+msgid "Language"
+msgstr "Langue"
+
+#: readwrite/templates/base.html:149
+msgid "Logout"
+msgstr "Se déconnecter"
+
+#: readwrite/templates/base.html:153 userauth/templates/login.html:54
+msgid "Login"
+msgstr "Se connecter"
+
+#: readwrite/templates/base.html:163
+msgid "Copyright"
+msgstr "Copyright"
+
+#: readwrite/templates/favorites.html:6
+msgid "Favorited posts"
+msgstr "Mes posts favoris"
+
+#: readwrite/templates/index.html:22
+msgid "I made a BANNER because it looks COOL and EPIC"
+msgstr "J'ai fait une BANNIÈRE, parce que c'est COOL et ÉPIC"
+
+#: readwrite/templates/index.html:23
+msgid "This will probably hold relevant info at some point"
+msgstr "Il y aura sans doute des choses incroyables ici un jour"
+
+#: readwrite/templates/post/post.html:50 readwrite/templates/post/post.html:79
+msgid "The following comment"
+msgstr "Le commentaire suivant"
+
+#: readwrite/templates/post/post.html:50
+msgid "awaiting a review:"
+msgstr "est en attente de révision :"
+
+#: readwrite/templates/post/post.html:79
+msgid "awaiting"
+msgstr "attend"
+
+#: readwrite/templates/post/post.html:79
+msgid "review"
+msgstr "sa révision"
+
+#: readwrite/templates/post/post.html:95
+msgid "Approve"
+msgstr "Approuver"
+
+#: readwrite/templates/post/post.html:113
+msgid "Leave a comment"
+msgstr "Laisser un commentaire"
+
+#: readwrite/templates/post/post.html:132
+msgid "You need to be"
+msgstr "Vous devez être"
+
+#: readwrite/templates/post/post.html:132
+msgid "logged in"
+msgstr "connecté"
+
+#: readwrite/templates/post/write_post.html:11
+msgid "New post"
+msgstr "Nouveau post"
+
+#: readwrite/templates/post/write_post.html:19
+msgid "This is a chapter (and not a simple post)"
+msgstr "Ceci est un chapitre (et non pas un simple post)"
+
+#: readwrite/templates/post/write_post.html:23
+msgid "Book:"
+msgstr "Livre :"
+
+#: readwrite/templates/post/write_post.html:32
+msgid "Chapter Number:"
+msgstr "Chapitre N° :"
+
+#: readwrite/templates/post/write_post.html:35
+msgid "Please select a book!"
+msgstr "Veuillez sélectionner un livre !"
+
+#: readwrite/templates/post/write_post.html:45
+msgid "Publish"
+msgstr "Publier"
+
+#: readwrite/templates/post/write_post.html:46
+msgid "Save as a draft"
+msgstr "Sauvegarder le brouillon"
+
+#: readwrite/templates/publications.html:5
+msgid "Your publications"
+msgstr "Vos publications"
+
+#: readwrite/templates/sidebar.html:13
+msgid "Search posts"
+msgstr "Rechercher des posts"
+
+#: readwrite/templates/sidebar.html:15
+#: readwrite/templates/sidebar_nosearch.html:13
+msgid "Under construction"
+msgstr "En cours de construction"
+
+#: readwrite/templates/sidebar.html:17
+msgid "This website is currently under construction, please disregard whatever unexpected things you may find."
+msgstr "Ce site est actuellement en cours de construction, veuillez ignorer les comportements innatendus de la part des pages."
+
+#: readwrite/templates/sidebar.html:18
+#: readwrite/templates/sidebar_nosearch.html:16
+msgid "DO NOT CLICK THIS"
+msgstr "NE PAS CLIQUER"
+
+#: readwrite/templates/sidebar_nosearch.html:15
+msgid "This message has changed, though you probably didn't notice."
+msgstr "Vous n'avez probablement pas remarqué, mais ce message a changé"
+
+#: userauth/forms.py:9 userauth/forms.py:20 userauth/templates/login.html:48
+#: userauth/templates/signup.html:79
+msgid "Password"
+msgstr "Mot de passe"
+
+#: userauth/forms.py:22
+msgid "Password confirmation"
+msgstr "Confirmation du mot de passe"
+
+#: userauth/forms.py:24
+msgid "Enter the same password as above, for verification."
+msgstr "Entrez le même mot de passe qu'au dessus"
+
+#: userauth/templates/login.html:37
+msgid "Log in"
+msgstr "Se connecter"
+
+#: userauth/templates/login.html:43 userauth/templates/signup.html:46
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: userauth/templates/login.html:52
+msgid "Forgot password?"
+msgstr "Mot de passe oublié ?"
+
+#: userauth/templates/login.html:56
+msgid "Don't have an account?"
+msgstr "Pas encore de compte?"
+
+#: userauth/templates/login.html:56
+msgid "Register here"
+msgstr "Créez-vous un compte ici"
+
+#: userauth/templates/login.html:58
+msgid "Not here, though."
+msgstr "Pas ici, par contre"
+
+#: userauth/templates/login.html:70
+msgid "Please don't click on anything you're not supposed to"
+msgstr "Ne cliquez pas là où vous n'êtes pas censé le faire, merci"
+
+#: userauth/templates/signup.html:18
+msgid "You shouldn't be able to access this page. Please leave."
+msgstr ""
+"Vous ne devriez pas être en mesure d'accéder à cette page. Dégagez, s'il "
+"vous plaît."
+
+#: userauth/templates/signup.html:20
+msgid "Please login to see this page."
+msgstr "Connectez vous pour pouvoir voir cette page."
+
+#: userauth/templates/signup.html:35
+msgid "Registration Form"
+msgstr "Formulaire d'enregistrement"
+
+#: userauth/templates/signup.html:53
+msgid "Profile Pic*"
+msgstr "Photo de profil*"
+
+#: userauth/templates/signup.html:63
+msgid "Pen Name*"
+msgstr "Nom d'auteur"
+
+#: userauth/templates/signup.html:70
+msgid "Email"
+msgstr "Mail"
+
+#: userauth/templates/signup.html:86
+#, fuzzy
+#| msgid "Password confirmation"
+msgid "Password Confirmation"
+msgstr "Confirmation du mot de passe"

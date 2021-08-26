@@ -1,7 +1,8 @@
 {% extends "base.html" %} 
+{% load i18n %}
 {% block content %}
 <div class="container text-{{text_color_mode}}">
-    <h1 class="display-4">Your publications</h1>
+    <h1 class="display-4">{%translate 'Your publications'%}</h1>
     <div class="row">
         <div id="post-holder" class="col-md-8 mt-3 left">
             {% include 'ajax/index_search_partial.html' %}

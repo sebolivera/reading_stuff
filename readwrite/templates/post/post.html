@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% load i18n %}
+{% block content %}
 {% load static %}
 {% load bootstrap_icons%}
 <div class="container">
@@ -14,12 +16,12 @@
             {% if post in favorites %}
             <label for="id-of-input" class="custom-checkbox btn btn-primary fav delete_fav" id="{{post.id}}">
             {% bs_icon 'star-fill' %}
-                <span>Favorite</span>
+                <span>{%translate 'Favorite'%}</span>
             </label>
             {% else %}
             <label for="id-of-input" class="custom-checkbox btn btn-primary fav add_fav" id="{{post.id}}">
             {% bs_icon 'star' %}
-                <span>Favorite</span>
+                <span>{%translate 'Favorite'%}</span>
             </label>
             {% endif %}
             </div>
@@ -28,11 +30,11 @@
     {% if user.is_authenticated%}
         <span id="star-fill-span" style="display:none;">
             {% bs_icon "star-fill" %}
-            <span>Favorite</span>
+            <span>{%translate 'Favorite'%}</span>
         </span>
         <span id="star-span" style="display:none;">
             {% bs_icon "star" %}
-            <span>Favorite</span>
+            <span>{%translate 'Favorite'%}</span>
         </span>
         <script type="text/javascript">
             var url_favorites="{% url 'fav' %}"; 
@@ -45,14 +47,14 @@
 <div class="row mt-3">
 <div class="mb-4 mt-3 left top text-{{text_color_mode}} bg-{{color_mode}}">
     {% if user.is_authenticated and user_inactive_comments and not moderation_comments %}
-        <h4>The following comment{{user_inactive_comments|pluralize}} {{user_inactive_comments|pluralize:"is,are"}} awaiting a review:</h4>
+        <h4>{%translate 'The following comment'%}{{user_inactive_comments|pluralize}} {{user_inactive_comments|pluralize:"is,are"}} {%translate 'awaiting a review:'%}</h4>
         <div class="container bg-teal">
             {% for comment in user_inactive_comments %}
                 <div class="row card mt-2 bg-{{color_mode}} text-{{text_color_mode}}">
                     <div class="comments" style="padding: 10px;">
                         <p class="font-weight-normal text-primary">
                             {{ comment.user }} 
-                        <span class="text-dark">on</span>
+                        <span class="text-dark">{%translate 'on'%}</span>
                         <span class="font-weight-light fs-6 text-muted">
                             {{ comment.created_on }}
                         </span>
@@ -74,14 +76,14 @@
     {% endif %}
 
     {% if user.is_authenticated and moderation_comments %}
-        <h4>The following comment{{moderation_comments|pluralize}} {{moderation_comments|pluralize:"is,are"}} awaiting  {{moderation_comments|pluralize:"its,their"}} review{{moderation_comments|pluralize}}:</h4>
+        <h4>{%translate 'The following comment'%}{{moderation_comments|pluralize}} {{moderation_comments|pluralize:"is,are"}} {%translate 'awaiting'%} {{moderation_comments|pluralize:"its,their"}} {%translate 'review'%}{{moderation_comments|pluralize}}:</h4>
         <div class="container bg-teal">
             {% for comment in moderation_comments %}
                 <div class="row card mt-2 bg-{{color_mode}} text-{{text_color_mode}}">
                     <div class="comments" style="padding: 10px;">
                         <p class="font-weight-normal text-primary">
                             {{ comment.user }} 
-                        <span class="text-dark">on</span>
+                        <span class="text-dark">{%translate 'on'%}</span>
                         <span class="font-weight-light fs-6 text-muted">
                             {{ comment.created_on }}
                         </span>
@@ -90,10 +92,10 @@
                             {{ comment.body | safe}}
                         </p>
                         <form class="form-moderation approve mb-4" action="javascript:void(0);" method="POST"  id="{{comment.id}}">
-                            <button type="submit" class="btn btn-success approve-comment">Approve</button>
+                            <button type="submit" class="btn btn-success approve-comment">{%translate 'Approve'%}</button>
                         </form>
                         <form class="form-moderation delete" action="javascript:void(0);" method="POST"  id="{{comment.id}}">
-                            <button type="submit" class="btn btn-danger delete-comment" >Delete</button>
+                            <button type="submit" class="btn btn-danger delete-comment">{%translate 'Delete'%}</button>
                         </form>
                     </div>
                 </div>
@@ -108,7 +110,7 @@
     </span>
     <hr/>
     {% if user.is_authenticated %}
-        <h3>Leave a comment</h3>
+        <h3>{%translate 'Leave a comment'%}</h3>
         <form method="post" style="margin-top: 1.3em;" id="submit_comment" action="">
             {% for field in comment_form.visible_fields %}
                 {{ field }}
@@ -127,7 +129,7 @@
         {% endfor %}
         <script type="text/javascript" src="{% static 'js/comments.js' %}"></script>
     {% else %}
-        <h3>You need to be <a class="font-weight-bold" href="{% url 'login' %}">logged in</a> order to leave a comment!</h3>
+        <h3>{%translate 'You need to be'%} <a class="font-weight-bold" href="{% url 'login' %}">{%translate 'logged in'%}</a> {%translate 'order to leave a comment!'%)</h3>
     {% endif %}
 </div>
 </div>

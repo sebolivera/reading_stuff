@@ -117,13 +117,3 @@ form *
 {
   overflow-x: initial !important;
 }
-
-.text-soft-light input
-{
-  color : white !important;
-}
-
-.very-light
-{
-  background : white !important;
-}

@@ -1,14 +1,15 @@
+{% load i18n %}
 {% load static %}
 {% block main_content %}
     {% if comments %}
-        <h4>Comments:</h4>
+        <h4>{%translate 'Comments:'%}</h4>
     {% endif %}
     <div class="container">
         {% for comment in comments %}
                 <div class="row card mt-2 bg-{{color_mode}} text-{{text_color_mode}}">
                 <div class="comments" style="padding: 10px;">
                 <p class="font-weight-bold">
-                    {{ comment.user }} on
+                    {{ comment.user }} {%translate 'on'%}
                     <span class=" text-muted font-weight-normal">
                     {{ comment.created_on }}
                     </span>
@@ -18,7 +19,7 @@
                 </p>
                 {% if perms.readwrite.moderate or moderator_ajax_allowed %}
                 <form class="form-moderation delete" action="javascript:void(0);" method="POST"  id="{{comment.id}}">
-                    <button type="submit" class="btn btn-danger delete-comment" >Delete</button>
+                    <button type="submit" class="btn btn-danger delete-comment" >{%translate 'Delete'%}</button>
                 </form>
                 {% endif %}
                 </div>

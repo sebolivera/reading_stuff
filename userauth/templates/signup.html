@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load static %}
 {% block additional_head %}
     <link rel="stylesheet" href="{% static 'css/style_forms.css' %}"/>
@@ -14,9 +15,9 @@
 
 {% if next %}
     {% if user.is_authenticated %}
-    <p>You shouldn't be able to access this page. Please leave.</p>
+    <p>{%translate "You shouldn't be able to access this page. Please leave."%}</p>
     {% else %}
-    <p>Please login to see this page.</p>
+    <p>{%translate 'Please login to see this page.'%}</p>
     {% endif %}
 {% endif %}
 
@@ -27,9 +28,9 @@
   <div class="container py-5 h-80">
     <div class="row justify-content-center align-items-center h-100">
       <div class="col-12 col-lg-9 col-xl-7">
-        <div class="bg-{{color_mode}} text-{{text_color_mode}}" style="border-radius: 15px;">
+        <div class="card card-registration very-{{color_mode}} text-{{text_color_mode}}" style="border-radius: 15px;">
           <div class="p-4">
-            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">{%translate 'Registration Form'%}</h3>
             <form method="post" action="{% url 'signup' %}" enctype="multipart/form-data">
                 {%csrf_token%}
 
@@ -40,14 +41,14 @@
 
                         <div class="form-outline text-soft-{{text_color_mode}}">
                             {{ form.username }}
-                            <label class="form-label bg-{{color_mode}} text-{{text_color_mode}}" for="id_username">Username</label>
+                            <label class="form-label very-{{color_mode}} text-{{text_color_mode}}" for="id_username">{%translate 'Username'%}</label>
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
 
                         <div class="form-outline form-outline-pp text-soft-{{text_color_mode}}">
                         {{ form.profile_picture }}
-                        <label class="form-label bg-{{color_mode}} text-{{text_color_mode}} form-label-pp" for="id_profile_picture">Profile Pic*</label>
+                        <label class="form-label bg-{{color_mode}} text-{{text_color_mode}} form-label-pp" for="id_profile_picture">{%translate 'Profile Pic*'%}</label>
                         </div>
 
                     </div>
@@ -57,14 +58,14 @@
 
                     <div class="form-outline text-soft-{{text_color_mode}}">
                         {{ form.pen_name }}
-                        <label class="form-label bg-{{color_mode}} text-{{text_color_mode}}" for="id_pen_name">Pen Name*</label>
+                        <label class="form-label very-{{color_mode}} text-{{text_color_mode}}" for="id_pen_name">{%translate 'Pen Name*'%}</label>
                     </div>
 
                     </div>
                     <div class="col-md-6 mb-4">
                         <div class="form-outline text-soft-{{text_color_mode}}">
                             {{form.email}}
-                            <label class="form-label bg-{{color_mode}} text-{{text_color_mode}}" for="id_email">Email</label>
+                            <label class="form-label very-{{color_mode}} text-{{text_color_mode}}" for="id_email">{%translate 'Email'%}</label>
                         </div>
                     </div>
                 </div>
@@ -73,14 +74,14 @@
 
                         <div class="form-outline text-soft-{{text_color_mode}}">
                             {{form.password1}}
-                            <label class="form-label bg-{{color_mode}} text-{{text_color_mode}}" for="id_password1">Password</label>
+                            <label class="form-label very-{{color_mode}} text-{{text_color_mode}}" for="id_password1">{%translate 'Password'%}</label>
                         </div>
 
                     </div>
                     <div class="col-md-6 mb-4">
                         <div class="form-outline text-soft-{{text_color_mode}}">
                             {{form.password2}}
-                            <label class="form-label bg-{{color_mode}} text-{{text_color_mode}}" for="id_password2">Password Confirmation</label>
+                            <label class="form-label very-{{color_mode}} text-{{text_color_mode}}" for="id_password2">{%translate 'Password Confirmation'%}</label>
                         </div>
                     </div>
                 </div>

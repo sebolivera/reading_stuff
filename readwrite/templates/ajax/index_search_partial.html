@@ -1,21 +1,22 @@
 {% load bootstrap_icons %}
+{% load i18n %}
 {% load static %}
 {% block post_content%}
     {% if post_list and not empty and search%}
-    <h3>The following posts match your search: </h3>
+    <h3>{%translate 'The following posts match your search:'%} </h3>
     {% endif %}
     
     {% if not post_list %}
-        <h3>No posts</h3>
+        <h3>{%translate 'No posts'%}</h3>
     {% endif %}
     {% if user.is_authenticated%}
         <span id="star-fill-span" style="display:none;">
             {% bs_icon "star-fill" %}
-            <span>Favorite</span>
+            <span>{%translate 'Favorite'%}</span>
         </span>
         <span id="star-span" style="display:none;">
             {% bs_icon "star" %}
-            <span>Favorite</span>
+            <span>{%translate 'Favorite'%}</span>
         </span>
         <script type="text/javascript">
             var url_favorites="{% url 'fav' %}"; 
@@ -27,23 +28,23 @@
                 <a href="{% url 'post_detail' post.slug %}" class="text-decoration-none"><h2 class="card-title text-{{text_color_mode}}">{{ post.title }}</h2></a>
                     <p class="card-text text-muted h6">
                         {% if post.author.pen_name %}
-                        By {{ post.author.pen_name }} 
+                        {%translate 'By'%} {{ post.author.pen_name }} 
                         {% else %}
-                        By {{ post.author }} 
+                        {%translate 'By'%} {{ post.author }} 
                         {% endif %}
-                        on {{ post.created_on}} </p>
+                        {%translate 'on'%} {{ post.created_on}} </p>
                 <p class="card-text">{{post.content|slice:":200" | safe }}</p>
-                <a href="{% url 'post_detail' post.slug %}" class="btn btn-info">Read more...</a>
+                <a href="{% url 'post_detail' post.slug %}" class="btn btn-info">{%translate 'Read more...'%}</a>
                 {% if user.is_authenticated%}
                     {% if post in favorites %}
                     <label for="id-of-input" class="custom-checkbox btn btn-info fav delete_fav" id="{{post.id}}">
                     {% bs_icon 'star-fill' %}
-                        <span>Favorite</span>
+                        <span>{%translate 'Favorite'%}</span>
                     </label>
                     {% else %}
                     <label for="id-of-input" class="custom-checkbox btn btn-info fav add_fav" id="{{post.id}}">
                     {% bs_icon 'star' %}
-                        <span>Favorite</span>
+                        <span>{%translate 'Favorite'%}</span>
                     </label>
                     {% endif %}
                 {% endif %}
@@ -52,7 +53,7 @@
     {% endfor %}
     {% if not empty and search%}
         {% if posts_by_authors%}
-        <h3>The authors of the following posts match your search: </h3>
+        <h3>{%translate 'The authors of the following posts match your search: '%}</h3>
         {% endif %}
         {% for post in posts_by_authors %}
             <div class="card mb-4 bg-{{color_mode}}">
@@ -60,13 +61,13 @@
                     <a href="{% url 'post_detail' post.slug %}" class="text-decoration-none" ><h2 class="card-title text-primary">{{ post.title }}</h2></a>
                     <p class="card-text text-muted h6">
                         {% if post.author.pen_name %}
-                        By {{ post.author.pen_name }} 
+                        {%translate 'By'%} {{ post.author.pen_name }} 
                         {% else %}
-                        By {{ post.author }} 
+                        {%translate 'By'%} {{ post.author }} 
                         {% endif %}
-                        on {{ post.created_on}} </p>
+                        {%translate 'on'%} {{ post.created_on}} </p>
                     <p class="card-text">{{post.content|slice:":200" | safe }}</p>
-                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-info">See comments</a>
+                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-info">{%translate 'See comments'%}</a>
                 </div>
             </div>
         {% endfor %}

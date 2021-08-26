@@ -1,3 +1,4 @@
+{% load i18n %}
 {% block sidebar %}
 {% load static %}
 
@@ -8,13 +9,13 @@
 <script src="{% static 'js/chapterinfo.js' %}"></script>
 
 <!-- Sidebar Widgets Column -->
-<div class="col-md-4 mt-3 float-right ">
-<input class="form-control mb-4 me-2 very-{{color_mode}} text-{{text_color_mode}}" type="search" placeholder="Search posts" aria-label="Search" id="search">
+<div class="col-md-4 mt-3 float-right">
+<input class="form-control mb-4 me-2 very-{{color_mode}} text-{{text_color_mode}}" type="search" placeholder="{% translate 'Search posts'%}" aria-label="Search" id="search">
 <div class="card mb-4 very-{{color_mode}} text-{{text_color_mode}}" id="under-const">
-        <h5 class="card-header">Under construction</h5>
+        <h5 class="card-header">{%translate 'Under construction'%}</h5>
     <div class="card-body">
-        <p class="card-text"> This website is currently under construction, please disregard whatever unexpected things you may find.</p>
-        <a href="#" class="btn btn-danger" id="please-dont-click">DO NOT CLICK THIS</a>
+        <p class="card-text">{%translate "This website is currently under construction, please disregard whatever unexpected things you may find."%}</p>
+        <a href="#" class="btn btn-danger" id="please-dont-click">{%translate 'DO NOT CLICK THIS'%}</a>
     </div>
 </div>
 </div>

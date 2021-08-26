@@ -105,6 +105,11 @@
     margin-right: 5px;
 }
 
+.very-light
+{
+    background: white !important;
+}
+
 .very-dark
 {
     background : #222 !important;
@@ -130,4 +135,13 @@
 
 #search.very-dark{
     border : 1px solid rgb(87, 87, 87);
+}
+
+.sneaky-button
+{
+    border: none;
+    width: 100%;
+    text-align: left;
+    margin : 0;
+    padding: 0;
 }
