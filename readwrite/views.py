@@ -264,7 +264,7 @@ def delete_comment(request):
         response.status_code = 403
     return response
 
-def set_cookie(request):
+def set_color_mode(request):
     if request.method=='GET':
         response = redirect(request.META.get('HTTP_REFERER'))
         if request.GET['site_color_mode']:
@@ -275,6 +275,17 @@ def set_cookie(request):
                     this_user = User.objects.get(pk=request.user.pk)
                     this_user.color_mode=request.GET['site_color_mode']
                     this_user.save()
+        return response
+
+
+def set_blursing(request):
+    if request.method=='POST':
+        response = redirect(request.META.get('HTTP_REFERER'))
+        if request.POST['blursed']:
+            if request.POST['blursed'] in ('blessed', 'cursed'):
+                response.set_cookie('blursed', request.POST['blursed'], max_age = 5000000)
+            else:
+                response.set_cookie('blursed', 'mundane', max_age = 5000000)
         return response
 
 @require_AJAX

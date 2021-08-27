@@ -208,7 +208,7 @@ msgstr "ⳇ̴̘̃ᇞ̪̿̋⍟⚠ᩳᘒ͇͓͕ț̻̠͢⇦ᰗ̮̻̚᪋♞ ❾⿵�
 
 #: readwrite/templates/sidebar.html:17
 msgid "This website is currently under construction, please disregard whatever unexpected things you may find."
-msgstr "THEY WILL STARE INTO YOUR SOUL FOREVER. REPENT. OR DON'T. SOME PEOPLE LIKE IT."
+msgstr "THEY WILL STARE INTO YOUR SOUL FOREVER. REPENT."
 
 #: readwrite/templates/sidebar.html:18
 #: readwrite/templates/sidebar_nosearch.html:16
@@ -225,7 +225,7 @@ msgid "Password"
 msgstr "ܜ̛̊̿Ւ̲ͨͦẗ͓ͧ̕ῶ̡̅̕ᒙ̂͟͠ഡ͎ͩ͘ゆ̨͔̿ၲ"
 
 #: userauth/forms.py:22
-msgid "Password confirmation"
+msgid "Password xnfirmation"
 msgstr "ᑘ͚̄͡ᘸ̮ͫ̕ប̡̖ͮ༨᫤ឋ̢̲̎ⶓ̨̬͢ᙱ͆͂͢⬬છ̄́ͪ⿔˟ⱃ̿́̚ဍ̛͇̌⁎ឲ̞̽ͪձ̪ͥ͟ޣ̙̈ͫṟ͓ͫ͐ٱͮ̽͠"
 
 #: userauth/forms.py:24

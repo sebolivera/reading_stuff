@@ -2,10 +2,10 @@ $(document).ready(function()
 {
     $("#darkModeSwitch").change(function()
     {
-        location.href=set_cookie_path+"?site_color_mode=dark";
+        location.href=set_color_mode_path+"?site_color_mode=dark";
     });
     $("#lightModeSwitch").change(function()
     {
-        location.href=set_cookie_path+"?site_color_mode=light";
+        location.href=set_color_mode_path+"?site_color_mode=light";
     });
 });

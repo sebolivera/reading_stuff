@@ -1,0 +1,11 @@
+.blessed
+{
+    box-shadow: 0px 0px 21px -2px #FFE500;
+}
+
+.blessed-text
+{
+    text-shadow: #FFE500 1px 0px 10px;
+    color: #FFE500 1px 0px 10px;
+    font-family: "Old London";
+}

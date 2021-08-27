@@ -32,9 +32,9 @@ def login_view(request):
             messages.success(request, 'Successfully logged in as %s.' % user.username)
             response = redirect('/')
             if request.user.is_authenticated :
-                response.set_cookie('site_color_mode', request.user.color_mode, max_age = 5000000)
+                response.set_color_mode('site_color_mode', request.user.color_mode, max_age = 5000000)
             elif not request.COOKIES.get('site_color_mode'): #checks user cookie for dark mode
-                response.set_cookie('site_color_mode', 'light', max_age = 5000000)
+                response.set_color_mode('site_color_mode', 'light', max_age = 5000000)
             return response
         else:
             return redirect('login')

@@ -1,0 +1,13 @@
+.cursed
+{
+    box-shadow: 0px 0px 21px -2px #600202;
+
+}
+
+.cursed-text
+{
+    text-shadow: #600202 1px 0px 10px;
+    color : #600202 1px 0px 10px;
+    font-family: "Gypsy Curse";
+}
+

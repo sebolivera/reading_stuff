@@ -3,6 +3,7 @@
 {% load i18n %}
 {% with color_mode=request.COOKIES.site_color_mode|default:"light" %}
 {% with text_color_mode=request.COOKIES.site_text_color_mode|default:"dark" %}
+{% with blursed_state=request.COOKIES.blursed|default:"mundane" %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -109,6 +110,7 @@
                                 <input type="submit" value="Go">
                             </form>
                         </li> {% endcomment %}
+                        
                         <li class="nav-item dropdown">
                             <form class="language_form" action="{% url 'set_language' %}" method="post">{% csrf_token %}
                                 <input name="next" type="hidden" value="{{ redirect_to }}">
@@ -139,7 +141,7 @@
                         {% comment %} <li class="nav-item text-black">
                             <a class="nav-link text-black font-weight-bold" href="#">Contact</a>
                         </li> {% endcomment %}
-                        {% if user.is_authenticated%}
+                        {% if user.is_authenticated %}
                         <li class="nav-item text-red">
                             <a class="nav-link text-red font-weight-bold" href="{% url 'logout' %}">{% translate 'Logout' %}</a>
                         </li>
@@ -154,17 +156,28 @@
         </nav>
         {% block content %}
         {% endblock content %}
+        <div class="blursed">
+            <form class="blursed_form" action="{% url 'set_blursing' %}" method="post">{% csrf_token %}
+                <input name="next" type="hidden" value="{{ redirect_to }}">
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <button type="submit" name="blursed" value="cursed" class="btn btn-{% if blursed_state == 'cursed' %}muted" disabled{%else%}danger"{%endif%}>{% translate 'Cursed'%}</button>
+                    <button type="submit" name="blursed" value="mundane" class="btn btn-{% if blursed_state == 'mundane' %}muted" disabled{%else%}info"{%endif%}>{% translate 'Mundane' %}</button>
+                    <button type="submit" name="blursed" value="blessed" class="btn btn-{% if blursed_state == 'blessed' %}muted" disabled{%else%}warning"{%endif%}">{% translate 'Blessed'%}</button>
+                </div>
+            </form>
+        </div>
         <footer class="footer bg-grey">
             <p class="m-0 text-{{text_color_mode}} text-center ">{% translate 'Copyright'%} &copy; Me</p>
         </footer>
     </body>
 <script type="text/javascript">
-    var set_cookie_path = "{% url 'set_cookie' %}";
+    var set_color_mode_path = "{% url 'set_color_mode' %}";
 </script>
 <script type="text/javascript" src="{% static 'js/misc.js' %}"></script>
 <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
 <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 <script type="text/javascript" src="{% static 'ckeditor/ckeditor/adapters/jquery.js'%}"></script>
 </html>
+{% endwith %}
 {% endwith %}
 {% endwith %}

@@ -14,15 +14,15 @@
       {% if user.is_authenticated%}
       <div id="comment_submit_button" name="comm_anchor" class="mt-3 mb-4">
             {% if post in favorites %}
-            <label for="id-of-input" class="custom-checkbox btn btn-primary fav delete_fav" id="{{post.id}}">
-            {% bs_icon 'star-fill' %}
-                <span>{%translate 'Favorite'%}</span>
-            </label>
+                <label for="id-of-input" class="custom-checkbox btn btn-primary fav delete_fav" id="{{post.id}}">
+                {% bs_icon 'star-fill' %}
+                    <span>{%translate 'Favorite'%}</span>
+                </label>
             {% else %}
-            <label for="id-of-input" class="custom-checkbox btn btn-primary fav add_fav" id="{{post.id}}">
-            {% bs_icon 'star' %}
-                <span>{%translate 'Favorite'%}</span>
-            </label>
+                <label for="id-of-input" class="custom-checkbox btn btn-primary fav add_fav" id="{{post.id}}">
+                {% bs_icon 'star' %}
+                    <span>{%translate 'Favorite'%}</span>
+                </label>
             {% endif %}
             </div>
         {% endif %}

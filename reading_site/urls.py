@@ -10,7 +10,7 @@ urlpatterns = [
     path('', include('userauth.urls')),
     path('', include('readwrite.urls')), #last bc posts can have any url atm 
     path('ckeditor/', include('ckeditor_uploader.urls')),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 # urlpatterns += i18n_patterns(
 #     path('', include('userauth.urls')),
