@@ -1,13 +1,43 @@
-.cursed
+.card, input, nav
 {
-    box-shadow: 0px 0px 21px -2px #600202;
-
+    box-shadow: 0px 0px 21px -2px #600202 !important;
+    transition : all .5s;
 }
 
-.cursed-text
+.card:hover, input:hover, nav:hover
 {
-    text-shadow: #600202 1px 0px 10px;
-    color : #600202 1px 0px 10px;
-    font-family: "Gypsy Curse";
+    box-shadow: 0px 0px 21px -2px #ff0000 !important;
 }
 
+*
+{
+    text-shadow: #600202 1px 0px 10px !important;
+    color : #600202 1px 0px 10px !important;
+    font-family: "Gypsy Curse" !important;
+    transition : all .5s;
+}
+
+
+*:hover
+{
+    text-shadow: #ff0000 1px 0px 10px !important;
+    color : #ff0000 1px 0px 10px !important;
+    transition : all .5s;
+}
+
+.form-label-pp
+{
+  max-width: 3rem !important;
+}
+
+
+label.very-light
+{
+    background: linear-gradient(0deg, rgb(255, 255, 255) 50%, rgba(255,255,255,0) 53%) !important;    border-radius: 10px;
+}
+
+label.very-dark
+{
+    background: linear-gradient(0deg, rgb(0, 0, 0) 50%, rgba(255,255,255,0) 53%) !important;
+    border-radius: 10px;
+}

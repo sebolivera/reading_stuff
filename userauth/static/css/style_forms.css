@@ -47,25 +47,12 @@
    .form-outline .form-control~.form-label:not(.form-label-pp) {
     position:absolute;
     top:-1rem;
-    /* max-width:90%;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis; */
     left:.75rem;
-    /* padding-top:.37rem;
-    pointer-events:none;
-    -webkit-transform-origin:0 0;
-    transform-origin:0 0;
-    -webkit-transition:all .2s ease-out;
-    transition:all .2s ease-out;
-    color:rgba(0,0,0,.6);
-    margin-bottom:0;
-    animation : 0.5s; */
    }
    .form-label-pp {
     position:absolute;
     top:0;
-    max-width:90%;
+    max-width: 5rem;
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
@@ -271,6 +258,18 @@
 .form-label-pp
 {
   color: #2c2f32 !important;
+}
+
+.form-outline:hover > .form-label-pp, 
+.form-outline > .form-label-pp, 
+.form-outline, .form-label-pp, .form-label-pp:hover
+{
+  transition : all .5s;
+}
+
+.form-outline:hover > .form-label-pp
+{
+  max-width: 100%;
 }
 .text-soft-light input
 {

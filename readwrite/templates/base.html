@@ -13,7 +13,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
-{% comment %} <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> {% endcomment %}
         {% compress css %}
         <link type="text/x-scss" href="{% static 'bootstrap/bootstrap.scss' %}" rel="stylesheet" media="screen">
         {% endcompress %}
@@ -21,6 +20,11 @@
         <link rel="stylesheet" href="{% static 'css/style_base.css' %}"/>
         <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet" />
         <link rel="icon" href="{% static 'images/favicon.ico' %}"/>
+        {% if blursed_state == 'cursed' %}
+        <link rel="stylesheet" href="{% static 'css/style_cursed.css' %}"/>
+        {% elif blursed_state == 'blessed' %}
+        <link rel="stylesheet" href="{% static 'css/style_blessed.css' %}"/>
+        {% endif %}
         {% block additional_head %}
         {% endblock %}
     </head>
@@ -93,24 +97,7 @@
                         <li class="nav-item text-black">
                             <a class="nav-link text-black font-weight-bold" href="{% url 'publications' %}">{%translate 'My publications' %}</a>
                         </li>
-                        {% endif %}
-                        {% comment %} <li class="nav-item">
-                            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-                                <input name="next" type="hidden" value="{{ redirect_to }}">
-                                <select name="language">
-                                    {% get_current_language as LANGUAGE_CODE %}
-                                    {% get_available_languages as LANGUAGES %}
-                                    {% get_language_info_list for LANGUAGES as languages %}
-                                    {% for language in languages %}
-                                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                                            {{ language.name_local }} ({{ language.code }})
-                                        </option>
-                                    {% endfor %}
-                                </select>
-                                <input type="submit" value="Go">
-                            </form>
-                        </li> {% endcomment %}
-                        
+                        {% endif %}                        
                         <li class="nav-item dropdown">
                             <form class="language_form" action="{% url 'set_language' %}" method="post">{% csrf_token %}
                                 <input name="next" type="hidden" value="{{ redirect_to }}">
@@ -131,9 +118,6 @@
                                             {{ language.name }} ({{ language.code }})
                                         </li>{% endif %}
                                     {% endfor %}
-                                    {% comment %} <li><a class="dropdown-item text-{{text_color_mode}}" href="#en"><span class="flag-icon flag-icon-en">🇬🇧 </span> English</a></li>
-                                    <li><a class="dropdown-item text-{{text_color_mode}}" href="#fr"><span class="flag-icon flag-icon-fr">🤮</span> Fr*nch</a></li>
-                                    <li><a class="dropdown-item text-{{text_color_mode}}" href="#zz"><span class="flag-icon flag-icon-idk">🏁</span> Gibberish</a></li> {% endcomment %}
                                 </ul>
                             </form>
                         </li>
@@ -153,19 +137,22 @@
                     </ul>
                 </div>
             </div>
+            <a id="huh" class="text-secondary text-small" data-bs-toggle="collapse" href="#blursed" aria-expanded="false" aria-controls="collapseExample">?</a>
         </nav>
+        <div class="position-absolute mt-4 me-4 end-0">
+            <div id="blursed" class="collapse">
+                <form class="blursed_form" action="{% url 'set_blursing' %}" method="post">{% csrf_token %}
+                    <input name="next" type="hidden" value="{{ redirect_to }}">
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <button type="submit" name="blursed" value="cursed" class="btn btn-{% if blursed_state == 'cursed' %}secondary border-danger" disabled{%else%}danger"{%endif%}>{% translate 'Cursed'%}</button>
+                        <button type="submit" name="blursed" value="mundane" class="btn btn-{% if blursed_state == 'mundane' %}secondary border-info" disabled{%else%}info"{%endif%}>{% translate 'Mundane' %}</button>
+                        <button type="submit" name="blursed" value="blessed" class="btn btn-{% if blursed_state == 'blessed' %}secondary border-warning" disabled{%else%}warning"{%endif%}">{% translate 'Blessed'%}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
         {% block content %}
         {% endblock content %}
-        <div class="blursed">
-            <form class="blursed_form" action="{% url 'set_blursing' %}" method="post">{% csrf_token %}
-                <input name="next" type="hidden" value="{{ redirect_to }}">
-                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                    <button type="submit" name="blursed" value="cursed" class="btn btn-{% if blursed_state == 'cursed' %}muted" disabled{%else%}danger"{%endif%}>{% translate 'Cursed'%}</button>
-                    <button type="submit" name="blursed" value="mundane" class="btn btn-{% if blursed_state == 'mundane' %}muted" disabled{%else%}info"{%endif%}>{% translate 'Mundane' %}</button>
-                    <button type="submit" name="blursed" value="blessed" class="btn btn-{% if blursed_state == 'blessed' %}muted" disabled{%else%}warning"{%endif%}">{% translate 'Blessed'%}</button>
-                </div>
-            </form>
-        </div>
         <footer class="footer bg-grey">
             <p class="m-0 text-{{text_color_mode}} text-center ">{% translate 'Copyright'%} &copy; Me</p>
         </footer>

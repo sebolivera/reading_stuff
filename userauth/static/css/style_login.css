@@ -108,12 +108,12 @@
     }
   }
 
-*
+.container *
 {
   overflow-x: hidden !important;
 }
 
-form *
+.loginform *
 {
   overflow-x: initial !important;
 }

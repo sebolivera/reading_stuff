@@ -15,13 +15,13 @@ $(document).ready(function(){
         });
         $(".unmirror").first().removeClass("unmirror");
         $("*").removeClass("text-light").removeClass("text-dark");
-        $("#ohno, .nothere").remove();
+        $("#ohno, .nothere, #huh").remove();
         $("nav div *:not(.navbar-brand)").css("visibility", "hidden");
-        $("nav").removeClass("bg-dark").removeClass("bg-light").removeClass("shadow").css("box-shadow", "none !important").css("background-color", "transparent !important");
+        $("nav").removeClass("bg-primary").removeClass("shadow").css("box-shadow", "none !important").css("background-color", "transparent !important");
         $("footer").remove();
         $("body").removeClass("bg-dark").removeClass("bg-light").css("background-color", "rgba(38, 0, 0, 0.97)");
         $("html").css("background", "url("+m_image+") no-repeat").css("background-position", "center").css("background-size", "cover");
-        $("html, body").css("height", "100%");
+        $("html, body").css("height", "auto");
         $('label').removeClass("bg-light").removeClass("bg-dark").css("background-color", "rgba(38, 0, 0, 0.97)");
         $("*").removeClass("text-soft-dark").removeClass("text-soft-light").removeClass("very-dark").removeClass("very-light").removeClass("card");
         $("h1").html("WHAT HAVE YOU DONE?").addClass("unmirror");

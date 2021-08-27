@@ -31,7 +31,7 @@
         <div id="source" class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
           <div class="card p-5 very-{{color_mode}}">
 
-            <form method="post" action="{% url 'login' %}">
+            <form class="loginform" method="post" action="{% url 'login' %}">
                   {% csrf_token %}
 
               <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">{%translate 'Log in'%}</h3>

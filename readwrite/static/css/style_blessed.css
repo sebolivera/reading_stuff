@@ -1,11 +1,41 @@
-.blessed
+.card, input, nav
 {
-    box-shadow: 0px 0px 21px -2px #FFE500;
+    box-shadow: 0px 0px 21px -2px #bba900 !important;
+    transition : all .5s;
 }
 
-.blessed-text
+.card:hover, input:hover, nav:hover
 {
-    text-shadow: #FFE500 1px 0px 10px;
-    color: #FFE500 1px 0px 10px;
-    font-family: "Old London";
+    box-shadow: 0px 0px 21px -2px #ffee54 !important;
+}
+
+*
+{
+    text-shadow: #bba900 1px 0px 10px !important;
+    color: #bba900 1px 0px 10px !important;
+    font-family: "Old London" !important;
+    transition : all .5s;
+}
+
+*:hover
+{
+    text-shadow: #ffee54 1px 0px 10px !important;
+    color: #ffee54 1px 0px 10px !important;
+}
+
+
+.form-label-pp
+{
+  max-width: 5rem !important;
+}
+
+label.very-light
+{
+    background: linear-gradient(0deg, rgb(255, 255, 255) 50%, rgba(255,255,255,0) 53%) !important;    border-radius: 10px;
+}
+
+label.very-dark
+{
+    background: linear-gradient(0deg, rgb(0, 0, 0) 50%, rgba(255,255,255,0) 53%) !important;
+    border-radius: 10px;
 }
