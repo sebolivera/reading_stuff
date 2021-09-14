@@ -157,3 +157,15 @@
     font-family: "Gypsy Curse";
     src: url("./fonts/Gypsy Curse.ttf");
 }
+
+.custom-thumbnail
+{
+    width : 2.5rem;
+    height : 2.5rem;
+    border-radius : 50%;
+    padding: 0.05rem;
+}
+
+#userMenuToggle {
+    padding: 0;
+}

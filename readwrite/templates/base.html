@@ -85,23 +85,10 @@
                 </button>
                 <div class="collapse navbar-collapse flex-grow-0" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto navbar-right">
-                        {% if user.is_authenticated%}
-                        <li class="nav-item text-black">
-                            <a class="nav-link text-black font-weight-bold" href="{% url 'create_post' %}">{%translate 'Post something' %}</a>
-                        </li>
-                        {% endif %}
-                        {% if user.is_authenticated%}
-                        <li class="nav-item text-black">
-                            <a class="nav-link text-black font-weight-bold" href="{% url 'favorited' %}">{%translate 'Favorited'%}</a>
-                        </li>
-                        <li class="nav-item text-black">
-                            <a class="nav-link text-black font-weight-bold" href="{% url 'publications' %}">{%translate 'My publications' %}</a>
-                        </li>
-                        {% endif %}                        
                         <li class="nav-item dropdown">
                             <form class="language_form" action="{% url 'set_language' %}" method="post">{% csrf_token %}
                                 <input name="next" type="hidden" value="{{ redirect_to }}">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     {% translate 'Language'%}
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-{{color_mode}} text-{{text_color_mode}}" >
@@ -121,14 +108,37 @@
                                 </ul>
                             </form>
                         </li>
+                        {% if user.is_authenticated%}
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="{% url 'create_post' %}">{%translate 'Post something' %}</a>
+                        </li>
+                        {% endif %}
+                        {% if user.is_authenticated%}
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="{% url 'favorited' %}">{%translate 'Favorited'%}</a>
+                        </li>
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="{% url 'publications' %}">{%translate 'My publications' %}</a>
+                        </li>
+                        {% endif %}
                         {% comment %} TODO at some point lmao {% endcomment %}
                         {% comment %} <li class="nav-item text-black">
                             <a class="nav-link text-black font-weight-bold" href="#">Contact</a>
                         </li> {% endcomment %}
                         {% if user.is_authenticated %}
-                        <li class="nav-item text-red">
-                            <a class="nav-link text-red font-weight-bold" href="{% url 'logout' %}">{% translate 'Logout' %}</a>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userMenuToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img class="img-thumbnail custom-thumbnail" src="{% if user.profile_picture %}{{user.profile_picture}}{% else %}{% static 'images/ubereatsetc.png' %}{% endif %}"/>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-{{color_mode}} text-{{text_color_mode}}">
+                                <li class="dropdown-item text-{{text_color_mode}}">
+                                    <a class="nav-link text-red font-weight-bold" href="{% url 'logout' %}">{% translate 'Logout' %}</a>
+                                </li>
+                            </ul>
                         </li>
+
                         {% else %}
                         <li class="nav-item text-red">
                             <a class="nav-link text-red font-weight-bold" href="{% url 'login' %}">{% translate 'Login' %}</a>
