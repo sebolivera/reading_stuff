@@ -77,7 +77,7 @@
                         <div class="ms-auto me-2 nav-item text-{{text_color_mode}}">
                             <div class="form-check form-switch text-{{text_color_mode}}">
                                 <input class="form-check-input align-middle" type="checkbox" id="{{text_color_mode}}ModeSwitch" {% if request.COOKIES.site_color_mode and request.COOKIES.site_color_mode == "dark" %}checked{% endif %}>
-                                <label class="form-check-label align-middle" for="{{text_color_mode}}ModeSwitch">{% translate 'Switch to'%} {%translate text_color_mode|title%} {%translate 'Mode'%}</label>
+                                <label class="form-check-label align-middle" for="{{text_color_mode}}ModeSwitch">{% translate 'Switch to'%} {%translate text_color_mode|title%} {%translate 'Mode'|title%}</label>
                             </div>
                         </div>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -153,7 +153,7 @@
             <div id="blursed" class="collapse">
                 <form class="blursed_form" action="{% url 'set_blursing' %}" method="post">{% csrf_token %}
                     <input name="next" type="hidden" value="{{ redirect_to }}">
-                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <div class="btn-group over-rest" role="group" aria-label="Basic mixed styles example">
                         <button type="submit" name="blursed" value="cursed" class="btn btn-{% if blursed_state == 'cursed' %}secondary border-danger" disabled{%else%}danger"{%endif%}>{% translate 'Cursed'%}</button>
                         <button type="submit" name="blursed" value="mundane" class="btn btn-{% if blursed_state == 'mundane' %}secondary border-info" disabled{%else%}info"{%endif%}>{% translate 'Mundane' %}</button>
                         <button type="submit" name="blursed" value="blessed" class="btn btn-{% if blursed_state == 'blessed' %}secondary border-warning" disabled{%else%}warning"{%endif%}">{% translate 'Blessed'%}</button>

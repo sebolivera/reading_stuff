@@ -110,7 +110,7 @@
 
 .container *
 {
-  overflow-x: hidden !important;
+  /* overflow-x: hidden !important; */
 }
 
 .loginform *

@@ -28,7 +28,7 @@
     <div class="row">
       <div class="col-sm-6 text-black">
 
-        <div id="source" class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+        <div id="source" class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-xl-5 pt-xl-5 pt-xl-0 mt-xl-n5">
           <div class="card p-5 very-{{color_mode}}">
 
             <form class="loginform" method="post" action="{% url 'login' %}">
@@ -55,7 +55,7 @@
               </div>
               <p>{%translate "Don't have an account?"%} <a href="{% url 'signup' %}" class="link-info">{%translate 'Register here'%}</a></p>
 
-              <a class="nothere text-{{text_color_mode}}">{%translate 'Not here, though.'%}</a>
+              <a class="nothere text-{{text_color_mode}}">{%translate 'No need to click here, this isn't a link.'%}</a>
             </form>
 
           </div>

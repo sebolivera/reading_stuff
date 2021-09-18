@@ -169,3 +169,8 @@
 #userMenuToggle {
     padding: 0;
 }
+
+.over-rest /* slightly raises the z-index of the secret theme switcher*/
+{
+    z-index:1;
+}

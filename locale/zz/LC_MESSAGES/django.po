@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-26 22:42+0000\n"
+"POT-Creation-Date: 2021-09-18 11:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgstr "↠㋑ㄭ̳͑͜ᝊ̨̤̏⩚⬓"
 
 #: readwrite/templates/ajax/index_search_partial.html:6
 msgid "The following posts match your search:"
-msgstr "⯵ዮ̵̪͛੎∄ට̛̗̈ྭᩈ͒͡͞⎫ᬓ̺ͪ͘⺞㊩ۃ̥ͨ̃↢ᕉ̴̎࢞͟⫈⽼ᶋ̷̙͞⓬∳ᅉ̈́̾͡⺡ᬄᡘ͕̉͘⼧᜔⃐ೠ̴̸̃᱿ሿ͚̜͛న̧͔̕ᣟ̞̍͠ᳲ̴͎̤é́̚͞ཆ̜̯̇஗ћ͖́̕"
+msgstr "⯵ዮ̵̪͛੎∄ට̛̗̈ྭᩈ͒͡͞⎫ᬓ̺ͪ͘⺞㊩ۃ̥ͨ̃↢ᕉ̴̎࢞͟⫈⽼ᶋ̷̙͞⓬∳ᅉ̈́̾͡⺡ᬄᡘ͕̉͘⼧᜔⃐ೠ̴̸̃᱿ሿ͚̜͛న̧͔̕ᣟ̞̍͠ᳲ̴͎̤é́̚͞ཆ̜̯̇஗ћ͖́̕"
 
 #: readwrite/templates/ajax/index_search_partial.html:10
 msgid "No posts"
@@ -69,55 +69,67 @@ msgstr "ᙞ͕̎͟⍋ృ7௵╕ᒛ̞̩͡⊊⑛Ⴈ͈͉ͯ4ߟ̴̶̜㉢ԇ̰ͤ͝〄〧
 msgid "See comments"
 msgstr "Ⲛ͕̻͞⺟↜͒૏ൻ̷̭͛≧ṍ̸̼͑⟼ݯ̦̜ͧᢁͦ͗͟ḣ͉͍̎"
 
-#: readwrite/templates/base.html:9
+#: readwrite/templates/base.html:10
 msgid "My junkyard"
 msgstr "☗⴩ᾩ̶ͩ͟⅄⩯ࡩ̶̢̊ধ͔͜͢⯗⻁র̳ͨͨ⩐"
 
-#: readwrite/templates/base.html:48
+#: readwrite/templates/base.html:52
 msgid "pls take me home I'm scared"
 msgstr "ݓ̶̗ͥዎͬ̄͊⹷ࠃ̸͕͒឴⡨⹓⾷C͇ͭ͘᥃ἐ̴̰̘঴ᭉ̛̮̑ᔘ̩́ଃើཽᴟ̵̻ͭㄸ̲ͤ͘イ͖͞͝ߞ̵̩̄̾ʥ̼ͮ͘ᗤ̧̫̏з͎ͥͪ᠔"
 
-#: readwrite/templates/base.html:55
+#: readwrite/templates/base.html:59
 msgid "Notification"
 msgstr "✁Უُ͍̼͠ㄧ̪̠̆ਖ̷̙̄⢵ሊ̬̂͘ດ̢̬̍⻴⃳ሸ̱͔ͥ⽢"
 
-#: readwrite/templates/base.html:72
+#: readwrite/templates/base.html:76
 msgid "Home"
 msgstr "⼜Ԗͦ͘㆞ᷥ"
 
-#: readwrite/templates/base.html:76
+#: readwrite/templates/base.html:80
 msgid "Switch to"
 msgstr "ٴ̵̨̅ࡰᛯੰㅎ̗̊͜ܣ̸ͩ͠σ̴̝͟➅Ἶ̭̃̓"
 
-#: readwrite/templates/base.html:76
+#: readwrite/templates/base.html:80
 msgid "Mode"
 msgstr "༴ဟ̵͎̋ᇘ̧̟ͮᩈ̠͊͟"
 
-#: readwrite/templates/base.html:86
-msgid "Post something"
-msgstr "ԙ̧̼̌ᄌ̠͒͟ԣ̵ͤ̉ᨻָ̻̌͝᎝ǧ͎́ͩ⥪⎝इ͕̉͟⥑ᖛ̦ͪ̇⚫"
-
-#: readwrite/templates/base.html:91
-msgid "Favorited"
-msgstr "ᜇ̥͐⮪ⶦ̡̝͟ᤝ̉͜͡Хͭ̇̕ⳃ̬͍̐⧣⏜຺"
-
-#: readwrite/templates/base.html:94
-msgid "My publications"
-msgstr "〛᫲ᒧ͕́́ਿ⬥Ự̹̹̀ᩒ̝̺᩻͜ы̶̲͗͐ਲ̳̠ͧ⎶▞ᣟ̮͟ɇ̷̃̌"
-
-#: readwrite/templates/base.html:118
+#: readwrite/templates/base.html:92
 msgid "Language"
 msgstr "൨ℚ͈ͭ́ᓾ͎̽͞⍆≟̺ɒ͈͑̐⛵"
 
-#: readwrite/templates/base.html:149
+#: readwrite/templates/base.html:113
+msgid "Post something"
+msgstr "ԙ̧̼̌ᄌ̠͒͟ԣ̵ͤ̉ᨻָ̻̌͝᎝ǧ͎́ͩ⥪⎝इ͕̉͟⥑ᖛ̦ͪ̇⚫"
+
+#: readwrite/templates/base.html:118
+msgid "Favorited"
+msgstr "ᜇ̥͐⮪ⶦ̡̝͟ᤝ̉͜͡Хͭ̇̕ⳃ̬͍̐⧣⏜຺"
+
+#: readwrite/templates/base.html:121
+msgid "My publications"
+msgstr "〛᫲ᒧ͕́́ਿ⬥Ự̹̹̀ᩒ̝̺᩻͜ы̶̲͗͐ਲ̳̠ͧ⎶▞ᣟ̮͟ɇ̷̃̌"
+
+#: readwrite/templates/base.html:139
 msgid "Logout"
 msgstr "⥼ᴠ͂ͥ͠ᡲ̟̜͟᤼⧏ᚼ̠̀ͤ"
 
-#: readwrite/templates/base.html:153 userauth/templates/login.html:54
+#: readwrite/templates/base.html:146 userauth/templates/login.html:54
 msgid "Login"
 msgstr "મ̶̟̖ᒀ̽ͯ̀Ḥ̩͙͝⣗⠹"
 
-#: readwrite/templates/base.html:163
+#: readwrite/templates/base.html:159
+msgid "Cursed"
+msgstr ""
+
+#: readwrite/templates/base.html:160
+msgid "Mundane"
+msgstr ""
+
+#: readwrite/templates/base.html:161
+msgid "Blessed"
+msgstr ""
+
+#: readwrite/templates/base.html:169
 msgid "Copyright"
 msgstr "ף̡̳͂⭰⽵ट̞̥̞ͣཷࡴᲗ̧̇ᨺ͇̍͘"
 
@@ -207,8 +219,12 @@ msgid "Under construction"
 msgstr "ⳇ̴̘̃ᇞ̪̿̋⍟⚠ᩳᘒ͇͓͕ț̻̠͢⇦ᰗ̮̻̚᪋♞ ❾⿵⅏ᙯ̧͉ͭᾋ͒ͨ͋⍪"
 
 #: readwrite/templates/sidebar.html:17
-msgid "This website is currently under construction, please disregard whatever unexpected things you may find."
-msgstr "THEY WILL STARE INTO YOUR SOUL FOREVER. REPENT."
+msgid ""
+"This website is currently under construction, please disregard whatever "
+"unexpected things you may find."
+msgstr ""
+"Management would like to inform you that your soul isn't OSHA approved yet. "
+"Please stop existing while we fix the problem."
 
 #: readwrite/templates/sidebar.html:18
 #: readwrite/templates/sidebar_nosearch.html:16
@@ -225,8 +241,10 @@ msgid "Password"
 msgstr "ܜ̛̊̿Ւ̲ͨͦẗ͓ͧ̕ῶ̡̅̕ᒙ̂͟͠ഡ͎ͩ͘ゆ̨͔̿ၲ"
 
 #: userauth/forms.py:22
-msgid "Password xnfirmation"
-msgstr "ᑘ͚̄͡ᘸ̮ͫ̕ប̡̖ͮ༨᫤ឋ̢̲̎ⶓ̨̬͢ᙱ͆͂͢⬬છ̄́ͪ⿔˟ⱃ̿́̚ဍ̛͇̌⁎ឲ̞̽ͪձ̪ͥ͟ޣ̙̈ͫṟ͓ͫ͐ٱͮ̽͠"
+#, fuzzy
+#| msgid "Password Confirmation"
+msgid "Password confirmation"
+msgstr "ֶࣴ⮐स̶ͩ̍➋ᴀ̀͠ͅԥ̖̇͠Ṵ̟̈́̄⏖ႝ⻲֡⦛჎ᄲ͑̋͝ᙕ̼͒͂⦅ ᗿ̲̪̆គ̺͍ͮቾ̼̇̀"
 
 #: userauth/forms.py:24
 msgid "Enter the same password as above, for verification."
@@ -253,7 +271,9 @@ msgid "Register here"
 msgstr "ࣺभ͓̌͟➁⽤ᠸ̷̳͗㉍͕స̙̈͠ᕥ̦̿͢ৱ͊͜͡ⴸ̙̀ͤㆴ̴̼͛ཹ"
 
 #: userauth/templates/login.html:58
-msgid "Not here, though."
+#, fuzzy
+#| msgid "No need to click here, this isn't a link."
+msgid "No need to click here, this isn"
 msgstr "ӯ̛̝̂⻄୯ᙥ̡͓̚⽃چ̷͚͂࿨ୟ͓͑̀⟜ᰃ̨ͣͬ⚆⁂⋫㋐ര̸̋̿ႂㇺ̢̆́"
 
 #: userauth/templates/login.html:70
@@ -262,7 +282,7 @@ msgstr "⟁⧯შ̳̾̎ʍ͖̋ͤ♀⊑≤͙Კ̶̡̙⼌ӿ͎͒͜⬖∴⫒̷ᛥ̲
 
 #: userauth/templates/signup.html:18
 msgid "You shouldn't be able to access this page. Please leave."
-msgstr "ᛯᒵ̩̐͠⾄ᕟ̛͚̚ᴁ̛͋̚໳ඈ̄́͛£ᇮ̲̪̀⭋ᐅ̝͖̃ᱍ̨̺̇࣡ႂⷔ̱̾͡᧔╕Ⱔ͇ͧ̕ે〾ઇ̏ͯ͢Ụ̙̪̎Ӳ̮ͩ͟຾⊦ᴱ͎̉͟➆ƛ̡̫͗Ø̳͈ͤ㇁ȡ̜͌́⛷០ብ̗̙ͯᐟ̵̥̠㈷	⟍♨͎┴ᤁ̡͚̳ⓛҙ̡͚ͪ↸ঢ̴়͙̞િᡢ̢͉̯᜶⡘⹜ᥫ̥͑͜Ⓓᗜ̡̢̈Ł̶̿̌Ⓟ"
+msgstr "ᛯᒵ̩̐͠⾄ᕟ̛͚̚ᴁ̛͋̚໳ඈ̄́͛£ᇮ̲̪̀⭋ᐅ̝͖̃ᱍ̨̺̇࣡ႂⷔ̱̾͡᧔╕Ⱔ͇ͧ̕ે〾ઇ̏ͯ͢Ụ̙̪̎Ӳ̮ͩ͟຾⊦ᴱ͎̉͟➆ƛ̡̫͗Ø̳͈ͤ㇁ȡ̜͌́⛷០ብ̗̙ͯᐟ̵̥̠㈷\t⟍♨͎┴ᤁ̡͚̳ⓛҙ̡͚ͪ↸ঢ̴়͙̞િᡢ̢͉̯᜶⡘⹜ᥫ̥͑͜Ⓓᗜ̡̢̈Ł̶̿̌Ⓟ"
 
 #: userauth/templates/signup.html:20
 msgid "Please login to see this page."
@@ -287,3 +307,6 @@ msgstr "ਖ̷̴਼̭⭟Ş̢͎̮⇊ᥫ̱̦͜"
 #: userauth/templates/signup.html:86
 msgid "Password Confirmation"
 msgstr "ֶࣴ⮐स̶ͩ̍➋ᴀ̀͠ͅԥ̖̇͠Ṵ̟̈́̄⏖ႝ⻲֡⦛჎ᄲ͑̋͝ᙕ̼͒͂⦅ ᗿ̲̪̆គ̺͍ͮቾ̼̇̀"
+
+#~ msgid "Password xnfirmation"
+#~ msgstr "ᑘ͚̄͡ᘸ̮ͫ̕ប̡̖ͮ༨᫤ឋ̢̲̎ⶓ̨̬͢ᙱ͆͂͢⬬છ̄́ͪ⿔˟ⱃ̿́̚ဍ̛͇̌⁎ឲ̞̽ͪձ̪ͥ͟ޣ̙̈ͫṟ͓ͫ͐ٱͮ̽͠"
