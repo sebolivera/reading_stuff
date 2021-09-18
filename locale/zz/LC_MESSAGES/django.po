@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-18 11:01+0000\n"
+"POT-Creation-Date: 2021-09-18 11:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,15 +119,15 @@ msgstr "મ̶̟̖ᒀ̽ͯ̀Ḥ̩͙͝⣗⠹"
 
 #: readwrite/templates/base.html:159
 msgid "Cursed"
-msgstr ""
+msgstr "???"
 
 #: readwrite/templates/base.html:160
 msgid "Mundane"
-msgstr ""
+msgstr "🤔"
 
 #: readwrite/templates/base.html:161
 msgid "Blessed"
-msgstr ""
+msgstr "???"
 
 #: readwrite/templates/base.html:169
 msgid "Copyright"
@@ -273,7 +273,7 @@ msgstr "ࣺभ͓̌͟➁⽤ᠸ̷̳͗㉍͕స̙̈͠ᕥ̦̿͢ৱ͊͜͡ⴸ̙̀ͤㆴ�
 #: userauth/templates/login.html:58
 #, fuzzy
 #| msgid "No need to click here, this isn't a link."
-msgid "No need to click here, this isn"
+msgid "No need to click here, this isn't a link."
 msgstr "ӯ̛̝̂⻄୯ᙥ̡͓̚⽃چ̷͚͂࿨ୟ͓͑̀⟜ᰃ̨ͣͬ⚆⁂⋫㋐ര̸̋̿ႂㇺ̢̆́"
 
 #: userauth/templates/login.html:70
