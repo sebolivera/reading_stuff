@@ -81,13 +81,19 @@ WSGI_APPLICATION = 'reading_site.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = { # for prod
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'bookdb',
+#         'USER' :'postgres',
+#         'PASSWORD' : '',
+#         'HOST' : 'localhost'
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'bookdb',
-        'USER' :'postgres',
-        'PASSWORD' : '',
-        'HOST' : 'localhost'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
     }
 }
 
