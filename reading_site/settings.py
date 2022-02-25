@@ -95,7 +95,7 @@ WSGI_APPLICATION = 'reading_site.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'sqlitedb.db',
+        'NAME': 'db.sqlite3',
     }
 }
 
