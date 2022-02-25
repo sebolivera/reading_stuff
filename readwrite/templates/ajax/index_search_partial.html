@@ -8,7 +8,8 @@
     
     {% if not post_list %}
         <h3>{%translate 'No posts'%}</h3>
-        <a href="{% url 'create_post' %}"><button type="button" class="btn btn-primary">{%translate 'Post something?'%}</button></a>
+        {% if user.is_authenticated%}
+        <a href="{% url 'create_post' %}"><button type="button" class="btn btn-primary">{%translate 'Post something?'%}</button></a>{% endif %}
     {% endif %}
     {% if user.is_authenticated%}
         <span id="star-fill-span" style="display:none;">
