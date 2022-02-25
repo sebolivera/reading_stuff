@@ -54,50 +54,52 @@
             </script>
             {% endif %}
         </div>
-        {% block sidebar %} {% include 'sidebar_nosearch.html' %} {% endblock
-        sidebar %}
+        {% block sidebar %} {% include 'sidebar_nosearch.html' %} {% endblock sidebar %}
     </div>
 
     <div class="row mt-3">
         <div
             class="mb-4 mt-3 left top text-{{text_color_mode}} bg-{{color_mode}}"
         >
-            {% if user.is_authenticated and user_inactive_comments and not
-            moderation_comments %}
-            <h4>
-                {%translate 'The following
-                comment'%}{{user_inactive_comments|pluralize}}
-                {{user_inactive_comments|pluralize:"is,are"}} {%translate
-                'awaiting a review:'%}
-            </h4>
-            <div class="container bg-teal">
-                {% for comment in user_inactive_comments %}
-                <div
-                    class="row card mt-2 bg-{{color_mode}} text-{{text_color_mode}}"
-                >
-                    <div class="comments" style="padding: 10px">
-                        <p class="font-weight-normal text-primary">
-                            {{ comment.user }}
-                            <span class="text-dark">{%translate 'on'%}</span>
-                            <span class="font-weight-light fs-6 text-muted">
-                                {{ comment.created_on }}
-                            </span>
-                        </p>
-                        <p class="font-weight-normal text-info">
-                            {{ comment.body | safe }}
-                        </p>
+            {% if user.is_authenticated and user_inactive_comments %}
+                {%if not moderation_comments%}{% comment %} can't seem to use it in the above
+            if ...? {% endcomment %}
+                    <h4>
+                        {%translate 'The following
+                        comment'%}{{user_inactive_comments|pluralize}}
+                        {{user_inactive_comments|pluralize:"is,are"}} {%translate
+                        'awaiting a review:'%}
+                    </h4>
+                    <div class="container bg-teal">
+                        {% for comment in user_inactive_comments %}
+                        <div
+                            class="row card mt-2 bg-{{color_mode}} text-{{text_color_mode}}"
+                        >
+                            <div class="comments" style="padding: 10px">
+                                <p class="font-weight-normal text-primary">
+                                    {{ comment.user }}
+                                    <span class="text-dark">{%translate 'on'%}</span>
+                                    <span class="font-weight-light fs-6 text-muted">
+                                        {{ comment.created_on }}
+                                    </span>
+                                </p>
+                                <p class="font-weight-normal text-info">
+                                    {{ comment.body | safe }}
+                                </p>
+                            </div>
+                        </div>
+                        {% endfor %}
                     </div>
-                </div>
-                {% endfor %}
-            </div>
-            <hr />
-            {% endif %} {% if perms.readwrite.moderate or moderator_ajax_allowed
-            %}
-            <script type="text/javascript">
-                var url_approve = "{% url 'approve_comment' %}";
-                var url_delete = "{% url 'delete_comment' %}";
-            </script>
-            {% endif %} {% if user.is_authenticated and moderation_comments %}
+                    <hr />
+                {% endif %}
+            {% endif %} 
+            {% if perms.readwrite.moderate or moderator_ajax_allowed %}
+                <script type="text/javascript">
+                    var url_approve = "{% url 'approve_comment' %}";
+                    var url_delete = "{% url 'delete_comment' %}";
+                </script> 
+            {% endif %} 
+            {% if user.is_authenticated and moderation_comments %}
             <h4>
                 {%translate 'The following
                 comment'%}{{moderation_comments|pluralize}}
@@ -154,51 +156,49 @@
             <hr />
             {% endif %}
             <span class="main-comments">
-                {% include 'ajax/comments.html' %} {% block main_content %} {%
-                endblock main_content %}
+                {% include 'ajax/comments.html' %} {% block main_content %} {% endblock main_content %}
             </span>
             <hr />
             {% if user.is_authenticated %}
-            <h3>{%translate 'Leave a comment'%}</h3>
-            <form
-                method="post"
-                style="margin-top: 1.3em"
-                id="submit_comment"
-                action=""
-            >
-                {% for field in comment_form.visible_fields %} {{ field }} {%
-                endfor %} {% csrf_token %}
-                <br />
-                <div
-                    id="comment_submit_button"
-                    name="comm_anchor"
-                    class="mt-3 mb-4"
+                <h3>{%translate 'Leave a comment'%}</h3>
+                <form
+                    method="post"
+                    style="margin-top: 1.3em"
+                    id="submit_comment"
+                    action=""
                 >
-                    <button type="submit" class="btn btn-info btn-lg">
-                        Submit
-                    </button>
-                </div>
-            </form>
-            <script type="text/javascript">
-                var wipe = false;
-            </script>
-            {% for message in messages %} {% if message.tags == "success" %}
-            <script type="text/javascript">
-                var wipe = true;
-            </script>
-            {% endif %} {% endfor %}
-            <script
-                type="text/javascript"
-                src="{% static 'js/comments.js' %}"
-            ></script>
-            {% else %}
-            <h3>
-                {%translate 'You need to be'%}
-                <a class="font-weight-bold" href="{% url 'login' %}"
-                    >{%translate 'logged in'%}</a
-                >
-                {%translate 'order to leave a comment!'%}
-            </h3>
+                    {% for field in comment_form.visible_fields %} {{ field }} {% endfor %} {% csrf_token %}
+                    <br />
+                    <div
+                        id="comment_submit_button"
+                        name="comm_anchor"
+                        class="mt-3 mb-4"
+                    >
+                        <button type="submit" class="btn btn-info btn-lg">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+                <script type="text/javascript">
+                    var wipe = false;
+                </script>
+                {% for message in messages %} {% if message.tags == "success" %}
+                <script type="text/javascript">
+                    var wipe = true;
+                </script>
+                {% endif %} {% endfor %}
+                <script
+                    type="text/javascript"
+                    src="{% static 'js/comments.js' %}"
+                ></script>
+                {% else %}
+                <h3>
+                    {%translate 'You need to be'%}
+                    <a class="font-weight-bold" href="{% url 'login' %}"
+                        >{%translate 'logged in'%}</a
+                    >
+                    {%translate 'order to leave a comment!'%}
+                </h3>
             {% endif %}
         </div>
     </div>

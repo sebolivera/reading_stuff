@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-25 12:54+0000\n"
+"POT-Creation-Date: 2022-02-25 13:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,12 +24,12 @@ msgstr "⃈↶☄⋣ʧ̳̍͞ख़͍͉ͯ᝕თ̂ͥ͘☼"
 #: readwrite/templates/ajax/comments.html:12
 #: readwrite/templates/ajax/index_search_partial.html:35
 #: readwrite/templates/ajax/index_search_partial.html:68
-#: readwrite/templates/post/post.html:57 readwrite/templates/post/post.html:86
+#: readwrite/templates/post/post.html:82 readwrite/templates/post/post.html:119
 msgid "on"
 msgstr "ᴭ̲̊͝▋"
 
 #: readwrite/templates/ajax/comments.html:22
-#: readwrite/templates/post/post.html:98
+#: readwrite/templates/post/post.html:150
 msgid "Delete"
 msgstr "↠㋑ㄭ̳͑͜ᝊ̨̤̏⩚⬓"
 
@@ -45,8 +45,8 @@ msgstr "⽣ᇉ͓̋͑⊍Ꭶ̡̃̕୚ᴗ̹̊͢ⲵ̨̤̇ᘑ̶ͦͯ"
 #: readwrite/templates/ajax/index_search_partial.html:19
 #: readwrite/templates/ajax/index_search_partial.html:42
 #: readwrite/templates/ajax/index_search_partial.html:47
-#: readwrite/templates/post/post.html:19 readwrite/templates/post/post.html:24
-#: readwrite/templates/post/post.html:33 readwrite/templates/post/post.html:37
+#: readwrite/templates/post/post.html:30 readwrite/templates/post/post.html:39
+#: readwrite/templates/post/post.html:46 readwrite/templates/post/post.html:50
 msgid "Favorite"
 msgstr "ษ͖͞͡⵳⸤᱉༏୲╿ለ͍̈͜"
 
@@ -145,37 +145,31 @@ msgstr "᰻Ⱘ̡̮ͧ⚯ᘟ͚̄͜Ⅱဘ̓ͯ͠ਪ̸̱̋ⓑխ̷͙͌ᥰ̵̺͛⾪⤆�
 msgid "This will probably hold relevant info at some point"
 msgstr "っ̀̿̊⺟ᚴ̸̮̕㊓ᇜ̞̾̌㄀⍿ڷ̧́̍⽠ⅈ̵̶̞ὧ̳̦̾ံⲮ̢̺͞Ɇ̶̉῜ᳯ̻͐̀᣸ၷ̝͘͝⧫⎼⬨ព̦̭͂ժ̧̖̃ᜓ⯶ັ⽹☘਑ᾞ̡͘㉤㇝ⷎ̰͂́¶༇⏙⏲વ̞ͦͅኞ̅͘͢ዑ̨̱͠⥮Қ͙̃̂⠠⧠☾ỷ̺͗̇,Γ̴̻͟⁻Ṳ್̡̈̄̍"
 
-#: readwrite/templates/post/post.html:50 readwrite/templates/post/post.html:79
-msgid "The following comment"
-msgstr "᠑ǖ͊ͬ͞ႅŐ̧̺́⼕ᾓ̵̴̝┶ニ̴͚ͩ᛬ႏᖺ̥͜͟ʦ͖̌ͨね̜̯ͨ⁰⛀ޟ̶̫̾ω̸̥ͬԯ̮̜͂ھ͈͐̆"
-
-#: readwrite/templates/post/post.html:50
-msgid "awaiting a review:"
-msgstr "ዕ͖̅ͫટ̦ͫ͘ᖫ̷͈ͬ⼻޽Տ̨́̐ݱ̖̝́⋷҄∠ᐛ̩̘̾⍯⥒Ă̡̽ͅⒿῷ̠̭͝ॆጦ̫̃͑"
-
-#: readwrite/templates/post/post.html:79
-msgid "awaiting"
-msgstr "◊▃⬨ȝ̱̽̕঍⟊ኳ̞ͭ͞⹈"
-
-#: readwrite/templates/post/post.html:79
+#: readwrite/templates/post/post.html:109
 msgid "review"
 msgstr "⓶ᔗ̴ͯ͡ⵏ̵͑͒␊᎞ً"
 
-#: readwrite/templates/post/post.html:95
+#: readwrite/templates/post/post.html:137
 msgid "Approve"
 msgstr "દ̹̱ͦፔ̹͋͗⚜⹐ך͈֛́ͫた̴̛ͨ"
 
-#: readwrite/templates/post/post.html:113
+#: readwrite/templates/post/post.html:164
 msgid "Leave a comment"
 msgstr "ㄵ̵́͠∮⺌೸ޭ√⇱᧰᷾ᕽ̘ͬ͡ᘰ̛̛̯ᵝ͖̎͜⿵₸⺋"
 
-#: readwrite/templates/post/post.html:132
+#: readwrite/templates/post/post.html:197
 msgid "You need to be"
 msgstr "ᴧ͍̈͠╠⇡ખ̦ͮ͘൱ࢉ⿀Φ̸͇̍✼⟱῱≺প̷͍́ണ͎ͥ̕"
 
-#: readwrite/templates/post/post.html:132
+#: readwrite/templates/post/post.html:199
 msgid "logged in"
 msgstr "᮶⌘ඳͥ̊͘ྒྷᄮ̀́̑܏❊ᾮ̪̦̟຃"
+
+#: readwrite/templates/post/post.html:201
+#, fuzzy
+#| msgid "Leave a comment"
+msgid "order to leave a comment!"
+msgstr "ㄵ̵́͠∮⺌೸ޭ√⇱᧰᷾ᕽ̘ͬ͡ᘰ̛̛̯ᵝ͖̎͜⿵₸⺋"
 
 #: readwrite/templates/post/write_post.html:11
 msgid "New post"
@@ -307,6 +301,15 @@ msgstr "ਖ̷̴਼̭⭟Ş̢͎̮⇊ᥫ̱̦͜"
 #: userauth/templates/signup.html:86
 msgid "Password Confirmation"
 msgstr "ֶࣴ⮐स̶ͩ̍➋ᴀ̀͠ͅԥ̖̇͠Ṵ̟̈́̄⏖ႝ⻲֡⦛჎ᄲ͑̋͝ᙕ̼͒͂⦅ ᗿ̲̪̆គ̺͍ͮቾ̼̇̀"
+
+#~ msgid "The following comment"
+#~ msgstr "᠑ǖ͊ͬ͞ႅŐ̧̺́⼕ᾓ̵̴̝┶ニ̴͚ͩ᛬ႏᖺ̥͜͟ʦ͖̌ͨね̜̯ͨ⁰⛀ޟ̶̫̾ω̸̥ͬԯ̮̜͂ھ͈͐̆"
+
+#~ msgid "awaiting a review:"
+#~ msgstr "ዕ͖̅ͫટ̦ͫ͘ᖫ̷͈ͬ⼻޽Տ̨́̐ݱ̖̝́⋷҄∠ᐛ̩̘̾⍯⥒Ă̡̽ͅⒿῷ̠̭͝ॆጦ̫̃͑"
+
+#~ msgid "awaiting"
+#~ msgstr "◊▃⬨ȝ̱̽̕঍⟊ኳ̞ͭ͞⹈"
 
 #~ msgid "Password xnfirmation"
 #~ msgstr "ᑘ͚̄͡ᘸ̮ͫ̕ប̡̖ͮ༨᫤ឋ̢̲̎ⶓ̨̬͢ᙱ͆͂͢⬬છ̄́ͪ⿔˟ⱃ̿́̚ဍ̛͇̌⁎ឲ̞̽ͪձ̪ͥ͟ޣ̙̈ͫṟ͓ͫ͐ٱͮ̽͠"

@@ -67,9 +67,9 @@ htmlcov/
 nosetests.xml
 coverage.xml
 
-# Translations
-*.mo
-*.pot
+# Translations #disabled cause i don't want to bother
+# *.mo
+# *.pot
 
 # Sphinx documentation
 docs/_build/

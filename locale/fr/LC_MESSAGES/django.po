@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-25 12:53+0000\n"
+"POT-Creation-Date: 2022-02-25 13:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,12 +25,12 @@ msgstr "Commentaires :"
 #: readwrite/templates/ajax/comments.html:12
 #: readwrite/templates/ajax/index_search_partial.html:35
 #: readwrite/templates/ajax/index_search_partial.html:68
-#: readwrite/templates/post/post.html:57 readwrite/templates/post/post.html:86
+#: readwrite/templates/post/post.html:82 readwrite/templates/post/post.html:119
 msgid "on"
 msgstr "le"
 
 #: readwrite/templates/ajax/comments.html:22
-#: readwrite/templates/post/post.html:98
+#: readwrite/templates/post/post.html:150
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -46,8 +46,8 @@ msgstr "Aucun post"
 #: readwrite/templates/ajax/index_search_partial.html:19
 #: readwrite/templates/ajax/index_search_partial.html:42
 #: readwrite/templates/ajax/index_search_partial.html:47
-#: readwrite/templates/post/post.html:19 readwrite/templates/post/post.html:24
-#: readwrite/templates/post/post.html:33 readwrite/templates/post/post.html:37
+#: readwrite/templates/post/post.html:30 readwrite/templates/post/post.html:39
+#: readwrite/templates/post/post.html:46 readwrite/templates/post/post.html:50
 msgid "Favorite"
 msgstr "Favoris"
 
@@ -86,7 +86,7 @@ msgstr "Notification"
 msgid "Home"
 msgstr "Accueil"
 
-#: readwrite/templates/base.html:86
+#: readwrite/templates/base.html:88
 msgid "Switch to"
 msgstr "Passer en"
 
@@ -146,37 +146,29 @@ msgstr "J'ai fait une BANNIÈRE, parce que c'est COOL et ÉPIC"
 msgid "This will probably hold relevant info at some point"
 msgstr "Il y aura sans doute des choses incroyables ici un jour"
 
-#: readwrite/templates/post/post.html:50 readwrite/templates/post/post.html:79
-msgid "The following comment"
-msgstr "Le commentaire suivant"
-
-#: readwrite/templates/post/post.html:50
-msgid "awaiting a review:"
-msgstr "est en attente de révision :"
-
-#: readwrite/templates/post/post.html:79
-msgid "awaiting"
-msgstr "attend"
-
-#: readwrite/templates/post/post.html:79
+#: readwrite/templates/post/post.html:109
 msgid "review"
 msgstr "sa révision"
 
-#: readwrite/templates/post/post.html:95
+#: readwrite/templates/post/post.html:137
 msgid "Approve"
 msgstr "Approuver"
 
-#: readwrite/templates/post/post.html:113
+#: readwrite/templates/post/post.html:164
 msgid "Leave a comment"
 msgstr "Laisser un commentaire"
 
-#: readwrite/templates/post/post.html:132
+#: readwrite/templates/post/post.html:197
 msgid "You need to be"
 msgstr "Vous devez être"
 
-#: readwrite/templates/post/post.html:132
+#: readwrite/templates/post/post.html:199
 msgid "logged in"
 msgstr "connecté"
+
+#: readwrite/templates/post/post.html:201
+msgid "order to leave a comment!"
+msgstr "pour pouvoir laisser un commentaire !"
 
 #: readwrite/templates/post/write_post.html:11
 msgid "New post"
@@ -310,3 +302,12 @@ msgstr "Mail"
 #| msgid "Password confirmation"
 msgid "Password Confirmation"
 msgstr "Confirmation du mot de passe"
+
+#~ msgid "The following comment"
+#~ msgstr "Le commentaire suivant"
+
+#~ msgid "awaiting a review:"
+#~ msgstr "est en attente de révision :"
+
+#~ msgid "awaiting"
+#~ msgstr "attend"
