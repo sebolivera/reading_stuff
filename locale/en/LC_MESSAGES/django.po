@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-25 12:53+0000\n"
+"POT-Creation-Date: 2022-02-25 12:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,31 +16,31 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: readwrite/templates/ajax/comments.html:5
 msgid "Comments:"
-msgstr "Commentaires :"
+msgstr ""
 
 #: readwrite/templates/ajax/comments.html:12
 #: readwrite/templates/ajax/index_search_partial.html:35
 #: readwrite/templates/ajax/index_search_partial.html:68
 #: readwrite/templates/post/post.html:57 readwrite/templates/post/post.html:86
 msgid "on"
-msgstr "le"
+msgstr ""
 
 #: readwrite/templates/ajax/comments.html:22
 #: readwrite/templates/post/post.html:98
 msgid "Delete"
-msgstr "Supprimer"
+msgstr ""
 
 #: readwrite/templates/ajax/index_search_partial.html:6
 msgid "The following posts match your search:"
-msgstr "Les posts suivants correspondent à votre recherche :"
+msgstr ""
 
 #: readwrite/templates/ajax/index_search_partial.html:10
 msgid "No posts"
-msgstr "Aucun post"
+msgstr ""
 
 #: readwrite/templates/ajax/index_search_partial.html:15
 #: readwrite/templates/ajax/index_search_partial.html:19
@@ -49,264 +49,256 @@ msgstr "Aucun post"
 #: readwrite/templates/post/post.html:19 readwrite/templates/post/post.html:24
 #: readwrite/templates/post/post.html:33 readwrite/templates/post/post.html:37
 msgid "Favorite"
-msgstr "Favoris"
+msgstr ""
 
 #: readwrite/templates/ajax/index_search_partial.html:31
 #: readwrite/templates/ajax/index_search_partial.html:33
 #: readwrite/templates/ajax/index_search_partial.html:64
 #: readwrite/templates/ajax/index_search_partial.html:66
 msgid "By"
-msgstr "par"
+msgstr ""
 
 #: readwrite/templates/ajax/index_search_partial.html:37
 msgid "Read more..."
-msgstr "En savoir plus..."
+msgstr ""
 
 #: readwrite/templates/ajax/index_search_partial.html:56
 msgid "The authors of the following posts match your search: "
-msgstr "Les auteurs des posts suivants correspondent à votre recherche : "
+msgstr ""
 
 #: readwrite/templates/ajax/index_search_partial.html:70
 msgid "See comments"
-msgstr "Voir les commentaires"
+msgstr ""
 
 #: readwrite/templates/base.html:10
 msgid "My junkyard"
-msgstr "Mon dépotoire"
+msgstr ""
 
 #: readwrite/templates/base.html:60
 msgid "pls take me home I'm scared"
-msgstr "maman j'ai peur je veux rentrer"
+msgstr ""
 
 #: readwrite/templates/base.html:67
 msgid "Notification"
-msgstr "Notification"
+msgstr ""
 
 #: readwrite/templates/base.html:84
 msgid "Home"
-msgstr "Accueil"
+msgstr ""
 
-#: readwrite/templates/base.html:86
+#: readwrite/templates/base.html:88
 msgid "Switch to"
-msgstr "Passer en"
+msgstr ""
 
 #: readwrite/templates/base.html:88
 msgid "Mode"
-msgstr "mode"
+msgstr ""
 
 #: readwrite/templates/base.html:100
 msgid "Language"
-msgstr "Langue"
+msgstr ""
 
 #: readwrite/templates/base.html:121
 msgid "Post something"
-msgstr "Poster quelque chose"
+msgstr ""
 
 #: readwrite/templates/base.html:126
 msgid "Favorited"
-msgstr "Mes Favoris"
+msgstr ""
 
 #: readwrite/templates/base.html:129
 msgid "My publications"
-msgstr "Mes publications"
+msgstr ""
 
 #: readwrite/templates/base.html:147
 msgid "Logout"
-msgstr "Se déconnecter"
+msgstr ""
 
 #: readwrite/templates/base.html:154 userauth/templates/login.html:54
 msgid "Login"
-msgstr "Se connecter"
+msgstr ""
 
 #: readwrite/templates/base.html:167
 msgid "Cursed"
-msgstr "Maudit"
+msgstr ""
 
 #: readwrite/templates/base.html:168
 msgid "Mundane"
-msgstr "Ordinaire"
+msgstr ""
 
 #: readwrite/templates/base.html:169
 msgid "Blessed"
-msgstr "Bénit"
+msgstr ""
 
 #: readwrite/templates/base.html:179
 msgid "Copyright"
-msgstr "Copyright"
+msgstr ""
 
 #: readwrite/templates/favorites.html:6
 msgid "Favorited posts"
-msgstr "Mes posts favoris"
+msgstr ""
 
 #: readwrite/templates/index.html:22
 msgid "I made a BANNER because it looks COOL and EPIC"
-msgstr "J'ai fait une BANNIÈRE, parce que c'est COOL et ÉPIC"
+msgstr ""
 
 #: readwrite/templates/index.html:23
 msgid "This will probably hold relevant info at some point"
-msgstr "Il y aura sans doute des choses incroyables ici un jour"
+msgstr ""
 
 #: readwrite/templates/post/post.html:50 readwrite/templates/post/post.html:79
 msgid "The following comment"
-msgstr "Le commentaire suivant"
+msgstr ""
 
 #: readwrite/templates/post/post.html:50
 msgid "awaiting a review:"
-msgstr "est en attente de révision :"
+msgstr ""
 
 #: readwrite/templates/post/post.html:79
 msgid "awaiting"
-msgstr "attend"
+msgstr ""
 
 #: readwrite/templates/post/post.html:79
 msgid "review"
-msgstr "sa révision"
+msgstr ""
 
 #: readwrite/templates/post/post.html:95
 msgid "Approve"
-msgstr "Approuver"
+msgstr ""
 
 #: readwrite/templates/post/post.html:113
 msgid "Leave a comment"
-msgstr "Laisser un commentaire"
+msgstr ""
 
 #: readwrite/templates/post/post.html:132
 msgid "You need to be"
-msgstr "Vous devez être"
+msgstr ""
 
 #: readwrite/templates/post/post.html:132
 msgid "logged in"
-msgstr "connecté"
+msgstr ""
 
 #: readwrite/templates/post/write_post.html:11
 msgid "New post"
-msgstr "Nouveau post"
+msgstr ""
 
 #: readwrite/templates/post/write_post.html:19
 msgid "This is a chapter (and not a simple post)"
-msgstr "Ceci est un chapitre (et non pas un simple post)"
+msgstr ""
 
 #: readwrite/templates/post/write_post.html:23
 msgid "Book:"
-msgstr "Livre :"
+msgstr ""
 
 #: readwrite/templates/post/write_post.html:32
 msgid "Chapter Number:"
-msgstr "Chapitre N° :"
+msgstr ""
 
 #: readwrite/templates/post/write_post.html:35
 msgid "Please select a book!"
-msgstr "Veuillez sélectionner un livre !"
+msgstr ""
 
 #: readwrite/templates/post/write_post.html:45
 msgid "Publish"
-msgstr "Publier"
+msgstr ""
 
 #: readwrite/templates/post/write_post.html:46
 msgid "Save as a draft"
-msgstr "Sauvegarder le brouillon"
+msgstr ""
 
 #: readwrite/templates/publications.html:5
 msgid "Your publications"
-msgstr "Vos publications"
+msgstr ""
 
 #: readwrite/templates/sidebar.html:13
 msgid "Search posts"
-msgstr "Rechercher des posts"
+msgstr ""
 
 #: readwrite/templates/sidebar.html:15
 #: readwrite/templates/sidebar_nosearch.html:13
 msgid "Under construction"
-msgstr "En cours de construction"
+msgstr ""
 
 #: readwrite/templates/sidebar.html:17
 msgid ""
 "This website is currently under construction, please disregard whatever "
 "unexpected things you may find."
 msgstr ""
-"Ce site est actuellement en cours de construction, veuillez ignorer les "
-"comportements innatendus de la part des pages."
 
 #: readwrite/templates/sidebar.html:18
 #: readwrite/templates/sidebar_nosearch.html:16
 msgid "DO NOT CLICK THIS"
-msgstr "NE PAS CLIQUER"
+msgstr ""
 
 #: readwrite/templates/sidebar_nosearch.html:15
 msgid "This message has changed, though you probably didn't notice."
-msgstr "Vous n'avez probablement pas remarqué, mais ce message a changé"
+msgstr ""
 
 #: userauth/forms.py:9 userauth/forms.py:20 userauth/templates/login.html:48
 #: userauth/templates/signup.html:79
 msgid "Password"
-msgstr "Mot de passe"
+msgstr ""
 
 #: userauth/forms.py:22
 msgid "Password confirmation"
-msgstr "Confirmation du mot de passe"
+msgstr ""
 
 #: userauth/forms.py:24
 msgid "Enter the same password as above, for verification."
-msgstr "Entrez le même mot de passe qu'au dessus"
+msgstr ""
 
 #: userauth/templates/login.html:37
 msgid "Log in"
-msgstr "Se connecter"
+msgstr ""
 
 #: userauth/templates/login.html:43 userauth/templates/signup.html:46
 msgid "Username"
-msgstr "Nom d'utilisateur"
+msgstr ""
 
 #: userauth/templates/login.html:52
 msgid "Forgot password?"
-msgstr "Mot de passe oublié ?"
+msgstr ""
 
 #: userauth/templates/login.html:56
 msgid "Don't have an account?"
-msgstr "Pas encore de compte?"
+msgstr ""
 
 #: userauth/templates/login.html:56
 msgid "Register here"
-msgstr "Créez-vous un compte ici"
+msgstr ""
 
 #: userauth/templates/login.html:58
-#, fuzzy
-#| msgid "No need to click here, this isn't a link."
 msgid "No need to click here, this isn't a link."
-msgstr "Pas la peine de cliquer, ceci n'est pas un lien."
+msgstr ""
 
 #: userauth/templates/login.html:70
 msgid "Please don't click on anything you're not supposed to"
-msgstr "Ne cliquez pas là où vous n'êtes pas censé le faire, merci"
+msgstr ""
 
 #: userauth/templates/signup.html:18
 msgid "You shouldn't be able to access this page. Please leave."
 msgstr ""
-"Vous ne devriez pas être en mesure d'accéder à cette page. Dégagez, s'il "
-"vous plaît."
 
 #: userauth/templates/signup.html:20
 msgid "Please login to see this page."
-msgstr "Connectez vous pour pouvoir voir cette page."
+msgstr ""
 
 #: userauth/templates/signup.html:35
 msgid "Registration Form"
-msgstr "Formulaire d'enregistrement"
+msgstr ""
 
 #: userauth/templates/signup.html:53
 msgid "Profile Pic*"
-msgstr "Photo de profil*"
+msgstr ""
 
 #: userauth/templates/signup.html:63
 msgid "Pen Name*"
-msgstr "Nom d'auteur"
+msgstr ""
 
 #: userauth/templates/signup.html:70
 msgid "Email"
-msgstr "Mail"
+msgstr ""
 
 #: userauth/templates/signup.html:86
-#, fuzzy
-#| msgid "Password confirmation"
 msgid "Password Confirmation"
-msgstr "Confirmation du mot de passe"
+msgstr ""

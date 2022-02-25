@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-18 11:12+0000\n"
+"POT-Creation-Date: 2022-02-25 12:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,63 +73,63 @@ msgstr "Ⲛ͕̻͞⺟↜͒૏ൻ̷̭͛≧ṍ̸̼͑⟼ݯ̦̜ͧᢁͦ͗͟ḣ͉͍̎"
 msgid "My junkyard"
 msgstr "☗⴩ᾩ̶ͩ͟⅄⩯ࡩ̶̢̊ধ͔͜͢⯗⻁র̳ͨͨ⩐"
 
-#: readwrite/templates/base.html:52
+#: readwrite/templates/base.html:60
 msgid "pls take me home I'm scared"
 msgstr "ݓ̶̗ͥዎͬ̄͊⹷ࠃ̸͕͒឴⡨⹓⾷C͇ͭ͘᥃ἐ̴̰̘঴ᭉ̛̮̑ᔘ̩́ଃើཽᴟ̵̻ͭㄸ̲ͤ͘イ͖͞͝ߞ̵̩̄̾ʥ̼ͮ͘ᗤ̧̫̏з͎ͥͪ᠔"
 
-#: readwrite/templates/base.html:59
+#: readwrite/templates/base.html:67
 msgid "Notification"
 msgstr "✁Უُ͍̼͠ㄧ̪̠̆ਖ̷̙̄⢵ሊ̬̂͘ດ̢̬̍⻴⃳ሸ̱͔ͥ⽢"
 
-#: readwrite/templates/base.html:76
+#: readwrite/templates/base.html:84
 msgid "Home"
 msgstr "⼜Ԗͦ͘㆞ᷥ"
 
-#: readwrite/templates/base.html:80
+#: readwrite/templates/base.html:88
 msgid "Switch to"
 msgstr "ٴ̵̨̅ࡰᛯੰㅎ̗̊͜ܣ̸ͩ͠σ̴̝͟➅Ἶ̭̃̓"
 
-#: readwrite/templates/base.html:80
+#: readwrite/templates/base.html:88
 msgid "Mode"
 msgstr "༴ဟ̵͎̋ᇘ̧̟ͮᩈ̠͊͟"
 
-#: readwrite/templates/base.html:92
+#: readwrite/templates/base.html:100
 msgid "Language"
 msgstr "൨ℚ͈ͭ́ᓾ͎̽͞⍆≟̺ɒ͈͑̐⛵"
 
-#: readwrite/templates/base.html:113
+#: readwrite/templates/base.html:121
 msgid "Post something"
 msgstr "ԙ̧̼̌ᄌ̠͒͟ԣ̵ͤ̉ᨻָ̻̌͝᎝ǧ͎́ͩ⥪⎝इ͕̉͟⥑ᖛ̦ͪ̇⚫"
 
-#: readwrite/templates/base.html:118
+#: readwrite/templates/base.html:126
 msgid "Favorited"
 msgstr "ᜇ̥͐⮪ⶦ̡̝͟ᤝ̉͜͡Хͭ̇̕ⳃ̬͍̐⧣⏜຺"
 
-#: readwrite/templates/base.html:121
+#: readwrite/templates/base.html:129
 msgid "My publications"
 msgstr "〛᫲ᒧ͕́́ਿ⬥Ự̹̹̀ᩒ̝̺᩻͜ы̶̲͗͐ਲ̳̠ͧ⎶▞ᣟ̮͟ɇ̷̃̌"
 
-#: readwrite/templates/base.html:139
+#: readwrite/templates/base.html:147
 msgid "Logout"
 msgstr "⥼ᴠ͂ͥ͠ᡲ̟̜͟᤼⧏ᚼ̠̀ͤ"
 
-#: readwrite/templates/base.html:146 userauth/templates/login.html:54
+#: readwrite/templates/base.html:154 userauth/templates/login.html:54
 msgid "Login"
 msgstr "મ̶̟̖ᒀ̽ͯ̀Ḥ̩͙͝⣗⠹"
 
-#: readwrite/templates/base.html:159
+#: readwrite/templates/base.html:167
 msgid "Cursed"
 msgstr "???"
 
-#: readwrite/templates/base.html:160
+#: readwrite/templates/base.html:168
 msgid "Mundane"
 msgstr "🤔"
 
-#: readwrite/templates/base.html:161
+#: readwrite/templates/base.html:169
 msgid "Blessed"
 msgstr "???"
 
-#: readwrite/templates/base.html:169
+#: readwrite/templates/base.html:179
 msgid "Copyright"
 msgstr "ף̡̳͂⭰⽵ट̞̥̞ͣཷࡴᲗ̧̇ᨺ͇̍͘"
 
