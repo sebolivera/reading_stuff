@@ -39,10 +39,10 @@ class Post(PolymorphicModel):
 class TextPost(Post):
     content = RichTextField()
 
-class MediaPostInternal(Post):
+class MediaPostInternal(Post): #not quite sure what this one is going to be about
     content = FileField(upload_to='uploads/')
 
-class MediaPostExternal(Post): #not quite sure what this one is going to be about
+class MediaPostExternal(Post):
     content = URLField()
     origin = TextField(null=True, blank=True)
 

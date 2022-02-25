@@ -135,12 +135,12 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="userMenuToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img class="img-thumbnail custom-thumbnail" src="{% if user.profile_picture %}{{user.profile_picture}}{% else %}{% static 'images/ubereatsetc.png' %}{% endif %}"/>
+                                    <img class="img-thumbnail custom-thumbnail" src="{% if user.profile_picture %}{{user.profile_picture}}{% else %}{% static 'images/default.png' %}{% endif %}"/>
                             </a>
 
-                            <ul class="dropdown-menu dropdown-menu-{{color_mode}} text-{{text_color_mode}}">
+                            <ul class="dropdown-menu dropdown-menu-right dropdown-menu-{{color_mode}} text-{{text_color_mode}}">
                                 <li class="dropdown-item text-{{text_color_mode}}">
-                                    <a class="nav-link text-red font-weight-bold" href="{% url 'logout' %}">{% translate 'Logout' %}</a>
+                                   <a class="nav-link text-red font-weight-bold" href="{% url 'logout' %}">{% translate 'Logout' %}</a>
                                 </li>
                             </ul>
                         </li>
@@ -153,7 +153,7 @@
                     </ul>
                 </div>
             </div>
-            <a id="huh" class="text-secondary text-small" data-bs-toggle="collapse" href="#blursed" aria-expanded="false" aria-controls="collapseExample">?</a>
+            <button id="huh" type="button" class="btn btn-outline-success text-small me-3" data-bs-toggle="collapse" href="#blursed" aria-expanded="false" aria-controls="collapseExample">?</button>
         </nav>
         <div class="position-absolute mt-4 me-4 end-0">
             <div id="blursed" class="collapse">

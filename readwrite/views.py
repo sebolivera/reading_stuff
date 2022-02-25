@@ -13,6 +13,7 @@ from django.template.loader import render_to_string
 from django.db.models import Q
 from .utils import has_publications, require_AJAX
 from readwrite.utils import set_text_color
+from django.utils.translation import gettext as _
 # Create your views here.
 
 class IndexView(TemplateView):
@@ -169,25 +170,25 @@ def create_post(request):# turn into class afterwards ?
             if request.POST.get('ischapter'):
                 book = get_object_or_404(Book, title=request.POST['book'])
                 if not request.POST['position']:
-                    messages.error(request, 'Please fill in the chapter!')
+                    messages.error(request, _('Please fill in the chapter!'))
                     return render(request, template_name)
                 if Chapter.objects.filter(chapter_position=request.POST['position']).count()>0:
-                    messages.error(request, 'A chapter with this number already exists!')
+                    messages.error(request, _('A chapter with this number already exists!'))
                     return render(request, template_name)
 
                 new_chapter = Chapter.objects.create(book=book, chapter_position=request.POST['position'], slug=new_post.slug, title=new_post.title, author=new_post.author, content=new_post.content)
                 if request.POST['publish']:
                     new_chapter.status = 1
-                    messages.success(request, 'Your chapter was published sucessfully')
+                    messages.success(request, _('Your chapter was published sucessfully'))
                 else:
-                    messages.success(request, 'Your chapter was saved as a draft')
+                    messages.success(request, _('Your chapter was saved as a draft'))
 
                 new_chapter.save()
             else:
                 if request.POST['publish']:
-                    messages.success(request, 'Your post was published sucessfully')
+                    messages.success(request, _('Your post was published sucessfully'))
                 else:
-                    messages.success(request, 'Your post was saved as a draft')
+                    messages.success(request, _('Your post was saved as a draft'))
                 new_post.save()
             response = redirect('/')
             if request.user.is_authenticated :
@@ -224,15 +225,15 @@ def approve_comment(request):
                 html = render_to_string(
                     template_name="ajax/comments.html", context=context)
                 data_dict = {"html_from_view":html}
-                messages.success(request, 'The message was sucessfully approved')
+                messages.success(request, _('The message was sucessfully approved'))
                 response = JsonResponse(data=data_dict, safe=False)
                 return response
-            messages.error(request, 'This comment has already been approved')
+            messages.error(request, _('This comment has already been approved'))
         response = JsonResponse({"error": "there was an error"})
         response.status_code = 403
     else:
-        messages.error(request, 'You shouldn\'t be able to even try that')
-        response = JsonResponse({"error": "there was an error"})
+        messages.error(request, _('You shouldn\'t be able to even try that'))
+        response = JsonResponse({"error": _("there was an error")})
         response.status_code = 403
     return response
             
@@ -254,13 +255,13 @@ def delete_comment(request):
             html = render_to_string(
                 template_name="ajax/comments.html", context=context)
             data_dict = {"html_from_view" : html}
-            messages.success(request, 'The message was sucessfully deleted')
+            messages.success(request, _('The message was sucessfully deleted'))
             return JsonResponse(data=data_dict, safe=False)
-        response = JsonResponse({"error": "this comment was already deleted"})
+        response = JsonResponse({"error": _("this comment was already deleted")})
         response.status_code = 403
     else:
-        messages.error(request, 'You shouldn\'t be able to even try that')
-        response = JsonResponse({"error": "there was an error"})
+        messages.error(request, _('You shouldn\'t be able to even try that'))
+        response = JsonResponse({"error": _("there was an error")})
         response.status_code = 403
     return response
 
@@ -299,9 +300,9 @@ def favorite_view(request):#idk if login_required works properly on ajax calls a
                 request.user.favorites.add(the_post)
             data_dict = {}
             return JsonResponse(data=data_dict, safe=False)
-        response = JsonResponse({"error": "this comment was already deleted"})
+        response = JsonResponse({"error": _("this comment was already deleted")})
         response.status_code = 403
     else:   
-        response = JsonResponse({"error": "user is being a lil bitch"})
+        response = JsonResponse({"error": _("user is being a lil bitch")})
         response.status_code = 403
     return response

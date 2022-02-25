@@ -167,6 +167,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
+# necessary in prod
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = 'None'

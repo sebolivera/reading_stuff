@@ -2,10 +2,10 @@ from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
 from .forms import LoginForm, SignUpForm
 from django.contrib.auth import logout, login, authenticate
-from django.http.response import HttpResponse, JsonResponse
+from django.http.response import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
+from django.utils.translation import gettext as _
 # Create your views here.
 
 @login_required
@@ -13,7 +13,7 @@ def logout_view(request):
     logout(request)
     response = redirect('/')
     response.delete_cookie('site_color_mode')
-    messages.success(request, 'Logged out sucessfully. Now scram.')
+    messages.success(request, _('Logged out sucessfully. Now scram.'))
     return response
 
 def login_view(request):
@@ -29,7 +29,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, 'Successfully logged in as %s.' % user.username)
+            messages.success(request, _('Successfully logged in as')+user.username)
             response = redirect('/')
             if request.user.is_authenticated :
                 response.set_cookie('site_color_mode', request.user.color_mode, max_age = 5000000)
@@ -53,11 +53,11 @@ def signup_view(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            messages.success(request, 'Successfully registered and logged in as %s.' % username)
+            messages.success(request, _('Successfully registered and logged in as')+username)
             return redirect('home')
     else:
         form = SignUpForm()
     return render(request, template_name, {'form': form})
 
 def password_reset_view(request): #todo
-    return HttpResponse("forgot to implement that one, mb")
+    return HttpResponse(_("forgot to implement that one, mb"))

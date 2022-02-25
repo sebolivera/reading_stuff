@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-25 13:34+0000\n"
+"POT-Creation-Date: 2022-02-25 16:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,8 +23,8 @@ msgid "Comments:"
 msgstr "Commentaires :"
 
 #: readwrite/templates/ajax/comments.html:12
-#: readwrite/templates/ajax/index_search_partial.html:35
-#: readwrite/templates/ajax/index_search_partial.html:68
+#: readwrite/templates/ajax/index_search_partial.html:36
+#: readwrite/templates/ajax/index_search_partial.html:69
 #: readwrite/templates/post/post.html:82 readwrite/templates/post/post.html:119
 msgid "on"
 msgstr "le"
@@ -42,31 +42,37 @@ msgstr "Les posts suivants correspondent à votre recherche :"
 msgid "No posts"
 msgstr "Aucun post"
 
-#: readwrite/templates/ajax/index_search_partial.html:15
-#: readwrite/templates/ajax/index_search_partial.html:19
-#: readwrite/templates/ajax/index_search_partial.html:42
-#: readwrite/templates/ajax/index_search_partial.html:47
+#: readwrite/templates/ajax/index_search_partial.html:11
+#, fuzzy
+#| msgid "Post something"
+msgid "Post something?"
+msgstr "Poster quelque chose ?"
+
+#: readwrite/templates/ajax/index_search_partial.html:16
+#: readwrite/templates/ajax/index_search_partial.html:20
+#: readwrite/templates/ajax/index_search_partial.html:43
+#: readwrite/templates/ajax/index_search_partial.html:48
 #: readwrite/templates/post/post.html:30 readwrite/templates/post/post.html:39
 #: readwrite/templates/post/post.html:46 readwrite/templates/post/post.html:50
 msgid "Favorite"
 msgstr "Favoris"
 
-#: readwrite/templates/ajax/index_search_partial.html:31
-#: readwrite/templates/ajax/index_search_partial.html:33
-#: readwrite/templates/ajax/index_search_partial.html:64
-#: readwrite/templates/ajax/index_search_partial.html:66
+#: readwrite/templates/ajax/index_search_partial.html:32
+#: readwrite/templates/ajax/index_search_partial.html:34
+#: readwrite/templates/ajax/index_search_partial.html:65
+#: readwrite/templates/ajax/index_search_partial.html:67
 msgid "By"
 msgstr "par"
 
-#: readwrite/templates/ajax/index_search_partial.html:37
+#: readwrite/templates/ajax/index_search_partial.html:38
 msgid "Read more..."
 msgstr "En savoir plus..."
 
-#: readwrite/templates/ajax/index_search_partial.html:56
+#: readwrite/templates/ajax/index_search_partial.html:57
 msgid "The authors of the following posts match your search: "
 msgstr "Les auteurs des posts suivants correspondent à votre recherche : "
 
-#: readwrite/templates/ajax/index_search_partial.html:70
+#: readwrite/templates/ajax/index_search_partial.html:71
 msgid "See comments"
 msgstr "Voir les commentaires"
 
@@ -174,6 +180,10 @@ msgstr "pour pouvoir laisser un commentaire !"
 msgid "New post"
 msgstr "Nouveau post"
 
+#: readwrite/templates/post/write_post.html:14
+msgid "Title"
+msgstr "Titre"
+
 #: readwrite/templates/post/write_post.html:19
 msgid "This is a chapter (and not a simple post)"
 msgstr "Ceci est un chapitre (et non pas un simple post)"
@@ -228,6 +238,64 @@ msgstr "NE PAS CLIQUER"
 msgid "This message has changed, though you probably didn't notice."
 msgstr "Vous n'avez probablement pas remarqué, mais ce message a changé"
 
+#: readwrite/views.py:173
+msgid "Please fill in the chapter!"
+msgstr "Veuillez remplir le chapitre, SVP !"
+
+#: readwrite/views.py:176
+msgid "A chapter with this number already exists!"
+msgstr "Un chapitre avec ce nom existe déjà !"
+
+#: readwrite/views.py:182
+msgid "Your chapter was published sucessfully"
+msgstr "Votre chapitre a été correctement publié"
+
+#: readwrite/views.py:184
+msgid "Your chapter was saved as a draft"
+msgstr "Votre chapitre a été sauvegardé comme brouillon"
+
+#: readwrite/views.py:189
+msgid "Your post was published sucessfully"
+msgstr "Votre post a été publié correctement"
+
+#: readwrite/views.py:191
+#, fuzzy
+#| msgid "Save as a draft"
+msgid "Your post was saved as a draft"
+msgstr "Sauvegarder le brouillon"
+
+#: readwrite/views.py:228
+msgid "The message was sucessfully approved"
+msgstr "Le message a été approuvé"
+
+#: readwrite/views.py:231
+msgid "This comment has already been approved"
+msgstr "Votre commentaire a été approuvé"
+
+#: readwrite/views.py:235 readwrite/views.py:263
+#, fuzzy
+#| msgid "You shouldn't be able to access this page. Please leave."
+msgid "You shouldn't be able to even try that"
+msgstr ""
+"Vous ne devriez pas être en mesure d'accéder à cette page. Dégagez, s'il "
+"vous plaît."
+
+#: readwrite/views.py:236 readwrite/views.py:264
+msgid "there was an error"
+msgstr "une erreur a été rencontrée"
+
+#: readwrite/views.py:258
+msgid "The message was sucessfully deleted"
+msgstr "Le message a été supprimé correctement"
+
+#: readwrite/views.py:260 readwrite/views.py:303
+msgid "this comment was already deleted"
+msgstr ""
+
+#: readwrite/views.py:306
+msgid "user is being a lil bitch"
+msgstr "l'utilisateur est casse-couilles"
+
 #: userauth/forms.py:9 userauth/forms.py:20 userauth/templates/login.html:48
 #: userauth/templates/signup.html:79
 msgid "Password"
@@ -262,8 +330,6 @@ msgid "Register here"
 msgstr "Créez-vous un compte ici"
 
 #: userauth/templates/login.html:58
-#, fuzzy
-#| msgid "No need to click here, this isn't a link."
 msgid "No need to click here, this isn't a link."
 msgstr "Pas la peine de cliquer, ceci n'est pas un lien."
 
@@ -302,6 +368,22 @@ msgstr "Mail"
 #| msgid "Password confirmation"
 msgid "Password Confirmation"
 msgstr "Confirmation du mot de passe"
+
+#: userauth/views.py:16
+msgid "Logged out sucessfully. Now scram."
+msgstr "Déconnnecté. Dégagez."
+
+#: userauth/views.py:32
+msgid "Successfully logged in as"
+msgstr "Bienvenue,"
+
+#: userauth/views.py:56
+msgid "Successfully registered and logged in as"
+msgstr "Inscrit et connecté en tant que"
+
+#: userauth/views.py:63
+msgid "forgot to implement that one, mb"
+msgstr "j'ai oublié, sorry"
 
 #~ msgid "The following comment"
 #~ msgstr "Le commentaire suivant"

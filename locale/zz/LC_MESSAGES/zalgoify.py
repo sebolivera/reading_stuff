@@ -4,7 +4,11 @@ import random
 
 def random_unicode(length):
     # Create a list of unicode characters within the range 0000-D7FF
-    random_unicodes = [chr(random.randrange(0x3300)) for _ in range(0, length)] 
+    random_unicodes = [] 
+    for _ in range(0, length):
+        c = chr(random.randrange(0x3300))
+        if c!= '"' and c!="'" and c!="\n" and c!="\t" and c!="\r":#helps with translation file generation
+            random_unicodes.append(c)
     return u"".join(random_unicodes)
 
 my_random_unicode_str = random_unicode(length=512)

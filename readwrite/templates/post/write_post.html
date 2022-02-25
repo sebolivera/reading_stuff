@@ -6,12 +6,12 @@
 {% block content %}
 <div class="container">
   <div class="row shadow-none">
-    <div class="col-md-8 card mb-4  mt-3 left top shadow-none text-{{text_color_mode}} bg-{{color_mode}}">
+    <div class="col-md-8 card mb-4  mt-3 left top shadow-none very-{{color_mode}} text-{{text_color_mode}}">
       <div class="card-body">
         <h1 class="text-{{text_color_mode}}">{%translate 'New post'%}</h1>
         <form method="post" method="POST">
             <div class="container mb-3">
-            <span class="text-{{text_color_mode}}">{{ form.title.label }}: </span><input class="bg-{{color_mode}} text-{{text_color_mode}}" type="text" name="title" maxlength="254" required="" id="id_title">
+            <span class="text-{{text_color_mode}}">{%translate 'Title'%}: </span><input class="bg-{{color_mode}} text-{{text_color_mode}}" type="text" name="title" maxlength="254" required="" id="id_title">
             </div>
                 {% if books %}
                     <div class="align-middle container mb-3">
@@ -31,7 +31,7 @@
                         <div class="container mb-3">
                             <label for="position">{%translate 'Chapter Number:'%} &nbsp;</label>
                             {{ form.title.label }}: 
-                            <input class="bg-{{color_mode}} text-{{text_color_mode}}" type="text" name="position" id="position" placeholder="Ex: 1.1, 3, B"></input>
+                            <input class="bg-{{color_mode}} text-{{text_color_mode}}" type="text" name="position" id="position" placeholder="Ex: 1.1, 3, B"/>
                             <p class="text-danger book-select-error">{%translate 'Please select a book!'%}</p>
                         </div>
                     </div>

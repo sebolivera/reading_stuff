@@ -174,3 +174,7 @@
 {
     z-index:1;
 }
+.dropdown-menu-right {
+    right: 0 !important;/* apparently not working right?*/
+    left: auto !important;
+}
