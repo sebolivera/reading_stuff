@@ -61,6 +61,7 @@ class FavoritedView(TemplateView):
     context = {}
 
     def get(self, request):
+        self.context['fav_view'] = True
         self.context['post_list'] = self.request.user.favorites.all()
         self.context['has_publications'] = has_publications(self.request.user)
         response = render(request, self.template_name, self.context)

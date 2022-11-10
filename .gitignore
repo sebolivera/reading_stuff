@@ -1,5 +1,7 @@
+
+dummy_passwords.txt
+
 .vscode
-# Created by https://www.gitignore.io
 
 ### OSX ###
 .DS_Store
@@ -31,7 +33,6 @@ __pycache__/
 
 # C extensions
 *.so
-
 # Distribution / packaging
 .Python
 env/

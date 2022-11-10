@@ -29,7 +29,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, _('Successfully logged in as')+user.username)
+            messages.success(request, _('Successfully logged in as ')+user.username)
             response = redirect('/')
             if request.user.is_authenticated :
                 response.set_cookie('site_color_mode', request.user.color_mode, max_age = 5000000)
@@ -53,7 +53,7 @@ def signup_view(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            messages.success(request, _('Successfully registered and logged in as')+username)
+            messages.success(request, _('Successfully registered and logged in as ')+username)
             return redirect('home')
     else:
         form = SignUpForm()
